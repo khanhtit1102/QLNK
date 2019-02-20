@@ -48,7 +48,7 @@ class V_Admin
 	{
 		include "res/suatamtru.php";
 	}
-	public function themtamtru($nhankhau, $hokhau)
+	public function themtamtru($nhankhau)
 	{
 		include "res/themtamtru.php";
 	}

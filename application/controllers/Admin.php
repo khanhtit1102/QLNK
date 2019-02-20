@@ -254,11 +254,10 @@ class Admin extends CI_Controller {
 			$update_data['socmnd'] = $this->input->post('socmnd');
 			$update_data['thoihan'] = $this->input->post('thoihan');
 			$update_data['khaucu'] = $this->input->post('khaucu');
-			$update_data['khaumoi'] = $this->input->post('khaumoi');
 			$update_data['ngaybd'] = $this->input->post('ngaybd');
 			$update_data['ngaykt'] = $this->input->post('ngaykt');
 			$update_data['lydo'] = $this->input->post('lydo');
-			if ($update_data['socmnd'] == NULL || $update_data['thoihan'] == NULL || $update_data['khaucu'] == NULL || $update_data['khaumoi'] == NULL || $update_data['ngaybd'] == NULL || $update_data['ngaykt'] == NULL || $update_data['lydo'] == NULL) {
+			if ($update_data['socmnd'] == NULL || $update_data['thoihan'] == NULL || $update_data['khaucu'] == NULL || $update_data['ngaybd'] == NULL || $update_data['ngaykt'] == NULL || $update_data['lydo'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
@@ -311,8 +310,7 @@ class Admin extends CI_Controller {
 			}
 		}
 		$nhankhau = $model->nhankhau();
-		$hokhau = $model->hokhau();
-		$view->themtamtru($nhankhau, $hokhau);
+		$view->themtamtru($nhankhau);
 	}
 	public function tamvang()
 	{

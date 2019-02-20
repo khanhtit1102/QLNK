@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - SEO Dashboard</title>
+    <title>NHK Bắc Ninh - Sửa thông tin tạm trú</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -94,34 +94,28 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="khaucu" class="col-form-label">Khẩu cũ</label>
-                                                <input class="form-control" type="text" name="khaucu" value="<?php echo $value['khaucu']; ?>" id="khaucu">
+                                                <label for="khaucu" class="col-form-label">Khẩu hiện tại</label>
+                                                <input class="form-control" type="text" name="khaucu" value="<?php echo $value['khaucu']; ?>" id="khaucu" readonly="">
                                             </div>
                                         </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <div class="form-group">
-                                                <label for="khaumoi" class="col-form-label">Khẩu mới</label>
-                                                <input class="form-control" type="text" name="khaumoi" value="<?php echo $value['khaumoi']; ?>" id="khaumoi">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ngaybd" class="col-form-label">Ngày bắt đầu</label>
                                                 <input class="form-control" type="date" name="ngaybd" value="<?php echo $value['ngaybd']; ?>" id="ngaybd">
                                             </div>
                                         </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <div class="form-group">
-                                                <label for="ngaykt" class="col-form-label">Ngày kết thúc</label>
-                                                <input class="form-control" type="date" name="ngaykt" value="<?php echo $value['ngaykt']; ?>" id="ngaykt">
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="lydo" class="col-form-label">Lý do</label>
                                                 <textarea name="lydo" id="lydo" class="form-control" rows="3"><?php echo $value['lydo']; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="ngaykt" class="col-form-label">Ngày kết thúc</label>
+                                                <input class="form-control" type="date" name="ngaykt" value="<?php echo $value['ngaykt']; ?>" id="ngaykt">
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +132,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH THÁI NGUYÊN</p>
+                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
             </div>
         </footer>
         <!-- footer area end-->

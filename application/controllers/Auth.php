@@ -7,8 +7,8 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url', 'form'));	
-		$this->load->model('m_login');
-		$this->load->view('v_login');
+		$this->load->model('M_Login');
+		$this->load->view('V_Login');
 		
 	}
 	public function login()

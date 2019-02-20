@@ -24,7 +24,7 @@
 </div>
 <div class="footer-copyright">
 	<div class="container">
-		© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH THÁI NGUYÊN
+		© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH
 		<a class="grey-text text-lighten-4 right" href="#!" style="margin-left: 12px;">Sơ đồ cổng</a>
 		<i class="right">|</i>
 		<a class="grey-text text-lighten-4 right" href="#!" style="margin-left: 12px;">Đóng góp ý kiến</a>
