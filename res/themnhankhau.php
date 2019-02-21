@@ -105,10 +105,14 @@
                                                 <input class="form-control" type="date" name="ns" placeholder="VD: 01/01/1988" id="ns">
                                             </div>
                                             <div class="form-group">
+                                                <label for="quequan" class="col-form-label">Địa chỉ thường trú</label>
+                                                <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" >
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="quequan" class="col-form-label">Quê quán</label>
                                                 <input class="form-control" type="text" name="quequan" placeholder="VD: Hà Nội" id="quequan">
                                             </div>
-                                            
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
@@ -137,7 +141,7 @@
                                                     <?php 
                                                         foreach ($data_hokhau as $key => $value) {
                                                     ?>
-                                                    <option value="<?php echo $value['mahk'] ?>"><?php echo $value['tench'] ?></option>
+                                                    <option value="<?php echo $value['mahk'] ?>"><?php echo $value['mahk'].' - '.$value['tench'] ?></option>
                                                     <?php }?>
                                                 </select>
                                             </div>
@@ -177,6 +181,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

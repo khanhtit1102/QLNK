@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Thêm thông tin chuyển khẩu</b></u></h4>
+                            <h4 class="page-title pull-left">Thêm thông tin tách khẩu</b></u></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -76,7 +76,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
-                                                <select name="socmnd" id="socmnd" class="form-control">
+                                                <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
                                                     <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'] ?></option>
                                                     <?php } ?>
@@ -99,8 +99,9 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="dc" class="col-form-label">Địa chỉ</label>
-                                                <textarea name="dc" id="dc" class="form-control" rows="3"></textarea>
+                                                <label for="dc" class="col-form-label">Địa chỉ thường trú</label>
+                                                <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" >
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +135,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

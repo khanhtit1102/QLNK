@@ -127,10 +127,14 @@
                                             <input class="form-control" type="date" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
                                         </div>
                                         <div class="form-group">
+                                            <label for="quequan" class="col-form-label">Địa chỉ thường trú</label>
+                                            <input class="form-control" type="text" name="dc" value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off" >
+                                            <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="quequan" class="col-form-label">Quê quán</label>
                                             <input class="form-control" type="text" name="quequan" value="<?php echo $value['quequan']; ?>" id="quequan">
                                         </div>
-
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group">
@@ -160,7 +164,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="mahk" class="col-form-label">Trong hộ khẩu</label>
-                                            <p style="color: red;">(Thay đổi hộ khẩu vui lòng chọn tách khẩu/chuyển khẩu)</p>
+                                            <p style="color: red;">(Thay đổi hộ khẩu vui lòng chọn <a href="<?php echo base_url('admin/tachkhau') ?>">tách khẩu</a>/<a href="<?php echo base_url('admin/chuyenkhau') ?>">chuyển khẩu</a>)</p>
                                             <input class="form-control" type="text" name="mahk" value="<?php echo $value['mahk']; ?>" id="mahk" readonly="">
                                         </div>
                                         <div class="form-group">
@@ -200,6 +204,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

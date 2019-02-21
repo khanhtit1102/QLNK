@@ -157,6 +157,7 @@ class Admin extends CI_Controller {
 			$update_data['ns'] = $this->input->post('ns');
 			$update_data['dt'] = $this->input->post('dt');
 			$update_data['tg'] = $this->input->post('tg');
+			$update_data['dc'] = $this->input->post('dc');
 			$update_data['quequan'] = $this->input->post('quequan');
 			$update_data['tdhocvan'] = $this->input->post('tdhocvan');
 			$update_data['nghenghiep'] = $this->input->post('nghenghiep');
@@ -164,7 +165,7 @@ class Admin extends CI_Controller {
 				$update_data['mavp'] = $this->input->post('mavp');
 			}
 			$update_data['qhvchuho'] = $this->input->post('qhvchuho');
-			if ($update_data['hvt'] == NULL || $update_data['gt'] == NULL || $update_data['ns'] == NULL || $update_data['dt'] == NULL || $update_data['tg'] == NULL || $update_data['quequan'] == NULL || $update_data['tdhocvan'] == NULL || $update_data['nghenghiep'] == NULL || $update_data['qhvchuho'] == NULL) {
+			if ($update_data['hvt'] == NULL || $update_data['gt'] == NULL || $update_data['ns'] == NULL || $update_data['dt'] == NULL || $update_data['tg'] == NULL || $update_data['dc'] == NULL || $update_data['quequan'] == NULL || $update_data['tdhocvan'] == NULL || $update_data['nghenghiep'] == NULL || $update_data['qhvchuho'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
@@ -209,6 +210,7 @@ class Admin extends CI_Controller {
 			$add_data['ns'] = $this->input->post('ns');
 			$add_data['dt'] = $this->input->post('dt');
 			$add_data['tg'] = $this->input->post('tg');
+			$add_data['dc'] = $this->input->post('dc');
 			$add_data['quequan'] = $this->input->post('quequan');
 			$add_data['tdhocvan'] = $this->input->post('tdhocvan');
 			$add_data['nghenghiep'] = $this->input->post('nghenghiep');
@@ -218,7 +220,7 @@ class Admin extends CI_Controller {
 			$add_data['mahk'] = $this->input->post('mahk');
 			$add_data['qhvchuho'] = $this->input->post('qhvchuho');
 			
-			if ($add_data['socmnd'] == NULL || $add_data['hvt'] == NULL || $add_data['gt'] == NULL || $add_data['ns'] == NULL || $add_data['dt'] == NULL || $add_data['quequan'] == NULL || $add_data['tdhocvan'] == NULL || $add_data['nghenghiep'] == NULL || $add_data['qhvchuho'] == NULL) {
+			if ($add_data['socmnd'] == NULL || $add_data['hvt'] == NULL || $add_data['gt'] == NULL || $add_data['ns'] == NULL || $add_data['dt'] == NULL || $add_data['dc'] == NULL || $add_data['quequan'] == NULL || $add_data['tdhocvan'] == NULL || $add_data['nghenghiep'] == NULL || $add_data['qhvchuho'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
@@ -391,29 +393,33 @@ class Admin extends CI_Controller {
 		$model = new M_Admin();
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
-			$add_data['socmnd'] = $this->input->post('socmnd');
+			$socmnd = $this->input->post('socmnd');
+			$count = count($socmnd);
 			$add_data['khaumoi'] = $this->input->post('khaumoi');
 			$add_data['lydo'] = $this->input->post('lydo');
 			$add_data['loai'] = 'Chuyển khẩu';
 			$add_data['ngayth'] = date("Y-m-d");
-			if ($add_data['socmnd'] == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL) {
+			if ($socmnd == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
-				$khaucu = $model->mot_nhankhau($add_data['socmnd']);
-				foreach ($khaucu as $key => $value){
-					$add_data['khaucu'] = $value['mahk'];
-					$qhvchuho = $value['qhvchuho'];
+				for ($i=0; $i < $count; $i++) { 
+					$add_data['socmnd'] = $socmnd[$i];
+					$khaucu = $model->mot_nhankhau($socmnd[$i]);
+					foreach ($khaucu as $key => $value){
+						$add_data['khaucu'] = $value['mahk'];
+						$qhvchuho = $value['qhvchuho'];
+					}
+					if ($add_data['khaucu'] == $add_data['khaumoi']) {
+						$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
+					}
+					else{
+						$model->themchuyenkhau($add_data);
+						$model->update_chuyenkhau_nhankhau($qhvchuho, $add_data);
+						$this->session->set_flashdata('error', '- Thêm thông tin chuyển khẩu thành công!');
+					}
 				}
-				if ($add_data['khaucu'] == $add_data['khaumoi']) {
-					$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
-				}
-				else{
-					$model->themchuyenkhau($add_data);
-					$model->update_chuyenkhau_nhankhau($qhvchuho, $add_data);
-					$this->session->set_flashdata('error', '- Thêm thông tin chuyển khẩu thành công!');
-					redirect(base_url('admin/chuyenkhau'));
-				}
+				// redirect(base_url('admin/chuyenkhau'));
 			}
 		}
 		$nhankhau = $model->nhankhau();
@@ -518,4 +524,9 @@ class Admin extends CI_Controller {
 		$nhankhau = $model->nhankhau();
 		$view->themtachkhau($nhankhau);
 	}
+	public function GetCountryName(){
+        $keyword=$this->input->post('keyword');
+        $data=$this->datacomplete->GetRow($keyword);        
+        echo json_encode($data);
+    }
 }

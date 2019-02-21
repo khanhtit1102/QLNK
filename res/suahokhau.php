@@ -85,7 +85,8 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="dc" class="col-form-label">Thường trú</label>
-                                                <input class="form-control" type="text" name="dc" value="<?php echo $value['dc']; ?>" id="dc">
+                                                <input class="form-control" type="text" name="dc"  value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off" >
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +135,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>
