@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 21, 2019 lúc 05:41 PM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.1.23
+-- Host: 127.0.0.1
+-- Generation Time: Feb 22, 2019 at 10:24 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,281 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `qlnk`
+-- Database: `qlnk`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `autocomplete`
---
-
-CREATE TABLE `autocomplete` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `alpha_2` varchar(255) NOT NULL,
-  `alpha_3` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `autocomplete`
---
-
-INSERT INTO `autocomplete` (`id`, `name`, `alpha_2`, `alpha_3`) VALUES
-(1, 'Afghanistan', 'af', 'afg'),
-(2, 'Aland Islands', 'ax', 'ala'),
-(3, 'Albania', 'al', 'alb'),
-(4, 'Algeria', 'dz', 'dza'),
-(5, 'American Samoa', 'as', 'asm'),
-(6, 'Andorra', 'ad', 'and'),
-(7, 'Angola', 'ao', 'ago'),
-(8, 'Anguilla', 'ai', 'aia'),
-(9, 'Antarctica', 'aq', ''),
-(10, 'Antigua and Barbuda', 'ag', 'atg'),
-(11, 'Argentina', 'ar', 'arg'),
-(12, 'Armenia', 'am', 'arm'),
-(13, 'Aruba', 'aw', 'abw'),
-(14, 'Australia', 'au', 'aus'),
-(15, 'Austria', 'at', 'aut'),
-(16, 'Azerbaijan', 'az', 'aze'),
-(17, 'Bahamas', 'bs', 'bhs'),
-(18, 'Bahrain', 'bh', 'bhr'),
-(19, 'Bangladesh', 'bd', 'bgd'),
-(20, 'Barbados', 'bb', 'brb'),
-(21, 'Belarus', 'by', 'blr'),
-(22, 'Belgium', 'be', 'bel'),
-(23, 'Belize', 'bz', 'blz'),
-(24, 'Benin', 'bj', 'ben'),
-(25, 'Bermuda', 'bm', 'bmu'),
-(26, 'Bhutan', 'bt', 'btn'),
-(27, 'Bolivia, Plurinational State of', 'bo', 'bol'),
-(28, 'Bonaire, Sint Eustatius and Saba', 'bq', 'bes'),
-(29, 'Bosnia and Herzegovina', 'ba', 'bih'),
-(30, 'Botswana', 'bw', 'bwa'),
-(31, 'Bouvet Island', 'bv', ''),
-(32, 'Brazil', 'br', 'bra'),
-(33, 'British Indian Ocean Territory', 'io', ''),
-(34, 'Brunei Darussalam', 'bn', 'brn'),
-(35, 'Bulgaria', 'bg', 'bgr'),
-(36, 'Burkina Faso', 'bf', 'bfa'),
-(37, 'Burundi', 'bi', 'bdi'),
-(38, 'Cambodia', 'kh', 'khm'),
-(39, 'Cameroon', 'cm', 'cmr'),
-(40, 'Canada', 'ca', 'can'),
-(41, 'Cape Verde', 'cv', 'cpv'),
-(42, 'Cayman Islands', 'ky', 'cym'),
-(43, 'Central African Republic', 'cf', 'caf'),
-(44, 'Chad', 'td', 'tcd'),
-(45, 'Chile', 'cl', 'chl'),
-(46, 'China', 'cn', 'chn'),
-(47, 'Christmas Island', 'cx', ''),
-(48, 'Cocos (Keeling) Islands', 'cc', ''),
-(49, 'Colombia', 'co', 'col'),
-(50, 'Comoros', 'km', 'com'),
-(51, 'Congo', 'cg', 'cog'),
-(52, 'Congo, The Democratic Republic of the', 'cd', 'cod'),
-(53, 'Cook Islands', 'ck', 'cok'),
-(54, 'Costa Rica', 'cr', 'cri'),
-(55, 'Cote d\'Ivoire', 'ci', 'civ'),
-(56, 'Croatia', 'hr', 'hrv'),
-(57, 'Cuba', 'cu', 'cub'),
-(58, 'Curacao', 'cw', 'cuw'),
-(59, 'Cyprus', 'cy', 'cyp'),
-(60, 'Czech Republic', 'cz', 'cze'),
-(61, 'Denmark', 'dk', 'dnk'),
-(62, 'Djibouti', 'dj', 'dji'),
-(63, 'Dominica', 'dm', 'dma'),
-(64, 'Dominican Republic', 'do', 'dom'),
-(65, 'Ecuador', 'ec', 'ecu'),
-(66, 'Egypt', 'eg', 'egy'),
-(67, 'El Salvador', 'sv', 'slv'),
-(68, 'Equatorial Guinea', 'gq', 'gnq'),
-(69, 'Eritrea', 'er', 'eri'),
-(70, 'Estonia', 'ee', 'est'),
-(71, 'Ethiopia', 'et', 'eth'),
-(72, 'Falkland Islands (Malvinas)', 'fk', 'flk'),
-(73, 'Faroe Islands', 'fo', 'fro'),
-(74, 'Fiji', 'fj', 'fji'),
-(75, 'Finland', 'fi', 'fin'),
-(76, 'France', 'fr', 'fra'),
-(77, 'French Guiana', 'gf', 'guf'),
-(78, 'French Polynesia', 'pf', 'pyf'),
-(79, 'French Southern Territories', 'tf', ''),
-(80, 'Gabon', 'ga', 'gab'),
-(81, 'Gambia', 'gm', 'gmb'),
-(82, 'Georgia', 'ge', 'geo'),
-(83, 'Germany', 'de', 'deu'),
-(84, 'Ghana', 'gh', 'gha'),
-(85, 'Gibraltar', 'gi', 'gib'),
-(86, 'Greece', 'gr', 'grc'),
-(87, 'Greenland', 'gl', 'grl'),
-(88, 'Grenada', 'gd', 'grd'),
-(89, 'Guadeloupe', 'gp', 'glp'),
-(90, 'Guam', 'gu', 'gum'),
-(91, 'Guatemala', 'gt', 'gtm'),
-(92, 'Guernsey', 'gg', 'ggy'),
-(93, 'Guinea', 'gn', 'gin'),
-(94, 'Guinea-Bissau', 'gw', 'gnb'),
-(95, 'Guyana', 'gy', 'guy'),
-(96, 'Haiti', 'ht', 'hti'),
-(97, 'Heard Island and McDonald Islands', 'hm', ''),
-(98, 'Holy See (Vatican City State)', 'va', 'vat'),
-(99, 'Honduras', 'hn', 'hnd'),
-(100, 'Hong Kong', 'hk', 'hkg'),
-(101, 'Hungary', 'hu', 'hun'),
-(102, 'Iceland', 'is', 'isl'),
-(103, 'India', 'in', 'ind'),
-(104, 'Indonesia', 'id', 'idn'),
-(105, 'Iran, Islamic Republic of', 'ir', 'irn'),
-(106, 'Iraq', 'iq', 'irq'),
-(107, 'Ireland', 'ie', 'irl'),
-(108, 'Isle of Man', 'im', 'imn'),
-(109, 'Israel', 'il', 'isr'),
-(110, 'Italy', 'it', 'ita'),
-(111, 'Jamaica', 'jm', 'jam'),
-(112, 'Japan', 'jp', 'jpn'),
-(113, 'Jersey', 'je', 'jey'),
-(114, 'Jordan', 'jo', 'jor'),
-(115, 'Kazakhstan', 'kz', 'kaz'),
-(116, 'Kenya', 'ke', 'ken'),
-(117, 'Kiribati', 'ki', 'kir'),
-(118, 'Korea, Democratic People\'s Republic of', 'kp', 'prk'),
-(119, 'Korea, Republic of', 'kr', 'kor'),
-(120, 'Kuwait', 'kw', 'kwt'),
-(121, 'Kyrgyzstan', 'kg', 'kgz'),
-(122, 'Lao People\'s Democratic Republic', 'la', 'lao'),
-(123, 'Latvia', 'lv', 'lva'),
-(124, 'Lebanon', 'lb', 'lbn'),
-(125, 'Lesotho', 'ls', 'lso'),
-(126, 'Liberia', 'lr', 'lbr'),
-(127, 'Libyan Arab Jamahiriya', 'ly', 'lby'),
-(128, 'Liechtenstein', 'li', 'lie'),
-(129, 'Lithuania', 'lt', 'ltu'),
-(130, 'Luxembourg', 'lu', 'lux'),
-(131, 'Macao', 'mo', 'mac'),
-(132, 'Macedonia, The former Yugoslav Republic of', 'mk', 'mkd'),
-(133, 'Madagascar', 'mg', 'mdg'),
-(134, 'Malawi', 'mw', 'mwi'),
-(135, 'Malaysia', 'my', 'mys'),
-(136, 'Maldives', 'mv', 'mdv'),
-(137, 'Mali', 'ml', 'mli'),
-(138, 'Malta', 'mt', 'mlt'),
-(139, 'Marshall Islands', 'mh', 'mhl'),
-(140, 'Martinique', 'mq', 'mtq'),
-(141, 'Mauritania', 'mr', 'mrt'),
-(142, 'Mauritius', 'mu', 'mus'),
-(143, 'Mayotte', 'yt', 'myt'),
-(144, 'Mexico', 'mx', 'mex'),
-(145, 'Micronesia, Federated States of', 'fm', 'fsm'),
-(146, 'Moldova, Republic of', 'md', 'mda'),
-(147, 'Monaco', 'mc', 'mco'),
-(148, 'Mongolia', 'mn', 'mng'),
-(149, 'Montenegro', 'me', 'mne'),
-(150, 'Montserrat', 'ms', 'msr'),
-(151, 'Morocco', 'ma', 'mar'),
-(152, 'Mozambique', 'mz', 'moz'),
-(153, 'Myanmar', 'mm', 'mmr'),
-(154, 'Namibia', 'na', 'nam'),
-(155, 'Nauru', 'nr', 'nru'),
-(156, 'Nepal', 'np', 'npl'),
-(157, 'Netherlands', 'nl', 'nld'),
-(158, 'New Caledonia', 'nc', 'ncl'),
-(159, 'New Zealand', 'nz', 'nzl'),
-(160, 'Nicaragua', 'ni', 'nic'),
-(161, 'Niger', 'ne', 'ner'),
-(162, 'Nigeria', 'ng', 'nga'),
-(163, 'Niue', 'nu', 'niu'),
-(164, 'Norfolk Island', 'nf', 'nfk'),
-(165, 'Northern Mariana Islands', 'mp', 'mnp'),
-(166, 'Norway', 'no', 'nor'),
-(167, 'Oman', 'om', 'omn'),
-(168, 'Pakistan', 'pk', 'pak'),
-(169, 'Palau', 'pw', 'plw'),
-(170, 'Palestinian Territory, Occupied', 'ps', 'pse'),
-(171, 'Panama', 'pa', 'pan'),
-(172, 'Papua New Guinea', 'pg', 'png'),
-(173, 'Paraguay', 'py', 'pry'),
-(174, 'Peru', 'pe', 'per'),
-(175, 'Philippines', 'ph', 'phl'),
-(176, 'Pitcairn', 'pn', 'pcn'),
-(177, 'Poland', 'pl', 'pol'),
-(178, 'Portugal', 'pt', 'prt'),
-(179, 'Puerto Rico', 'pr', 'pri'),
-(180, 'Qatar', 'qa', 'qat'),
-(181, 'Reunion', 're', 'reu'),
-(182, 'Romania', 'ro', 'rou'),
-(183, 'Russian Federation', 'ru', 'rus'),
-(184, 'Rwanda', 'rw', 'rwa'),
-(185, 'Saint Barthelemy', 'bl', 'blm'),
-(186, 'Saint Helena, Ascension and Tristan Da Cunha', 'sh', 'shn'),
-(187, 'Saint Kitts and Nevis', 'kn', 'kna'),
-(188, 'Saint Lucia', 'lc', 'lca'),
-(189, 'Saint Martin (French Part)', 'mf', 'maf'),
-(190, 'Saint Pierre and Miquelon', 'pm', 'spm'),
-(191, 'Saint Vincent and The Grenadines', 'vc', 'vct'),
-(192, 'Samoa', 'ws', 'wsm'),
-(193, 'San Marino', 'sm', 'smr'),
-(194, 'Sao Tome and Principe', 'st', 'stp'),
-(195, 'Saudi Arabia', 'sa', 'sau'),
-(196, 'Senegal', 'sn', 'sen'),
-(197, 'Serbia', 'rs', 'srb'),
-(198, 'Seychelles', 'sc', 'syc'),
-(199, 'Sierra Leone', 'sl', 'sle'),
-(200, 'Singapore', 'sg', 'sgp'),
-(201, 'Sint Maarten (Dutch Part)', 'sx', 'sxm'),
-(202, 'Slovakia', 'sk', 'svk'),
-(203, 'Slovenia', 'si', 'svn'),
-(204, 'Solomon Islands', 'sb', 'slb'),
-(205, 'Somalia', 'so', 'som'),
-(206, 'South Africa', 'za', 'zaf'),
-(207, 'South Georgia and The South Sandwich Islands', 'gs', ''),
-(208, 'South Sudan', 'ss', 'ssd'),
-(209, 'Spain', 'es', 'esp'),
-(210, 'Sri Lanka', 'lk', 'lka'),
-(211, 'Sudan', 'sd', 'sdn'),
-(212, 'Suriname', 'sr', 'sur'),
-(213, 'Svalbard and Jan Mayen', 'sj', 'sjm'),
-(214, 'Swaziland', 'sz', 'swz'),
-(215, 'Sweden', 'se', 'swe'),
-(216, 'Switzerland', 'ch', 'che'),
-(217, 'Syrian Arab Republic', 'sy', 'syr'),
-(218, 'Taiwan, Province of China', 'tw', ''),
-(219, 'Tajikistan', 'tj', 'tjk'),
-(220, 'Tanzania, United Republic of', 'tz', 'tza'),
-(221, 'Thailand', 'th', 'tha'),
-(222, 'Timor-Leste', 'tl', 'tls'),
-(223, 'Togo', 'tg', 'tgo'),
-(224, 'Tokelau', 'tk', 'tkl'),
-(225, 'Tonga', 'to', 'ton'),
-(226, 'Trinidad and Tobago', 'tt', 'tto'),
-(227, 'Tunisia', 'tn', 'tun'),
-(228, 'Turkey', 'tr', 'tur'),
-(229, 'Turkmenistan', 'tm', 'tkm'),
-(230, 'Turks and Caicos Islands', 'tc', 'tca'),
-(231, 'Tuvalu', 'tv', 'tuv'),
-(232, 'Uganda', 'ug', 'uga'),
-(233, 'Ukraine', 'ua', 'ukr'),
-(234, 'United Arab Emirates', 'ae', 'are'),
-(235, 'United Kingdom', 'gb', 'gbr'),
-(236, 'United States', 'us', 'usa'),
-(237, 'United States Minor Outlying Islands', 'um', ''),
-(238, 'Uruguay', 'uy', 'ury'),
-(239, 'Uzbekistan', 'uz', 'uzb'),
-(240, 'Vanuatu', 'vu', 'vut'),
-(241, 'Venezuela, Bolivarian Republic of', 've', 'ven'),
-(242, 'Viet Nam', 'vn', 'vnm'),
-(243, 'Virgin Islands, British', 'vg', 'vgb'),
-(244, 'Virgin Islands, U.S.', 'vi', 'vir'),
-(245, 'Wallis and Futuna', 'wf', 'wlf'),
-(246, 'Western Sahara', 'eh', 'esh'),
-(247, 'Yemen', 'ye', 'yem'),
-(248, 'Zambia', 'zm', 'zmb'),
-(249, 'Zimbabwe', 'zw', 'zwe');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `cktk`
+-- Table structure for table `cktk`
 --
 
 CREATE TABLE `cktk` (
@@ -309,7 +41,150 @@ CREATE TABLE `cktk` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hokhau`
+-- Table structure for table `diadiem`
+--
+
+CREATE TABLE `diadiem` (
+  `madd` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `tendd` varchar(255) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `diadiem`
+--
+
+INSERT INTO `diadiem` (`madd`, `tendd`) VALUES
+('09163-256-27', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09166-256-27', 'Phường Đáp Cầu-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09169-256-27', 'Phường Thị Cầu-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09172-256-27', 'Phường Kinh Bắc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09175-256-27', 'Phường Vệ An-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09178-256-27', 'Phường Tiền An-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09181-256-27', 'Phường Đại Phúc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09184-256-27', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09187-256-27', 'Phường Suối Hoa-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09190-256-27', 'Phường Võ Cường-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09193-258-27', 'Thị trấn Chờ-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09196-258-27', 'Xã Dũng Liệt-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09199-258-27', 'Xã Tam Đa-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09202-258-27', 'Xã Tam Giang-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09205-258-27', 'Xã Yên Trung-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09208-258-27', 'Xã Thụy Hòa-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09211-258-27', 'Xã Hòa Tiến-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09214-256-27', 'Xã Hòa Long-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09217-258-27', 'Xã Đông Tiến-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09220-258-27', 'Xã Yên Phụ-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09223-258-27', 'Xã Trung Nghĩa-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09226-256-27', 'Phường Vạn An-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09229-258-27', 'Xã Đông Phong-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09232-258-27', 'Xã Long Châu-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09235-256-27', 'Phường Khúc Xuyên-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09238-258-27', 'Xã Văn Môn-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09241-258-27', 'Xã Đông Thọ-Huyện Yên Phong-Tỉnh Bắc Ninh'),
+('09244-256-27', 'Phường Phong Khê-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09247-259-27', 'Thị trấn Phố Mới-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09250-259-27', 'Xã Việt Thống-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09253-259-27', 'Xã Đại Xuân-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09256-256-27', 'Xã Kim Chân-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09259-259-27', 'Xã Nhân Hòa-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09262-259-27', 'Xã Bằng An-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09265-259-27', 'Xã Phương Liễu-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09268-259-27', 'Xã Quế Tân-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09271-256-27', 'Phường Vân Dương-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09274-259-27', 'Xã Phù Lương-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09277-259-27', 'Xã Phù Lãng-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09280-259-27', 'Xã Phượng Mao-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09283-259-27', 'Xã Việt Hùng-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09286-256-27', 'Xã Nam Sơn-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09289-259-27', 'Xã Ngọc Xá-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09292-259-27', 'Xã Châu Phong-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09295-259-27', 'Xã Bồng Lai-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09298-259-27', 'Xã Cách Bi-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09301-259-27', 'Xã Đào Viên-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09304-259-27', 'Xã Yên Giả-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09307-259-27', 'Xã Mộ Đạo-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09310-259-27', 'Xã Đức Long-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09313-259-27', 'Xã Chi Lăng-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09316-259-27', 'Xã Hán Quảng-Huyện Quế Võ-Tỉnh Bắc Ninh'),
+('09319-260-27', 'Thị trấn Lim-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09322-260-27', 'Xã Phú Lâm-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09325-256-27', 'Phường Khắc Niệm-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09328-260-27', 'Xã Nội Duệ-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09331-256-27', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh'),
+('09334-260-27', 'Xã Liên Bão-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09337-260-27', 'Xã Hiên Vân-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09340-260-27', 'Xã Hoàn Sơn-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09343-260-27', 'Xã Lạc Vệ-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09346-260-27', 'Xã Việt Đoàn-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09349-260-27', 'Xã Phật Tích-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09352-260-27', 'Xã Tân Chi-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09355-260-27', 'Xã Đại Đồng-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09358-260-27', 'Xã Tri Phương-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09361-260-27', 'Xã Minh Đạo-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09364-260-27', 'Xã Cảnh Hưng-Huyện Tiên Du-Tỉnh Bắc Ninh'),
+('09367-261-27', 'Phường Đông Ngàn-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09370-261-27', 'Xã Tam Sơn-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09373-261-27', 'Xã Hương Mạc-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09376-261-27', 'Xã Tương Giang-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09379-261-27', 'Xã Phù Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09382-261-27', 'Phường Đồng Kỵ-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09383-261-27', 'Phường Trang Hạ-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09385-261-27', 'Phường Đồng Nguyên-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09388-261-27', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09391-261-27', 'Phường Tân Hồng-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09394-261-27', 'Phường Đình Bảng-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09397-261-27', 'Xã Phù Chẩn-Thị xã Từ Sơn-Tỉnh Bắc Ninh'),
+('09400-262-27', 'Thị trấn Hồ-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09403-262-27', 'Xã Hoài Thượng-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09406-262-27', 'Xã Đại Đồng Thành-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09409-262-27', 'Xã Mão Điền-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09412-262-27', 'Xã Song Hồ-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09415-262-27', 'Xã Đình Tổ-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09418-262-27', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09421-262-27', 'Xã Trí Quả-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09424-262-27', 'Xã Gia Đông-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09427-262-27', 'Xã Thanh Khương-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09430-262-27', 'Xã Trạm Lộ-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09433-262-27', 'Xã Xuân Lâm-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09436-262-27', 'Xã Hà Mãn-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09439-262-27', 'Xã Ngũ Thái-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09442-262-27', 'Xã Nguyệt Đức-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09445-262-27', 'Xã Ninh Xá-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09448-262-27', 'Xã Nghĩa Đạo-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09451-262-27', 'Xã Song Liễu-Huyện Thuận Thành-Tỉnh Bắc Ninh'),
+('09454-263-27', 'Thị trấn Gia Bình-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09457-263-27', 'Xã Vạn Ninh-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09460-263-27', 'Xã Thái Bảo-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09463-263-27', 'Xã Giang Sơn-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09466-263-27', 'Xã Cao Đức-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09469-263-27', 'Xã Đại Lai-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09472-263-27', 'Xã Song Giang-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09475-263-27', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09478-263-27', 'Xã Lãng Ngâm-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09481-263-27', 'Xã Nhân Thắng-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09484-263-27', 'Xã Xuân Lai-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09487-263-27', 'Xã Đông Cứu-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09490-263-27', 'Xã Đại Bái-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09493-263-27', 'Xã Quỳnh Phú-Huyện Gia Bình-Tỉnh Bắc Ninh'),
+('09496-264-27', 'Thị trấn Thứa-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09499-264-27', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09502-264-27', 'Xã Trung Kênh-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09505-264-27', 'Xã Phú Hòa-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09508-264-27', 'Xã Mỹ Hương-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09511-264-27', 'Xã Tân Lãng-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09514-264-27', 'Xã Quảng Phú-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09517-264-27', 'Xã Trừng Xá-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09520-264-27', 'Xã Lai Hạ-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09523-264-27', 'Xã Trung Chính-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09526-264-27', 'Xã Minh Tân-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09529-264-27', 'Xã Bình Định-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09532-264-27', 'Xã Phú Lương-Huyện Lương Tài-Tỉnh Bắc Ninh'),
+('09535-264-27', 'Xã Lâm Thao-Huyện Lương Tài-Tỉnh Bắc Ninh');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hokhau`
 --
 
 CREATE TABLE `hokhau` (
@@ -319,7 +194,7 @@ CREATE TABLE `hokhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `hokhau`
+-- Dumping data for table `hokhau`
 --
 
 INSERT INTO `hokhau` (`mahk`, `tench`, `dc`) VALUES
@@ -330,7 +205,7 @@ INSERT INTO `hokhau` (`mahk`, `tench`, `dc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `log_hokhau`
+-- Table structure for table `log_hokhau`
 --
 
 CREATE TABLE `log_hokhau` (
@@ -346,7 +221,7 @@ CREATE TABLE `log_hokhau` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `log_nhankhau`
+-- Table structure for table `log_nhankhau`
 --
 
 CREATE TABLE `log_nhankhau` (
@@ -369,7 +244,7 @@ CREATE TABLE `log_nhankhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `log_nhankhau`
+-- Dumping data for table `log_nhankhau`
 --
 
 INSERT INTO `log_nhankhau` (`id`, `socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `quequan`, `tdhocvan`, `nghenghiep`, `mahk`, `qhvchuho`, `type`, `lydo`, `date`) VALUES
@@ -378,7 +253,7 @@ INSERT INTO `log_nhankhau` (`id`, `socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhankhau`
+-- Table structure for table `nhankhau`
 --
 
 CREATE TABLE `nhankhau` (
@@ -399,20 +274,20 @@ CREATE TABLE `nhankhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `nhankhau`
+-- Dumping data for table `nhankhau`
 --
 
 INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `quequan`, `tdhocvan`, `nghenghiep`, `mavp`, `mahk`, `qhvchuho`) VALUES
-('082255000', 'Hoàng Thị Lan', NULL, 1, '1991-02-02', 'Kinh', 'Không', '', 'Tân Thịnh Thái Nguyên', '12/12', 'Tự do', NULL, 'hk002', 'Chủ hộ'),
-('088868000', 'Nông Văn Long', NULL, 1, '1999-02-15', 'Kinh', 'Không', '', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Chủ hộ'),
-('088868111', 'Hoàng Thị Lan', NULL, 0, '2002-02-15', 'Kinh', 'Không', '', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Vợ'),
-('088868222', 'Nông Quốc Minh', NULL, 1, '2010-02-21', 'Kinh', 'Không', '', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con'),
-('088868333', 'Nguyễn Thị Hoa', NULL, 0, '2010-02-21', 'Kinh', 'Không', '', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con dâu');
+('082255000', 'Hoàng Thị Lan', NULL, 1, '1991-02-02', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Tân Thịnh Thái Nguyên', '12/12', 'Tự do', NULL, 'hk002', 'Chủ hộ'),
+('088868000', 'Nông Văn Long', NULL, 1, '1999-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Chủ hộ'),
+('088868111', 'Hoàng Thị Lan', NULL, 0, '2002-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Vợ'),
+('088868222', 'Nông Quốc Minh', NULL, 1, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con'),
+('088868333', 'Nguyễn Thị Hoa', NULL, 0, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con dâu');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhanvien`
+-- Table structure for table `nhanvien`
 --
 
 CREATE TABLE `nhanvien` (
@@ -429,7 +304,7 @@ CREATE TABLE `nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `nhanvien`
+-- Dumping data for table `nhanvien`
 --
 
 INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`) VALUES
@@ -438,7 +313,7 @@ INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phongban`
+-- Table structure for table `phongban`
 --
 
 CREATE TABLE `phongban` (
@@ -449,7 +324,7 @@ CREATE TABLE `phongban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `phongban`
+-- Dumping data for table `phongban`
 --
 
 INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
@@ -458,7 +333,7 @@ INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tttv`
+-- Table structure for table `tttv`
 --
 
 CREATE TABLE `tttv` (
@@ -476,7 +351,7 @@ CREATE TABLE `tttv` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vipham`
+-- Table structure for table `vipham`
 --
 
 CREATE TABLE `vipham` (
@@ -487,42 +362,42 @@ CREATE TABLE `vipham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `autocomplete`
---
-ALTER TABLE `autocomplete`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `cktk`
+-- Indexes for table `cktk`
 --
 ALTER TABLE `cktk`
   ADD PRIMARY KEY (`id`),
   ADD KEY `socmnd` (`socmnd`);
 
 --
--- Chỉ mục cho bảng `hokhau`
+-- Indexes for table `diadiem`
+--
+ALTER TABLE `diadiem`
+  ADD PRIMARY KEY (`madd`);
+
+--
+-- Indexes for table `hokhau`
 --
 ALTER TABLE `hokhau`
   ADD PRIMARY KEY (`mahk`);
 
 --
--- Chỉ mục cho bảng `log_hokhau`
+-- Indexes for table `log_hokhau`
 --
 ALTER TABLE `log_hokhau`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `log_nhankhau`
+-- Indexes for table `log_nhankhau`
 --
 ALTER TABLE `log_nhankhau`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `nhankhau`
+-- Indexes for table `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD PRIMARY KEY (`socmnd`),
@@ -530,96 +405,96 @@ ALTER TABLE `nhankhau`
   ADD KEY `mavp` (`mavp`);
 
 --
--- Chỉ mục cho bảng `nhanvien`
+-- Indexes for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`manv`,`email`),
   ADD KEY `mapb` (`mapb`);
 
 --
--- Chỉ mục cho bảng `phongban`
+-- Indexes for table `phongban`
 --
 ALTER TABLE `phongban`
   ADD PRIMARY KEY (`mapb`);
 
 --
--- Chỉ mục cho bảng `tttv`
+-- Indexes for table `tttv`
 --
 ALTER TABLE `tttv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `socmnd` (`socmnd`);
 
 --
--- Chỉ mục cho bảng `vipham`
+-- Indexes for table `vipham`
 --
 ALTER TABLE `vipham`
   ADD PRIMARY KEY (`mavp`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `cktk`
+-- AUTO_INCREMENT for table `cktk`
 --
 ALTER TABLE `cktk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `log_hokhau`
+-- AUTO_INCREMENT for table `log_hokhau`
 --
 ALTER TABLE `log_hokhau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `log_nhankhau`
+-- AUTO_INCREMENT for table `log_nhankhau`
 --
 ALTER TABLE `log_nhankhau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `phongban`
+-- AUTO_INCREMENT for table `phongban`
 --
 ALTER TABLE `phongban`
   MODIFY `mapb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `tttv`
+-- AUTO_INCREMENT for table `tttv`
 --
 ALTER TABLE `tttv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `vipham`
+-- AUTO_INCREMENT for table `vipham`
 --
 ALTER TABLE `vipham`
   MODIFY `mavp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `cktk`
+-- Constraints for table `cktk`
 --
 ALTER TABLE `cktk`
   ADD CONSTRAINT `cktk_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);
 
 --
--- Các ràng buộc cho bảng `nhankhau`
+-- Constraints for table `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD CONSTRAINT `nhankhau_ibfk_1` FOREIGN KEY (`mahk`) REFERENCES `hokhau` (`mahk`),
   ADD CONSTRAINT `nhankhau_ibfk_2` FOREIGN KEY (`mavp`) REFERENCES `vipham` (`mavp`);
 
 --
--- Các ràng buộc cho bảng `nhanvien`
+-- Constraints for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`mapb`) REFERENCES `phongban` (`mapb`);
 
 --
--- Các ràng buộc cho bảng `tttv`
+-- Constraints for table `tttv`
 --
 ALTER TABLE `tttv`
   ADD CONSTRAINT `tttv_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);

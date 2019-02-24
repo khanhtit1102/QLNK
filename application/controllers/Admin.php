@@ -525,8 +525,9 @@ class Admin extends CI_Controller {
 		$view->themtachkhau($nhankhau);
 	}
 	public function GetCountryName(){
+		$model = new M_Admin();
         $keyword=$this->input->post('keyword');
-        $data=$this->datacomplete->GetRow($keyword);        
+        $data = $model->GetRow($keyword);
         echo json_encode($data);
     }
 }

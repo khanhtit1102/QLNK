@@ -264,4 +264,9 @@ class M_Admin extends CI_Model
 		$this->db->where('socmnd', $socmnd);
 		$this->db->update('nhankhau');
 	}
+	public function GetRow($keyword) {        
+        $this->db->order_by('tendd', 'ASC');
+        $this->db->like("tendd", $keyword);
+        return $this->db->get('diadiem')->result_array();
+    }
 }

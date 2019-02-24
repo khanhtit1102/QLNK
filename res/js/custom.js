@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#dc").keyup(function () {
         $.ajax({
             type: "POST",
-            url: "http://localhost/QLNK/autocomplete/GetCountryName",
+            url: "http://localhost/QLNK/admin/GetCountryName",
             data: {
                 keyword: $("#dc").val()
             },
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 }
                 $.each(data, function (key,value) {
                     if (data.length >= 0)
-                        $('#DropdownCountry').append('<li role="displayCountries" ><a role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['name'] + '</a></li>');
+                        $('#DropdownCountry').append('<li role="displayCountries" ><a role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['tendd'] + '</a></li>');
                 });
             }
         });
