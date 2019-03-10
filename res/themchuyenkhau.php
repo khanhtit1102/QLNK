@@ -78,7 +78,7 @@
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
                                                 <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
-                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['qhvchuho'] ?></option>
+                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 22, 2019 at 10:24 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 07, 2019 lúc 07:39 AM
+-- Phiên bản máy phục vụ: 10.1.36-MariaDB
+-- Phiên bản PHP: 7.1.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qlnk`
+-- Cơ sở dữ liệu: `qlnk`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cktk`
+-- Cấu trúc bảng cho bảng `cktk`
 --
 
 CREATE TABLE `cktk` (
@@ -41,7 +41,7 @@ CREATE TABLE `cktk` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `diadiem`
+-- Cấu trúc bảng cho bảng `diadiem`
 --
 
 CREATE TABLE `diadiem` (
@@ -50,7 +50,7 @@ CREATE TABLE `diadiem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `diadiem`
+-- Đang đổ dữ liệu cho bảng `diadiem`
 --
 
 INSERT INTO `diadiem` (`madd`, `tendd`) VALUES
@@ -184,7 +184,7 @@ INSERT INTO `diadiem` (`madd`, `tendd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hokhau`
+-- Cấu trúc bảng cho bảng `hokhau`
 --
 
 CREATE TABLE `hokhau` (
@@ -194,7 +194,7 @@ CREATE TABLE `hokhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `hokhau`
+-- Đang đổ dữ liệu cho bảng `hokhau`
 --
 
 INSERT INTO `hokhau` (`mahk`, `tench`, `dc`) VALUES
@@ -205,7 +205,7 @@ INSERT INTO `hokhau` (`mahk`, `tench`, `dc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_hokhau`
+-- Cấu trúc bảng cho bảng `log_hokhau`
 --
 
 CREATE TABLE `log_hokhau` (
@@ -221,7 +221,7 @@ CREATE TABLE `log_hokhau` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_nhankhau`
+-- Cấu trúc bảng cho bảng `log_nhankhau`
 --
 
 CREATE TABLE `log_nhankhau` (
@@ -244,7 +244,7 @@ CREATE TABLE `log_nhankhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `log_nhankhau`
+-- Đang đổ dữ liệu cho bảng `log_nhankhau`
 --
 
 INSERT INTO `log_nhankhau` (`id`, `socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `quequan`, `tdhocvan`, `nghenghiep`, `mahk`, `qhvchuho`, `type`, `lydo`, `date`) VALUES
@@ -253,7 +253,7 @@ INSERT INTO `log_nhankhau` (`id`, `socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhankhau`
+-- Cấu trúc bảng cho bảng `nhankhau`
 --
 
 CREATE TABLE `nhankhau` (
@@ -274,7 +274,7 @@ CREATE TABLE `nhankhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `nhankhau`
+-- Đang đổ dữ liệu cho bảng `nhankhau`
 --
 
 INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `quequan`, `tdhocvan`, `nghenghiep`, `mavp`, `mahk`, `qhvchuho`) VALUES
@@ -287,7 +287,7 @@ INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhanvien`
+-- Cấu trúc bảng cho bảng `nhanvien`
 --
 
 CREATE TABLE `nhanvien` (
@@ -304,7 +304,7 @@ CREATE TABLE `nhanvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `nhanvien`
+-- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
 INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`) VALUES
@@ -313,7 +313,7 @@ INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phongban`
+-- Cấu trúc bảng cho bảng `phongban`
 --
 
 CREATE TABLE `phongban` (
@@ -324,7 +324,7 @@ CREATE TABLE `phongban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `phongban`
+-- Đang đổ dữ liệu cho bảng `phongban`
 --
 
 INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
@@ -333,7 +333,7 @@ INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tttv`
+-- Cấu trúc bảng cho bảng `tttv`
 --
 
 CREATE TABLE `tttv` (
@@ -351,7 +351,7 @@ CREATE TABLE `tttv` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vipham`
+-- Cấu trúc bảng cho bảng `vipham`
 --
 
 CREATE TABLE `vipham` (
@@ -362,42 +362,42 @@ CREATE TABLE `vipham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `cktk`
+-- Chỉ mục cho bảng `cktk`
 --
 ALTER TABLE `cktk`
   ADD PRIMARY KEY (`id`),
   ADD KEY `socmnd` (`socmnd`);
 
 --
--- Indexes for table `diadiem`
+-- Chỉ mục cho bảng `diadiem`
 --
 ALTER TABLE `diadiem`
   ADD PRIMARY KEY (`madd`);
 
 --
--- Indexes for table `hokhau`
+-- Chỉ mục cho bảng `hokhau`
 --
 ALTER TABLE `hokhau`
   ADD PRIMARY KEY (`mahk`);
 
 --
--- Indexes for table `log_hokhau`
+-- Chỉ mục cho bảng `log_hokhau`
 --
 ALTER TABLE `log_hokhau`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `log_nhankhau`
+-- Chỉ mục cho bảng `log_nhankhau`
 --
 ALTER TABLE `log_nhankhau`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `nhankhau`
+-- Chỉ mục cho bảng `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD PRIMARY KEY (`socmnd`),
@@ -405,96 +405,96 @@ ALTER TABLE `nhankhau`
   ADD KEY `mavp` (`mavp`);
 
 --
--- Indexes for table `nhanvien`
+-- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`manv`,`email`),
   ADD KEY `mapb` (`mapb`);
 
 --
--- Indexes for table `phongban`
+-- Chỉ mục cho bảng `phongban`
 --
 ALTER TABLE `phongban`
   ADD PRIMARY KEY (`mapb`);
 
 --
--- Indexes for table `tttv`
+-- Chỉ mục cho bảng `tttv`
 --
 ALTER TABLE `tttv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `socmnd` (`socmnd`);
 
 --
--- Indexes for table `vipham`
+-- Chỉ mục cho bảng `vipham`
 --
 ALTER TABLE `vipham`
   ADD PRIMARY KEY (`mavp`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `cktk`
+-- AUTO_INCREMENT cho bảng `cktk`
 --
 ALTER TABLE `cktk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `log_hokhau`
+-- AUTO_INCREMENT cho bảng `log_hokhau`
 --
 ALTER TABLE `log_hokhau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `log_nhankhau`
+-- AUTO_INCREMENT cho bảng `log_nhankhau`
 --
 ALTER TABLE `log_nhankhau`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `phongban`
+-- AUTO_INCREMENT cho bảng `phongban`
 --
 ALTER TABLE `phongban`
   MODIFY `mapb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tttv`
+-- AUTO_INCREMENT cho bảng `tttv`
 --
 ALTER TABLE `tttv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `vipham`
+-- AUTO_INCREMENT cho bảng `vipham`
 --
 ALTER TABLE `vipham`
   MODIFY `mavp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cktk`
+-- Các ràng buộc cho bảng `cktk`
 --
 ALTER TABLE `cktk`
   ADD CONSTRAINT `cktk_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);
 
 --
--- Constraints for table `nhankhau`
+-- Các ràng buộc cho bảng `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD CONSTRAINT `nhankhau_ibfk_1` FOREIGN KEY (`mahk`) REFERENCES `hokhau` (`mahk`),
   ADD CONSTRAINT `nhankhau_ibfk_2` FOREIGN KEY (`mavp`) REFERENCES `vipham` (`mavp`);
 
 --
--- Constraints for table `nhanvien`
+-- Các ràng buộc cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
   ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`mapb`) REFERENCES `phongban` (`mapb`);
 
 --
--- Constraints for table `tttv`
+-- Các ràng buộc cho bảng `tttv`
 --
 ALTER TABLE `tttv`
   ADD CONSTRAINT `tttv_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);

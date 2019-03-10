@@ -63,7 +63,24 @@
                             <li><a href="<?php echo base_url('admin/nhatkytachkhau'); ?>">Nhật ký tách khẩu</a></li>
                         </ul>
                     </li>
-                    <li><a href="quanlynhanvien"><i class="ti-user"></i> <span>Quản lý nhân viên</span></a></li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-bookmark-alt"></i><span>Quản lý vi phạm</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/vipham'); ?>">Danh sách vi phạm</a></li>
+                            <li><a href="<?php echo base_url('admin/themvipham'); ?>">Thêm vi phạm mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-zip"></i><span>Quản lý xin trích lục</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/trichluc'); ?>">Danh sách xin trích lục</a></li>
+                            <li><a href="<?php echo base_url('admin/themtrichluc'); ?>">Xin trích lục mới</a></li>
+                            <li><a href="<?php echo base_url('admin/thongketrichluc'); ?>">Thống kê xin trích lục</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo base_url('admin/qldd'); ?>"><i class="ti-location-pin"></i> <span>Quản lý địa điểm</span></a></li>
+                    <li><a href="nhanvien"><i class="ti-user"></i> <span>Quản lý nhân viên</span></a></li>
+                    <li><a href="phongban"><i class="ti-layout"></i> <span>Quản lý phòng ban</span></a></li>
                     <li><a href="thongtincanhan"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
                     <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
                 </ul>

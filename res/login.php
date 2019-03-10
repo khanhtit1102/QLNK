@@ -30,8 +30,8 @@
 							</div>
 							<form action="" method="post">
 								<div class="input-field">
-									<input id="email" type="email" name="email" class="validate" autocomplete="off" value="khanhnongvan0@gmail.com">
-									<label for="email" class="">Username</label>
+									<input id="email" type="text" name="email" class="validate" autocomplete="off" value="khanhnongvan0@gmail.com">
+									<label for="email" class="">Email</label>
 								</div>
 								<div class="input-field">
 									<input id="password" type="password" name="password" class="validate" autocomplete="off" value="123456">
@@ -51,14 +51,14 @@
 										<h4>Reset Your Password</h4>
 										<form action="forgot_password" method="POST" role="form">
 											<div class="input-field">
-												<input id="email_forgot" type="email" name="email_forgot" class="validate">
+												<input id="email_forgot" type="email" name="email_forgot" class="validate" required="">
 												<label for="email" class="">Your Email</label>
 											</div>
 											<button type="submit" name="forgot" value="submit" class="waves-effect waves-light btn">Lấy lại mật khẩu</button>
 										</form>
 									</div>
 									<div class="modal-footer">
-										<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+										<a href="#!" class="modal-close waves-effect waves-green btn-flat">Đóng</a>
 									</div>
 								</div>
 							</div>

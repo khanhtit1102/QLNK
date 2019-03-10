@@ -269,4 +269,41 @@ class M_Admin extends CI_Model
         $this->db->like("tendd", $keyword);
         return $this->db->get('diadiem')->result_array();
     }
+    public function diadiem()
+    {
+    	$query = $this->db->get('diadiem');
+        return $query->result_array();
+    }
+    public function importData($fetchData)
+    {
+    	 $this->db->insert_batch('diadiem', $fetchData);
+    }
+    public function xoadiadiem()
+    {
+    	$this->db->delete('diadiem');
+    }
+    public function vipham()
+    {
+    	$query = $this->db->get('vipham');
+        return $query->result_array();
+    }
+    public function xoavipham($id)
+    {
+    	$this->db->where('mavp', $id)->delete('vipham');
+    }
+    public function show_vipham($id)
+    {
+		$this->db->where('mavp', $id);
+		$query = $this->db->get('vipham');
+        return $query->result_array();
+    }
+    public function update_vipham($update_data)
+    {
+		$this->db->where('mavp', $update_data['mavp']);
+		$this->db->update('vipham');
+    }
+    public function themvipham($add_data)
+    {
+		$this->db->insert('vipham', $add_data);
+    }
 }

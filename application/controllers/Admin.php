@@ -284,30 +284,30 @@ class Admin extends CI_Controller {
 		$model = new M_Admin();
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
-			$add_data['socmnd'] = $this->input->post('socmnd');
+			$socmnd = $this->input->post('socmnd');
+			$count = count($socmnd);
 			$add_data['thoihan'] = $this->input->post('thoihan');
-			if ($this->input->post('khaumoi') != NULL) {
-				$add_data['khaumoi'] = $this->input->post('khaumoi');
-			}
 			$add_data['ngaybd'] = $this->input->post('ngaybd');
 			$add_data['ngaykt'] = $this->input->post('ngaykt');
 			$add_data['lydo'] = $this->input->post('lydo');
 			$add_data['loai'] = 'Tạm trú';
-			if ($add_data['socmnd'] == NULL || $add_data['thoihan'] == NULL || $add_data['ngaybd'] == NULL || $add_data['ngaykt'] == NULL || $add_data['lydo'] == NULL) {
+			if ($socmnd == NULL || $add_data['thoihan'] == NULL || $add_data['ngaybd'] == NULL || $add_data['ngaykt'] == NULL || $add_data['lydo'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
-				$khaucu = $model->mot_nhankhau($add_data['socmnd']);
-				foreach ($khaucu as $key => $value){
-					$add_data['khaucu'] = $value['mahk'];
-				}
-				if ($add_data['khaucu'] == $add_data['khaumoi']) {
-					$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
-				}
-				else{
-					$model->themtamtru($add_data);
-					$this->session->set_flashdata('error', '- Thêm thông tin tạm trú thành công!');
-					redirect(base_url('admin/tamtru'));
+				for ($i=0; $i < $count; $i++) {
+					$add_data['socmnd'] = $socmnd[$i];
+					$khaucu = $model->mot_nhankhau($add_data['socmnd']);
+					foreach ($khaucu as $key => $value){
+						$add_data['khaucu'] = $value['mahk'];
+					}
+					if ($add_data['khaucu'] == $add_data['khaumoi']) {
+						$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
+					}
+					else{
+						$model->themtamtru($add_data);
+						$this->session->set_flashdata('error', '- Thêm thông tin tạm trú thành công!');
+					}
 				}
 			}
 		}
@@ -358,23 +358,26 @@ class Admin extends CI_Controller {
 		$model = new M_Admin();
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
-			$add_data['socmnd'] = $this->input->post('socmnd');
+			$socmnd = $this->input->post('socmnd');
+			$count = count($socmnd);
 			$add_data['thoihan'] = $this->input->post('thoihan');
 			$add_data['ngaybd'] = $this->input->post('ngaybd');
 			$add_data['ngaykt'] = $this->input->post('ngaykt');
 			$add_data['lydo'] = $this->input->post('lydo');
 			$add_data['loai'] = 'Tạm vắng';
-			if ($add_data['socmnd'] == NULL || $add_data['thoihan'] == NULL || $add_data['ngaybd'] == NULL || $add_data['ngaykt'] == NULL || $add_data['lydo'] == NULL) {
+			if ($socmnd == NULL || $add_data['thoihan'] == NULL || $add_data['ngaybd'] == NULL || $add_data['ngaykt'] == NULL || $add_data['lydo'] == NULL) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
-				$khaucu = $model->mot_nhankhau($add_data['socmnd']);
-				foreach ($khaucu as $key => $value){
-					$add_data['khaucu'] = $value['mahk'];
+				for ($i=0; $i < $count; $i++) { 
+					$add_data['socmnd'] = $socmnd[$i];
+					$khaucu = $model->mot_nhankhau($add_data['socmnd']);
+					foreach ($khaucu as $key => $value){
+						$add_data['khaucu'] = $value['mahk'];
+					}
+					$model->themtamvang($add_data);
+					$this->session->set_flashdata('error', '- Thêm thông tin tạm vắng thành công!');
 				}
-				$model->themtamvang($add_data);
-				$this->session->set_flashdata('error', '- Thêm thông tin tạm vắng thành công!');
-				redirect(base_url('admin/tamvang'));
 			}
 		}
 		$nhankhau = $model->nhankhau();
@@ -488,35 +491,39 @@ class Admin extends CI_Controller {
 		$model = new M_Admin();
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
-			$add_data['socmnd'] = $this->input->post('socmnd');
+			$socmnd = $this->input->post('socmnd');
+			$count = count($socmnd);
 			$dc = $this->input->post('dc');
 			$add_data['khaumoi'] = $this->input->post('khaumoi');
 			$add_data['lydo'] = $this->input->post('lydo');
 			$add_data['loai'] = 'Tách khẩu';
 			$add_data['ngayth'] = date("Y-m-d");
-			if ($add_data['socmnd'] == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL || $dc == NULL ) {
+			if ($socmnd == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL || $dc == NULL ) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
-				$khaucu = $model->mot_nhankhau($add_data['socmnd']);
-				foreach ($khaucu as $key => $value){
-					$tench = $value['hvt'];
-					$add_data['khaucu'] = $value['mahk'];
-				}
-				if ($add_data['khaucu'] == $add_data['khaumoi']) {
-					$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
-				}
-				else{
-					$check_mahk = $model->check_mahk($add_data['khaumoi']);
-					if ($check_mahk == 1) {
-						$this->session->set_flashdata('error', '- Mã hộ khẩu đã tồn tại!');
+				for ($i=0; $i < $count; $i++) {
+					$add_data['socmnd'] = $socmnd[$i];
+					$khaucu = $model->mot_nhankhau($add_data['socmnd']);
+					foreach ($khaucu as $key => $value){
+						$tench = $value['hvt'];
+						$add_data['khaucu'] = $value['mahk'];
+					}
+					if ($add_data['khaucu'] == $add_data['khaumoi']) {
+						$this->session->set_flashdata('error', '- Giá trị khẩu cũ và khẩu mới trùng nhau!');
 					}
 					else{
-						$model->them_ho_khau($add_data['khaumoi'], $add_data['socmnd'], $tench, $dc);
-						$model->themtachkhau($add_data);
-						$model->update_nhankhau_tachkhau($add_data['socmnd'], $add_data['khaumoi'], $add_data['khaucu']);
-						$this->session->set_flashdata('error', '- Thêm thông tin tách khẩu thành công!');
-						redirect(base_url('admin/chuyenkhau'));
+						$check_mahk = $model->check_mahk($add_data['khaumoi']);
+						if ($check_mahk == 1) {
+							$this->session->set_flashdata('error', '- Mã hộ khẩu đã tồn tại!');
+						}
+						else{
+							$model->them_ho_khau($add_data['khaumoi'], $add_data['socmnd'], $tench, $dc);
+							$model->themtachkhau($add_data);
+							$model->update_nhankhau_tachkhau($add_data['socmnd'], $add_data['khaumoi'], $add_data['khaucu']);
+							$this->session->set_flashdata('error', '- Thêm thông tin tách khẩu thành công!');
+						// redirect(base_url('admin/chuyenkhau'));
+						}
 					}
 				}
 			}
@@ -524,6 +531,142 @@ class Admin extends CI_Controller {
 		$nhankhau = $model->nhankhau();
 		$view->themtachkhau($nhankhau);
 	}
+	public function qldd()
+	{
+		$this->load->library('excel');
+		$model = new M_Admin();
+		$view = new V_Admin();
+
+		if ($this->input->post('importfile')) {
+			$path = '././res/uploads/';
+
+			$config['upload_path'] = $path;
+			$config['allowed_types'] = 'xlsx|xls';
+			$config['remove_spaces'] = TRUE;
+			// $this->upload->initialize($config);
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('userfile')) {
+				$error = array('error' => $this->upload->display_errors());
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+			}
+
+			if (!empty($data['upload_data']['file_name'])) {
+				$import_xls_file = $data['upload_data']['file_name'];
+			} else {
+				$import_xls_file = 0;
+			}
+			$inputFileName = $path . $import_xls_file;
+			try {
+				$inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+				$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+				$objPHPExcel = $objReader->load($inputFileName);
+			} catch (Exception $e) {
+				die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
+					. '": ' . $e->getMessage());
+			}
+			$allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+
+			$arrayCount = count($allDataInSheet);
+			$flag = 0;
+			$createArray = array('Ma_DD', 'Ten_DD');
+            $makeArray = array('Ma_DD' => 'Ma_DD', 'Ten_DD' => 'Ten_DD');
+			$SheetDataKey = array();
+			foreach ($allDataInSheet as $dataInSheet) {
+				foreach ($dataInSheet as $key => $value) {
+					if (in_array(trim($value), $createArray)) {
+						$value = preg_replace('/\s+/', '', $value);
+						$SheetDataKey[trim($value)] = $key;
+					} else {
+
+					}
+				}
+			}
+			$data = array_diff_key($makeArray, $SheetDataKey);
+
+			if (empty($data)) {
+				$flag = 1;
+			}
+			if ($flag == 1) {
+				for ($i = 2; $i <= $arrayCount; $i++) {
+					$addresses = array();
+					$Ma_DD = $SheetDataKey['Ma_DD'];
+					$Ten_DD = $SheetDataKey['Ten_DD'];
+					$Ma_DD = filter_var(trim($allDataInSheet[$i][$Ma_DD]), FILTER_SANITIZE_STRING);
+					$Ten_DD = filter_var(trim($allDataInSheet[$i][$Ten_DD]), FILTER_SANITIZE_STRING);
+					$fetchData[] = array('madd' => $Ma_DD, 'tendd' => $Ten_DD);
+				}              
+				// $data['employeeInfo'] = $fetchData;
+				$model->importData($fetchData);
+				$this->session->set_flashdata('error', '- Nhập dữ liệu thành công!');
+			} else {
+				$this->session->set_flashdata('error', '- Lỗi sai file nhập vào!');
+			}
+		}
+
+		$data_table = $model->diadiem();
+		$view->qldd($data_table);
+	}
+	public function xoadiadiem()
+	{
+		$model = new M_Admin();
+		$model->xoadiadiem();
+	}
+	public function vipham()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->vipham();
+		$view->vipham($data_table);
+	}
+	public function xoavipham($id)
+	{
+		$model = new M_Admin();
+		$model->xoavipham($id);
+		$this->session->set_flashdata('error', '- Xóa thông tin tội danh thành công!');
+		redirect(base_url('admin/vipham'));
+	}
+	public function suavipham($id)
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		if ($this->input->post('edit') == 'submit') {
+			$update_data['mavp'] = $this->input->post('mavp');
+			$update_data['toidanh'] = $this->input->post('toidanh');
+			$update_data['hinhphat'] = $this->input->post('hinhphat');
+			$update_data['ngay'] = $this->input->post('ngay');
+			if ($update_data['mavp'] == NULL || $update_data['toidanh'] == NULL || $update_data['hinhphat'] == NULL || $update_data['ngay'] == NULL) {
+				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+			}
+			else{
+				$model->update_vipham($update_data);
+				$this->session->set_flashdata('error', '- Sửa thông tin tội danh thành công!');
+				redirect(base_url('admin/vipham'));
+			}
+		}
+		$data = $model->show_vipham($id);
+		$view->suavipham($data);
+	}
+	public function themvipham()
+    {
+		$model = new M_Admin();
+		$view = new V_Admin();
+		if ($this->input->post('add') == 'submit') {
+			$add_data['mavp'] = $this->input->post('mavp');
+			$add_data['toidanh'] = $this->input->post('toidanh');
+			$add_data['hinhphat'] = $this->input->post('hinhphat');
+			$add_data['ngay'] = $this->input->post('ngay');
+			if ($add_data['mavp'] == NULL || $add_data['toidanh'] == NULL || $add_data['hinhphat'] == NULL || $add_data['ngay'] == NULL) {
+				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+			}
+			else{
+				$result = $model->themvipham($add_data);
+				$this->session->set_flashdata('error', '- Thêm thông tin tội danh thành công!');
+				redirect(base_url('admin/vipham'));
+			}
+		}
+		$view->themvipham();
+    }
 	public function GetCountryName(){
 		$model = new M_Admin();
         $keyword=$this->input->post('keyword');

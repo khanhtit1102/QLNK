@@ -133,7 +133,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="quequan" class="col-form-label">Quê quán</label>
-                                            <input class="form-control" type="text" name="quequan" value="<?php echo $value['quequan']; ?>" id="quequan">
+                                            <input class="form-control" type="text" name="quequan" value="<?php echo $value['quequan']; ?>" id="quequan" autocomplete="off" >
+                                            <ul class="dropdown-menu txtQuequan" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownQuequan"></ul>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

@@ -84,4 +84,20 @@ class V_Admin
 	{
 		include "res/themtachkhau.php";
 	}
+	public function qldd($data_table)
+	{
+		include "res/diadiem.php";
+	}
+	public function vipham($data_table)
+	{
+		include "res/vipham.php";
+	}
+	public function suavipham($data)
+	{
+		include "res/suavipham.php";
+	}
+	public function themvipham()
+	{
+		include "res/themvipham.php";
+	}
 }
