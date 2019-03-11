@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 07, 2019 lúc 07:39 AM
+-- Thời gian đã tạo: Th3 11, 2019 lúc 07:55 PM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -268,7 +268,7 @@ CREATE TABLE `nhankhau` (
   `quequan` varchar(255) NOT NULL,
   `tdhocvan` varchar(255) NOT NULL,
   `nghenghiep` varchar(255) NOT NULL,
-  `mavp` int(11) DEFAULT NULL,
+  `mavp` varchar(255) DEFAULT NULL,
   `mahk` varchar(255) NOT NULL,
   `qhvchuho` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -295,7 +295,7 @@ CREATE TABLE `nhanvien` (
   `hvt` varchar(255) NOT NULL,
   `gt` tinyint(4) NOT NULL COMMENT '0 là nữ, 1 là nam, 2 là k xác định',
   `ns` date NOT NULL,
-  `sdt` varchar(10) NOT NULL,
+  `sdt` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
@@ -308,7 +308,9 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`) VALUES
-('nv001', 'Hoàng Văn Long', 1, '1997-01-27', '0353270197', 'khanhnongvan0@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1);
+('nv001', 'Hoàng Văn Long', 1, '1997-01-01', '0333444555', 'khanhnongvan0@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1),
+('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 1),
+('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 1);
 
 -- --------------------------------------------------------
 
@@ -355,11 +357,18 @@ CREATE TABLE `tttv` (
 --
 
 CREATE TABLE `vipham` (
-  `mavp` int(11) NOT NULL,
+  `mavp` varchar(255) NOT NULL,
   `toidanh` varchar(255) NOT NULL,
   `hinhphat` varchar(255) NOT NULL,
   `ngay` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `vipham`
+--
+
+INSERT INTO `vipham` (`mavp`, `toidanh`, `hinhphat`, `ngay`) VALUES
+('viphamnd12-hc-2015', 'Buôn bán hàng cấm', 'Phạt tiền 5 triệu đồng và đi tu 2 năm', '2015-03-01');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -463,12 +472,6 @@ ALTER TABLE `phongban`
 --
 ALTER TABLE `tttv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vipham`
---
-ALTER TABLE `vipham`
-  MODIFY `mavp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

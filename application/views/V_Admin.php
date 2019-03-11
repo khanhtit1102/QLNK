@@ -100,4 +100,16 @@ class V_Admin
 	{
 		include "res/themvipham.php";
 	}
+	public function nhanvien($data_table)
+	{
+		include "res/nhanvien.php";
+	}
+	public function suanhanvien($data, $phongban)
+	{
+		include "res/suanhanvien.php";
+	}
+	public function themnhanvien($phongban)
+	{
+		include "res/themnhanvien.php";
+	}
 }

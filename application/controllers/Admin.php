@@ -660,12 +660,76 @@ class Admin extends CI_Controller {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
-				$result = $model->themvipham($add_data);
+				$model->themvipham($add_data);
 				$this->session->set_flashdata('error', '- Thêm thông tin tội danh thành công!');
 				redirect(base_url('admin/vipham'));
 			}
 		}
 		$view->themvipham();
+    }
+    public function nhanvien()
+    {
+    	$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhanvien();
+		$view->nhanvien($data_table);
+    }
+    public function xoanhanvien($manv)
+    {
+    	$model = new M_Admin();
+		$model->xoanhanvien($manv);
+		$this->session->set_flashdata('error', '- Xóa thông tin nhân viên thành công!');
+		redirect(base_url('admin/nhanvien'));
+    }
+    public function suanhanvien($manv)
+    {
+    	$model = new M_Admin();
+		$view = new V_Admin();
+		if ($this->input->post('edit') == 'submit') {
+			$update_data['hvt'] = $this->input->post('hvt');
+			$update_data['gt'] = $this->input->post('gt');
+			$update_data['ns'] = $this->input->post('ns');
+			$update_data['sdt'] = $this->input->post('sdt');
+			$update_data['email'] = $this->input->post('email');
+			$update_data['capbac'] = $this->input->post('capbac');
+			$update_data['mapb'] = $this->input->post('mapb');
+			if ($update_data['hvt'] == NULL || $update_data['gt'] == NULL || $update_data['ns'] == NULL || $update_data['sdt'] == NULL || $update_data['email'] == NULL || $update_data['capbac'] == NULL || $update_data['mapb'] == NULL) {
+				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+			}
+			else{
+				$model->update_nhanvien($update_data, $manv);
+				$this->session->set_flashdata('error', '- Sửa thông tin nhân viên thành công!');
+				redirect(base_url('admin/nhanvien'));
+			}
+		}
+		$data = $model->mot_nhanvien($manv);
+		$phongban = $model->phongban();
+		$view->suanhanvien($data, $phongban);
+    }
+    public function themnhanvien()
+    {
+    	$model = new M_Admin();
+		$view = new V_Admin();
+		if ($this->input->post('add') == 'submit') {
+			$add_data['manv'] = $this->input->post('manv');
+			$add_data['hvt'] = $this->input->post('hvt');
+			$add_data['gt'] = $this->input->post('gt');
+			$add_data['ns'] = $this->input->post('ns');
+			$add_data['sdt'] = $this->input->post('sdt');
+			$add_data['email'] = $this->input->post('email');
+			$add_data['capbac'] = $this->input->post('capbac');
+			$add_data['mapb'] = $this->input->post('mapb');
+			if ($add_data['manv'] == NULL || $add_data['hvt'] == NULL || $add_data['gt'] == NULL || $add_data['ns'] == NULL || $add_data['sdt'] == NULL || $add_data['email'] == NULL || $add_data['capbac'] == NULL || $add_data['mapb'] == NULL) {
+				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+			}
+			else{
+				$model->themnhanvien($add_data);
+				$this->session->set_flashdata('error', '- Thêm thông tin nhân viên thành công!');
+				redirect(base_url('admin/nhanvien'));
+			}
+		}
+		$phongban = $model->phongban();
+		$view->themnhanvien($phongban);
     }
 	public function GetCountryName(){
 		$model = new M_Admin();

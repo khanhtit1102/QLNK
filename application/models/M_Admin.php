@@ -300,10 +300,41 @@ class M_Admin extends CI_Model
     public function update_vipham($update_data)
     {
 		$this->db->where('mavp', $update_data['mavp']);
-		$this->db->update('vipham');
+		$this->db->update('vipham', $update_data);
     }
     public function themvipham($add_data)
     {
 		$this->db->insert('vipham', $add_data);
     }
+    public function nhanvien()
+    {
+		$this->db->select('nhanvien.*, phongban.tenpb')->where('nhanvien.mapb = phongban.mapb');
+    	$query = $this->db->get('nhanvien, phongban');
+        return $query->result_array();
+    }
+    public function xoanhanvien($manv)
+    {
+    	$this->db->where('manv', $manv)->delete('nhanvien');
+    }
+    public function mot_nhanvien($manv)
+    {
+    	$this->db->where('manv', $manv);
+    	$query = $this->db->get('nhanvien');
+        return $query->result_array();
+    }
+    public function update_nhanvien($update_data, $manv)
+    {
+    	$this->db->where('manv', $manv);
+		$this->db->update('nhanvien', $update_data);
+    }
+    public function themnhanvien($add_data)
+    {
+		$this->db->insert('nhanvien', $add_data);
+    }
+
+   	public function phongban()
+   	{
+    	$query = $this->db->get('phongban');
+        return $query->result_array();
+   	}
 }
