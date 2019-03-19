@@ -54,6 +54,18 @@
 
 /*------------------------- 1. Core Css -------------------*/
 
+ul.dropdown-menu.show{
+    margin-left: 15px;
+    margin-right: 0px;
+    cursor: pointer;
+    position: absolute;
+    transform: translate3d(15px, -27px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+    max-height: 200px;
+    overflow-y: scroll;
+}
 .page-container {
     width: 100%;
     height: 100%;

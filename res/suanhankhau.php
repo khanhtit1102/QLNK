@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Sửa thông tin nhân khẩu: <br><b>Nông Văn Khánh</b></h4>
+                            <h4 class="page-title pull-left">Sửa thông tin nhân khẩu: <br><b><?php echo $socmnd; ?></b></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -75,22 +75,28 @@
                                 ?>
                                 <form action="" method="post">
                                     <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <label for="socmnd" class="col-form-label">Số CMND</label>
-                                            <input class="form-control" type="text" value="<?php echo $value['socmnd']; ?>" id="socmnd" readonly="">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="socmnd" class="col-form-label">Số CMND</label>
+                                                 <input class="form-control" required="" type="text" name="socmnd" value="<?php echo $value['socmnd']; ?>" id="socmnd" readonly="">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="hvt" class="col-form-label">Họ và tên</label>
-                                            <input class="form-control" type="text" name="hvt" value="<?php echo $value['hvt']; ?>" id="hvt">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="hvt" class="col-form-label">Họ và tên</label>
+                                                 <input class="form-control" required="" type="text" name="hvt" value="<?php echo $value['hvt']; ?>" id="hvt">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="tenkhac" class="col-form-label">Tên gọi khác (có thể trống)</label>
-                                            <input class="form-control" type="text" name="tenkhac" value="<?php echo $value['tenkhac']; ?>" id="tenkhac">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="tenkhac" class="col-form-label">Tên khác (Có thể trống)</label>
+                                                 <input class="form-control" type="text" name="tenkhac" value="<?php echo $value['tenkhac']; ?>" id="tenkhac">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="gt" class="col-form-label">Giới tính</label>
-                                            <?php 
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="gt" class="col-form-label">Giới tính</label>
+                                                <?php 
                                             if ($value['gt'] == 0) {
                                              echo '<div class="radio">
                                              <label>
@@ -120,60 +126,93 @@
                                             }
                                             
                                              ?>
-                                                                                        
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="ns" class="col-form-label">Ngày sinh</label>
-                                            <input class="form-control" type="date" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="ns" class="col-form-label">Ngày sinh</label>
+                                                 <input class="form-control" required="" type="text" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="quequan" class="col-form-label">Địa chỉ thường trú</label>
-                                            <input class="form-control" type="text" name="dc" value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off" >
-                                            <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="dt" class="col-form-label">Dân tộc</label>
+                                                 <input class="form-control" required="" type="text" name="dt" value="<?php echo $value['dt']; ?>" id="dt">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="quequan" class="col-form-label">Quê quán</label>
-                                            <input class="form-control" type="text" name="quequan" value="<?php echo $value['quequan']; ?>" id="quequan" autocomplete="off" >
-                                            <ul class="dropdown-menu txtQuequan" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownQuequan"></ul>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="tg" class="col-form-label">Tôn giáo</label>
+                                                 <input class="form-control" required="" type="text" name="tg" value="<?php echo $value['tg']; ?>" id="tg">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="dc" class="col-form-label">Địa chỉ thường trú</label>
+                                                 <input class="form-control" required="" type="text" name="dc" value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="trinhdonn" class="col-form-label">Trình độ ngoại ngữ</label>
+                                                 <input class="form-control" required="" type="text" name="trinhdonn" value="<?php echo $value['trinhdonn']; ?>" id="trinhdonn">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="noilamviec" class="col-form-label">Nơi làm việc</label>
+                                                 <input class="form-control" required="" type="text" name="noilamviec" value="<?php echo $value['noilamviec']; ?>" id="noilamviec" autocomplete="off">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="choohiennay" class="col-form-label">Chỗ ở hiện nay</label>
+                                                 <input class="form-control" required="" type="text" name="choohiennay" value="<?php echo $value['choohiennay']; ?>" id="choohiennay" autocomplete="off">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="quequan" class="col-form-label">Quê quán</label>
+                                                 <input class="form-control" required="" type="text" name="quequan" value="<?php echo $value['quequan']; ?>" id="quequan" autocomplete="off">
+                                                <ul class="dropdown-menu txtQuequan" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownQuequan"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="tdhocvan" class="col-form-label">Trình độ học vấn</label>
+                                                 <input class="form-control" required="" type="text" name="tdhocvan" value="<?php echo $value['tdhocvan']; ?>" id="tdhocvan">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="nghenghiep" class="col-form-label">Nghề nghiệp</label>
+                                                 <input class="form-control" required="" type="text" name="nghenghiep" value="<?php echo $value['nghenghiep']; ?>" id="nghenghiep">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="mahk" class="col-form-label">Trong hộ khẩu</label>
+                                                <p style="color: red;">(Thay đổi hộ khẩu vui lòng chọn <a href="<?php echo base_url('admin/tachkhau') ?>">tách khẩu</a>/<a href="<?php echo base_url('admin/chuyenkhau') ?>">chuyển khẩu</a>)</p>
+                                                 <input class="form-control" required="" type="text" name="mahk" value="<?php echo $value['mahk']; ?>" id="mahk" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="qhvchuho" class="col-form-label">Quan hệ với chủ hộ</label>
+                                                 <input class="form-control" required="" type="text" name="qhvchuho" value="<?php echo $value['qhvchuho']; ?>" id="qhvchuho">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="lydo" class="col-form-label">Lý do sửa</label>
+                                                 <input class="form-control" required="" type="text" name="lydo" id="lydo">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-group">
-                                            <label for="dt" class="col-form-label">Dân tộc</label>
-                                            <input class="form-control" type="text" name="dt" value="<?php echo $value['dt']; ?>" id="dt">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tg" class="col-form-label">Tôn giáo</label>
-                                            <input class="form-control" type="text" name="tg" value="<?php echo $value['tg']; ?>" id="tg">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nghenghiep" class="col-form-label">Nghề nghiệp</label>
-                                            <input class="form-control" type="text" name="nghenghiep" value="<?php echo $value['nghenghiep']; ?>" id="nghenghiep">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tdhocvan" class="col-form-label">Trình độ học vấn</label>
-                                            <input class="form-control" type="text" name="tdhocvan" value="<?php echo $value['tdhocvan']; ?>" id="tdhocvan">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="mavp" class="col-form-label">Vi phạm</label>
-                                            <select name="mavp" id="mavp" class="form-control">
-                                                <option value="">Cái này là k chọn</option>
-                                                <option value="1">Vi phạm hành chính</option>
-                                                <option value="13">Show từ trong csdl</option>
-                                                <option value="23">Từ bảng vi phạm</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="mahk" class="col-form-label">Trong hộ khẩu</label>
-                                            <p style="color: red;">(Thay đổi hộ khẩu vui lòng chọn <a href="<?php echo base_url('admin/tachkhau') ?>">tách khẩu</a>/<a href="<?php echo base_url('admin/chuyenkhau') ?>">chuyển khẩu</a>)</p>
-                                            <input class="form-control" type="text" name="mahk" value="<?php echo $value['mahk']; ?>" id="mahk" readonly="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="qhvchuho" class="col-form-label">Quan hệ với chủ hộ</label>
-                                            <input class="form-control" type="text" name="qhvchuho" value="<?php echo $value['qhvchuho']; ?>" id="qhvchuho">
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                     <button class="btn btn-rounded btn-info" name="update" value="submit" type="submit">Xác nhận sửa</button>
                                 </form>
                                 <?php }} else{ echo "Không tìm thấy dữ liệu!"; } ?>
@@ -186,9 +225,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>

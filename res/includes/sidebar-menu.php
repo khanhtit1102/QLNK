@@ -14,7 +14,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/hokhau'); ?>">Tất cả hộ khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/themhokhau'); ?>">Thêm hộ khẩu mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongkehokhau'); ?>">Thống kê hộ khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkyhokhau'); ?>">Nhật ký hộ khẩu</a></li>
                         </ul>
                     </li>
@@ -23,7 +22,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/nhankhau'); ?>">Tất cả nhân khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/themnhankhau'); ?>">Thêm nhân khẩu mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongkenhankhau'); ?>">Thống kê nhân khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkynhankhau'); ?>">Nhật ký nhân khẩu</a></li>
                         </ul>
                     </li>
@@ -32,7 +30,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/tamtru'); ?>">Danh sách tạm trú</a></li>
                             <li><a href="<?php echo base_url('admin/themtamtru'); ?>">Thêm tạm trú mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongketamtru'); ?>">Thống kê tạm trú</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkytamtru'); ?>">Nhật ký tạm trú</a></li>
                         </ul>
                     </li>
@@ -41,7 +38,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/tamvang'); ?>">Danh sách tạm vắng</a></li>
                             <li><a href="<?php echo base_url('admin/themtamvang'); ?>">Thêm tạm vắng mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongketamvang'); ?>">Thống kê tạm vắng</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkytamvang'); ?>">Nhật ký tạm vắng</a></li>
                         </ul>
                     </li>
@@ -50,7 +46,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/chuyenkhau'); ?>">Danh sách chuyển khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/themchuyenkhau'); ?>">Thêm chuyển khẩu mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongkechuyenkhau'); ?>">Thống kê chuyển khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkychuyenkhau'); ?>">Nhật ký chuyển khẩu</a></li>
                         </ul>
                     </li>
@@ -59,7 +54,6 @@
                         <ul class="collapse">
                             <li><a href="<?php echo base_url('admin/tachkhau'); ?>">Danh sách tách khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/themtachkhau'); ?>">Thêm tách khẩu mới</a></li>
-                            <li><a href="<?php echo base_url('admin/thongketachkhau'); ?>">Thống kê tách khẩu</a></li>
                             <li><a href="<?php echo base_url('admin/nhatkytachkhau'); ?>">Nhật ký tách khẩu</a></li>
                         </ul>
                     </li>
@@ -85,10 +79,23 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url('admin/qldd'); ?>"><i class="ti-location-pin"></i> <span>Quản lý địa điểm</span></a></li>
-                    <li><a href="thongtincanhan"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
+                    <li><a href="<?php echo base_url('admin/thongke'); ?>"><i class="ti-location-pin"></i> <span>Báo cáo thống kê</span></a></li>
+                    <li><a href="<?php echo base_url('admin/thongtincanhan'); ?>"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
                     <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
                 </ul>
             </nav>
         </div>
     </div>
+</div>
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    
+</div>
+<div class="col s1x`2 m6 l6">
+    
+</div>
+<div class="row">
+    <div class="col-md-6">
+        
+    </div>
+    <div class="col-md-6"></div>
 </div>

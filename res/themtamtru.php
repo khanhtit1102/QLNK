@@ -76,7 +76,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
-                                                <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
+                                                <select name="socmnd[]" id="socmnd" class="form-control" multiple="" required="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
                                                     <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk']; ?></option>
                                                     <?php } ?>
@@ -85,26 +85,27 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="thoihan" class="col-form-label">Thời hạn</label>
-                                                <input class="form-control" type="number" min="1" name="thoihan" id="thoihan">
+                                                <label for="dc" class="col-form-label">Tạm trú tại</label>
+                                                <input class="form-control" required="" type="text" name="dc" id="dc" autocomplete="off">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ngaybd" class="col-form-label">Ngày bắt đầu</label>
-                                                <input class="form-control" type="date" name="ngaybd" id="ngaybd">
+                                                <input class="form-control" type="date" name="ngaybd" id="ngaybd" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ngaykt" class="col-form-label">Ngày kết thúc</label>
-                                                <input class="form-control" type="date" name="ngaykt" id="ngaykt">
+                                                <input class="form-control" type="date" name="ngaykt" id="ngaykt" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="lydo" class="col-form-label">Lý do</label>
-                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"></textarea>
+                                                <textarea name="lydo" id="lydo" class="form-control" rows="3" required=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -119,9 +120,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>
@@ -138,6 +137,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

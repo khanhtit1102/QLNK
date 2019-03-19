@@ -19,6 +19,72 @@ class M_Admin extends CI_Model
 		$data['cktk'] = $this->db->count_all_results();
 		return $data;
 	}
+	public function dateNews()
+    {
+    	// SELECT ngay_tao_nk FROM nhankhau ORDER BY ngay_tao_nk DESC LIMIT 0,1
+    	$this->db->select('ngay_tao_nk')->from('nhankhau')->order_by('ngay_tao_nk', 'DESC')->limit(1);
+    	$nhankhau = $this->db->get();
+    	$i = 0;
+    	foreach ($nhankhau->result_array() as $row) {
+    		$date['ngay_tao_nk'] = $row['ngay_tao_nk'];
+    		$i++;
+    	}
+    	if ($i > 0) {
+    		$newTime['nhankhau'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngay_tao_nk'])) / (60*60*24));
+    	}
+    	else{
+    		$newTime['nhankhau'] = 'Chưa có dữ liệu';
+    	}
+
+    	$this->db->select('ngay_tao_hk')->from('hokhau')->order_by('ngay_tao_hk', 'DESC')->limit(1);
+    	$hokhau = $this->db->get();
+    	$i = 0;
+    	foreach ($hokhau->result_array() as $row) {
+    		$date['ngay_tao_hk'] = $row['ngay_tao_hk'];
+    		$i++;
+    	}
+    	if ($i > 0) {
+    		$newTime['hokhau'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngay_tao_hk'])) / (60*60*24));
+    	}
+    	else{
+    		$newTime['hokhau'] = 'Chưa có dữ liệu';
+    	}
+
+    	$this->db->select('ngayth')->from('cktk')->order_by('ngayth', 'DESC')->limit(1);
+    	$cktk = $this->db->get();
+    	$i = 0;
+    	foreach ($cktk->result_array() as $row) {
+    		$date['ngayth'] = $row['ngayth'];
+    		$i++;
+    	}
+    	if ($i > 0) {
+    		$newTime['cktk'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngayth'])) / (60*60*24));
+    	}
+    	else{
+    		$newTime['cktk'] = 'Chưa có dữ liệu';
+    	}
+
+    	$this->db->select('ngay_tao_tttv')->from('tttv')->order_by('ngay_tao_tttv', 'DESC')->limit(1);
+    	$tttv = $this->db->get();
+    	$i = 0;
+    	foreach ($tttv->result_array() as $row) {
+    		$date['ngay_tao_tttv'] = $row['ngay_tao_tttv'];
+    		$i++;
+    	}
+    	if ($i > 0) {
+    		$newTime['tttv'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngay_tao_tttv'])) / (60*60*24));
+    	}
+    	else{
+    		$newTime['tttv'] = 'Chưa có dữ liệu';
+    	}
+    	$this->db->select('ngay_tao_nv')->from('nhanvien')->order_by('ngay_tao_nv', 'DESC')->limit(1);
+    	$nhanvien = $this->db->get();
+    	foreach ($nhanvien->result_array() as $row) {
+    		$date['ngay_tao_nv'] = $row['ngay_tao_nv'];
+    	}
+    	$newTime['nhanvien'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngay_tao_nv'])) / (60*60*24));
+		return $newTime;
+    }
 	public function hokhau()
 	{
 		$query = $this->db->get('hokhau');
@@ -53,8 +119,8 @@ class M_Admin extends CI_Model
 	}
 	public function show_once_hk($mahk)
 	{
-		// SELECT * FROM nhankhau, hokhau WHERE hokhau.mahk = 'hk001' AND hokhau.mahk = nhankhau.mahk AND hokhau.tench = nhankhau.hvt AND nhankhau.qhvchuho = 'Chủ hộ'
-		$this->db->where('hokhau.mahk', $mahk)->where('hokhau.mahk = nhankhau.mahk')->where('hokhau.tench = nhankhau.hvt')->like('nhankhau.qhvchuho', 'Chủ hộ');
+		// SELECT * FROM nhankhau, hokhau WHERE hokhau.mahk = 'hk001' AND hokhau.mahk = nhankhau.mahk AND hokhau.tench = nhankhau.hvt
+		$this->db->where('hokhau.mahk', $mahk)->where('hokhau.mahk = nhankhau.mahk')->where('hokhau.tench = nhankhau.hvt');
 		$query = $this->db->get('nhankhau, hokhau');
         return $query->result_array();
 	}
@@ -63,22 +129,28 @@ class M_Admin extends CI_Model
 		$this->db->from('nhankhau')->where('socmnd', $socmnd)->where('hvt', $tench);
 		return $this->db->count_all_results();
 	}
-	public function update_chuhocu($mahk)
+	public function update_chuhocu($mahk, $qhcu)
 	{
 		// UPDATE nhankhau SET qhvchuho = 'Chủ hộ cũ' WHERE mahk = 'hk001' AND qhvchuho = 'Chủ hộ'
-		$this->db->set('qhvchuho', 'Chủ hộ cũ');
+		$this->db->set('qhvchuho', $qhcu);
 		$this->db->where('mahk', $mahk);
 		$this->db->where('qhvchuho', 'Chủ hộ');
 		$this->db->update('nhankhau');
 	}
-	public function update_chuhomoi($mahk, $socmnd, $tench, $dc)
+	public function update_chuhomoi($mahk, $tench, $dc)
 	{
 		$this->db->set('tench', $tench);
 		$this->db->set('dc', $dc);
 		$this->db->where('mahk', $mahk);
-		$this->db->update('hokhau')
-;	}
-	public function update_nhankhau($mahk, $socmnd, $tench, $dc)
+		$this->db->update('hokhau');
+	}
+	public function set_chu_ho($mahk, $tench)
+	{
+		$this->db->set('tench', $tench);
+		$this->db->where('mahk', $mahk);
+		$this->db->update('hokhau');
+	}
+	public function update_nhankhau($mahk, $socmnd, $tench)
 	{
 		$this->db->set('qhvchuho', 'Chủ hộ');
 		$this->db->where('mahk', $mahk);
@@ -91,19 +163,16 @@ class M_Admin extends CI_Model
 		$this->db->from('hokhau')->where('mahk', $mahk);
 		return $this->db->count_all_results();
 	}
-	public function them_ho_khau($mahk, $socmnd, $tench, $dc)
+	public function them_ho_khau($add_data)
 	{
-		$this->db->set('mahk', $mahk);
-		$this->db->set('tench', $tench);
-		$this->db->set('dc', $dc);
-		$this->db->insert('hokhau');
+		$this->db->insert('hokhau', $add_data);
 	}
-	public function thay_chu_ho($mahk, $socmnd, $tench)
+	public function thay_chu_ho($add_data)
 	{
 		$this->db->set('qhvchuho', 'Chủ hộ');
-		$this->db->set('mahk', $mahk);
-		$this->db->where('socmnd', $socmnd);
-		$this->db->where('hvt', $tench);
+		$this->db->set('mahk', $add_data['mahk']);
+		$this->db->where('socmnd', $add_data['socmnd']);
+		$this->db->where('hvt', $add_data['hvt']);
 		$this->db->update('nhankhau');
 	}
 	public function xemhokhau($mahk)
@@ -146,6 +215,10 @@ class M_Admin extends CI_Model
 		$this->db->where('loai', 'Tạm trú');
 		$query = $this->db->get('tttv');
         return $query->result_array();
+	}
+	public function insert_log_tttv($data)
+	{
+		$this->db->insert('log_tttv', $data);
 	}
 	public function show_tamtru($id)
 	{
@@ -331,10 +404,28 @@ class M_Admin extends CI_Model
     {
 		$this->db->insert('nhanvien', $add_data);
     }
-
    	public function phongban()
    	{
     	$query = $this->db->get('phongban');
         return $query->result_array();
+   	}
+   	public function mot_phongban($mapb)
+   	{
+   		$this->db->where('mapb', $mapb);
+    	$query = $this->db->get('phongban');
+        return $query->result_array();
+   	}
+   	public function themphongban($add_data)
+   	{
+		$this->db->insert('phongban', $add_data);
+   	}
+   	public function suaphongban($update_data, $mapb)
+   	{
+   		$this->db->where('mapb', $mapb);
+		$this->db->update('phongban', $update_data);
+   	}
+   	public function xoaphongban($mapb)
+   	{
+    	$this->db->where('mapb', $mapb)->delete('phongban');
    	}
 }

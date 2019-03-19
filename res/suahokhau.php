@@ -79,28 +79,38 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="mahk" class="col-form-label">Mã hộ khẩu (Không được sửa)</label>
-                                                <input class="form-control" type="text" name="mahk" value="<?php echo $value['mahk']; ?>" id="mahk" readonly="">
+                                                <input class="form-control" type="text" name="mahk" value="<?php echo $value['mahk']; ?>" id="mahk" readonly="" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="dc" class="col-form-label">Thường trú</label>
-                                                <input class="form-control" type="text" name="dc"  value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off" >
+                                                <input class="form-control" type="text" name="dc"  value="<?php echo $value['dc']; ?>" id="dc" autocomplete="off" required="">
                                                 <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="tench" class="col-form-label">Tên chủ hộ</label>
-                                                <input class="form-control" type="text" name="tench" value="<?php echo $value['tench']; ?>" id="tench">
+                                                <input class="form-control" type="text" name="tench" value="<?php echo $value['tench']; ?>" id="tench" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Số CMND chủ hộ</label>
-                                                <input class="form-control" type="text" name="socmnd" value="<?php echo $value['socmnd']; ?>" id="socmnd">
+                                                <input class="form-control" type="text" name="socmnd" value="<?php echo $value['socmnd']; ?>" id="socmnd" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="qhcu" class="col-form-label">Quan hệ chủ hộ cũ (nếu thay đổi chủ hộ)</label>
+                                                <input class="form-control" type="text" name="qhcu" id="qhcu" value="Chủ hộ">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="lydo" class="col-form-label">Lý do sửa</label>
+                                                <input class="form-control" type="text" name="lydo" id="lydo" required="">
                                             </div>
                                         </div>
                                     </div>
@@ -116,9 +126,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>

@@ -51,7 +51,7 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="<?php echo base_url('res/') ?>assets/images/author/avatar.png" alt="avatar">
-                            <a href="logout"><h4 class="user-name">Nông Văn Khánh <i class="fa fa-sign-out"></i></h4></a>
+                            <a href="<?php echo base_url('auth/logout') ?>"><h4 class="user-name"><?php echo $_SESSION['hvt']; ?> <i class="fa fa-sign-out"></i></h4></a>
                         </div>
                     </div>
                 </div>
@@ -76,32 +76,40 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="mahk" class="col-form-label">Mã hộ khẩu</label>
-                                                <input class="form-control" type="text" name="mahk" placeholder="VD: hk001" id="mahk">
+                                                <input class="form-control" type="text" name="mahk" placeholder="VD: hk001" id="mahk" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="dc" class="col-form-label">Thường trú</label>
-                                                <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" >
+                                                <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" required="">
                                                 <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Số CMND chủ hộ</label>
-                                                <input class="form-control" type="text" name="socmnd" placeholder="VD: 012345678" id="socmnd">
+                                                <input class="form-control" type="text" name="socmnd" placeholder="VD: 012345678" id="socmnd" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="tench" class="col-form-label">Tên chủ hộ</label>
-                                                <input class="form-control" type="text" name="tench" placeholder="VD: Nguyễn Văn A" id="tench">
+                                                <input class="form-control" type="text" name="tench" placeholder="VD: Nguyễn Văn A" id="tench" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="input-group mb-3">
+                                              <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                  <input type="checkbox" name="detrong" value="true" id="ckb_trong">
+                                                </div>
+                                              </div>
+                                            <input type="text" class="form-control" disabled="" value="Click vào ô bên cạnh nếu để trống chủ hộ">
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-rounded btn-info" name="add" value="submit" type="submit">Submit</button>
+                                    <button class="btn btn-rounded btn-info" name="add" value="submit" type="submit">Thêm</button>
                                 </form>
                 			</div>
                 		</div>
@@ -112,9 +120,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>
@@ -132,6 +138,21 @@
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
     <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ckb_trong').on('click', function () {
+                var isCheck = $('#ckb_trong').prop('checked');
+                if (isCheck == true) {
+                    $('#socmnd').prop('disabled', true);
+                    $('#tench').prop('disabled', true);
+                }
+                else{
+                    $('#socmnd').prop('disabled', false);
+                    $('#tench').prop('disabled', false);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

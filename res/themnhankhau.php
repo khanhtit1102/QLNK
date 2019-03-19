@@ -75,70 +75,106 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Số CMND</label>
-                                                <input class="form-control" type="text" name="socmnd" placeholder="VD: 082288666" id="socmnd">
+                                                 <input class="form-control" required="" type="text" name="socmnd" id="socmnd">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="hvt" class="col-form-label">Họ và tên</label>
-                                                <input class="form-control" type="text" name="hvt" placeholder="VD: Nguyễn Văn A" id="hvt">
+                                                 <input class="form-control" required="" type="text" name="hvt" id="hvt">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="tenkhac" class="col-form-label">Tên gọi khác (có thể trống)</label>
-                                                <input class="form-control" type="text" name="tenkhac" placeholder="VD: Nguyễn Văn A" id="tenkhac">
+                                                <label for="tenkhac" class="col-form-label">Tên khác (Có thể trống)</label>
+                                                 <input class="form-control" type="text" name="tenkhac" id="tenkhac">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="gt" class="col-form-label">Giới tính</label>
                                                 <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gt" id="gt" value="1" checked="checked">
-                                                        Nam
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gt" id="gt" value="0">
-                                                        Nữ
-                                                    </label>
-                                                </div>                                                
+                                                   <label>
+                                                       <input type="radio" name="gt" id="gt" value="1" checked="checked">
+                                                       Nam
+                                                   </label>
+                                               </div>
+                                               <div class="radio">
+                                                   <label>
+                                                       <input type="radio" name="gt" id="gt" value="0">
+                                                       Nữ
+                                                   </label>
+                                               </div>
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ns" class="col-form-label">Ngày sinh</label>
-                                                <input class="form-control" type="date" name="ns" placeholder="VD: 01/01/1988" id="ns">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="quequan" class="col-form-label">Địa chỉ thường trú</label>
-                                                <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" >
-                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="quequan" class="col-form-label">Quê quán</label>
-                                                <input class="form-control" type="text" name="quequan" placeholder="VD: Hà Nội" id="quequan" autocomplete="off">
-                                                <ul class="dropdown-menu txtQuequan" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownQuequan"></ul>
+                                                 <input class="form-control" required="" type="date" name="ns" id="ns">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="dt" class="col-form-label">Dân tộc</label>
-                                                <input class="form-control" type="text" name="dt" placeholder="VD: Kinh" id="dt">
+                                                 <input class="form-control" required="" type="text" name="dt" id="dt">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="tg" class="col-form-label">Tôn giáo (có thể trống)</label>
-                                                <input class="form-control" type="text" name="tg" placeholder="VD: Thiên chúa" id="tg">
+                                                <label for="tg" class="col-form-label">Tôn giáo</label>
+                                                 <input class="form-control" required="" type="text" name="tg" id="tg">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="nghenghiep" class="col-form-label">Nghề nghiệp</label>
-                                                <input class="form-control" type="text" name="nghenghiep" placeholder="VD: Cán bộ" id="nghenghiep">
+                                                <label for="dc" class="col-form-label">Địa chỉ thường trú</label>
+                                                 <input class="form-control" required="" type="text" name="dc" id="dc" autocomplete="off">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="trinhdonn" class="col-form-label">Trình độ ngoại ngữ</label>
+                                                 <input class="form-control" required="" type="text" name="trinhdonn" id="trinhdonn">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="noilamviec" class="col-form-label">Nơi làm việc</label>
+                                                 <input class="form-control" required="" type="text" name="noilamviec" id="noilamviec" autocomplete="off">
+                                                <ul class="dropdown-menu txtnoilv" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownNoilv"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="choohiennay" class="col-form-label">Chỗ ở hiện nay</label>
+                                                 <input class="form-control" required="" type="text" name="choohiennay" id="choohiennay" autocomplete="off">
+                                                <ul class="dropdown-menu txtchoo" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownChoo"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="quequan" class="col-form-label">Quê quán</label>
+                                                 <input class="form-control" required="" type="text" name="quequan" id="quequan" autocomplete="off">
+                                                <ul class="dropdown-menu txtQuequan" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownQuequan"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="tdhocvan" class="col-form-label">Trình độ học vấn</label>
-                                                <input class="form-control" type="text" name="tdhocvan" placeholder="VD: 12/12" id="tdhocvan">
+                                                 <input class="form-control" required="" type="text" name="tdhocvan" id="tdhocvan">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="mavp" class="col-form-label">Vi phạm</label>
-                                                <input class="form-control" type="text" name="mavp" placeholder="Bỏ trống nếu không vi phạm" id="mavp">
+                                                <label for="nghenghiep" class="col-form-label">Nghề nghiệp</label>
+                                                 <input class="form-control" required="" type="text" name="nghenghiep" id="nghenghiep">
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="mavp" class="col-form-label">Trong hộ khẩu</label>
-                                                <select name="mahk" id="mavp" class="form-control">
+                                                <label for="mahk" class="col-form-label">Trong hộ khẩu</label>
+                                                <select name="mahk" id="mavp" class="form-control" required="">
                                                     <?php 
                                                         foreach ($data_hokhau as $key => $value) {
                                                     ?>
@@ -146,13 +182,15 @@
                                                     <?php }?>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="qhvchuho" class="col-form-label">Quan hệ với chủ hộ</label>
-                                                <input class="form-control" type="text" name="qhvchuho" placeholder="Chồng/Vợ/Con/Cháu/..." id="qhvchuho">
+                                                 <input class="form-control" required="" type="text" name="qhvchuho" id="qhvchuho">
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-rounded btn-info" name="add" value="submit" type="submit">Submit</button>
+                                    <button class="btn btn-rounded btn-info" name="add" value="submit" type="submit">Thêm</button>
                                 </form>
                 			</div>
                 		</div>
@@ -163,9 +201,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>

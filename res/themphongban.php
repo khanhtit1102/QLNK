@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Danh sách tạm vắng</title>
+    <title>NHK Bắc Ninh - Sửa thông tin tạm vắng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -15,11 +15,6 @@
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
     <!-- others css -->
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/typography.css">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/default-css.css">
@@ -50,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Quản lý tạm vắng</h4>
+                            <h4 class="page-title pull-left">Sửa thông tin phòng ban</b></u></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -64,10 +59,10 @@
             <!-- page title area end -->
             <div class="main-content-inner">
                 <div class="row">
-                	<!-- data table start -->
-                	<div class="col-12 mt-5">
-                		<div class="card">
-                			<div class="card-body">
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Để thay đổi chủ hộ, vui lòng nhập đúng thông tin số CMND và tên chủ hộ.</div> -->
                                 <div class="noti">
                                     <p style="color: red;">
                                         <?php if (isset($_SESSION['error'])) {
@@ -76,44 +71,32 @@
                                         ?>
                                     </p>
                                 </div>
-                				<div class="data-tables">
-                					<table id="dataTable" class="text-center table-hover">
-                						<thead class="bg-light text-capitalize">
-                							<tr>
-                                                <th></th>
-                                                <th>Số CMND</th>
-                                                <th>Khẩu hiện tại</th>
-                                                <th>Lý do</th>
-                                                <th>Ngày BĐ</th>
-                                                <th>Ngày KT</th>
-                                                <th>Tạm vắng tại</th>
-                                                <th></th>
-                							</tr>
-                						</thead>
-                						<tbody>
-                                            <?php $i = 0; foreach ($data_table as $key => $value) { $i++; ?>
-                							<tr>
-                								<td><?php echo $i; ?></td>
-                								<td><a href="<?php echo base_url('admin/xemnhankhau/').$value['socmnd']; ?>" target="_blank"><?php echo $value['socmnd']; ?></a></td>
-                                                <td><a href="<?php echo base_url('admin/xemhokhau/').$value['khaucu']; ?>"><?php echo $value['khaucu']; ?></a></td>
-                                                <td><?php echo $value['lydo']; ?></td>
-                                                <td><?php echo $value['ngaybd']; ?></td>
-                                                <td><?php echo $value['ngaykt']; ?></td>
-                                                <td><?php echo $value['dc']; ?></td>
-                								<td>
-                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <a href="<?php echo base_url('admin/suatamvang/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
-                									<a href="<?php echo base_url('admin/xoatamvang/').$value['id']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>
-                								</td>
-                							</tr>
-                                            <?php } ?>
-                						</tbody>
-                					</table>
-                				</div>
-                			</div>
-                		</div>
-                	</div>
-                	<!-- data table end -->
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="tenpb" class="col-form-label">Tên phòng ban</label>
+                                                <input class="form-control" type="text" name="tenpb" id="tenpb">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="dc" class="col-form-label">Địa chỉ văn phòng</label>
+                                                <input class="form-control" type="text" name="dc" id="dc">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="sdt" class="col-form-label">Số điện thoại văn phòng</label>
+                                                <input class="form-control" type="text" name="sdt" id="sdt">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-rounded btn-info" name="add" value="submit" type="submit">Xác nhận thêm</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,12 +117,6 @@
     <script src="<?php echo base_url('res/') ?>assets/js/metisMenu.min.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/jquery.slimscroll.min.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/jquery.slicknav.min.js"></script>
-
-    <!-- Start datatable js -->
-    <script src="<?php echo base_url('res/') ?>js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>

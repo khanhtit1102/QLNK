@@ -88,24 +88,17 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="thoihan" class="col-form-label">Thời hạn</label>
-                                                <input class="form-control" type="number" min="1" name="thoihan" value="<?php echo $value['thoihan']; ?>" id="thoihan">
+                                                <label for="dc" class="col-form-label">Tạm vắng tại</label>
+                                                <input class="form-control" required="" type="text" name="dc" id="dc" autocomplete="off" value="<?php echo $value['dc']; ?>">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="khaucu" class="col-form-label">Khẩu cũ</label>
-                                                <input class="form-control" type="text" name="khaucu" value="<?php echo $value['khaucu']; ?>" id="khaucu">
+                                                <input class="form-control" type="text" name="khaucu" value="<?php echo $value['khaucu']; ?>" id="khaucu" readonly="">
                                             </div>
                                         </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <div class="form-group">
-                                                <label for="khaumoi" class="col-form-label">Khẩu mới</label>
-                                                <input class="form-control" type="text" name="khaumoi" value="<?php echo $value['khaumoi']; ?>" id="khaumoi">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ngaybd" class="col-form-label">Ngày bắt đầu</label>
@@ -114,14 +107,14 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="ngaykt" class="col-form-label">Ngày kết thúc</label>
-                                                <input class="form-control" type="date" name="ngaykt" value="<?php echo $value['ngaykt']; ?>" id="ngaykt">
+                                                <label for="lydo" class="col-form-label">Lý do</label>
+                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"><?php echo $value['lydo']; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="lydo" class="col-form-label">Lý do</label>
-                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"><?php echo $value['lydo']; ?></textarea>
+                                                <label for="ngaykt" class="col-form-label">Ngày kết thúc</label>
+                                                <input class="form-control" type="date" name="ngaykt" value="<?php echo $value['ngaykt']; ?>" id="ngaykt">
                                             </div>
                                         </div>
                                     </div>
@@ -137,9 +130,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>
@@ -156,6 +147,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

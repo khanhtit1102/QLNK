@@ -400,13 +400,17 @@ if ($('#highpiechart6').length) {
 
 /*-------------- 7 Pie chart chartjs start ------------*/
 if ($('#seolinechart8').length) {
-    var ctx = document.getElementById("seolinechart8").getContext('2d');
-    var chart = new Chart(ctx, {
+    var url = 'http://localhost/QLNK/admin/status_chart';
+    var success = function (result) {
+        var jsondata = $.parseJSON(result);
+        var ctx = document.getElementById("seolinechart8").getContext('2d');
+        var chart = new Chart(ctx, {
+
         // The type of chart we want to create
         type: 'doughnut',
         // The data for our dataset
         data: {
-            labels: ["FB", "TW", "G+", "INS"],
+            labels: ["Nhân khẩu", "Hộ khẩu", "Tạm trú/Tạm vắng", "Chuyển khẩu/Tách khẩu"],
             datasets: [{
                 backgroundColor: [
                     "#8919FE",
@@ -415,7 +419,7 @@ if ($('#seolinechart8').length) {
                     "#E36D68"
                 ],
                 borderColor: '#fff',
-                data: [810, 410, 260, 150],
+                data: [jsondata.nhankhau, jsondata.hokhau, jsondata.tttv, jsondata.cktk],
             }]
         },
         // Configuration options go here
@@ -428,5 +432,8 @@ if ($('#seolinechart8').length) {
             }
         }
     });
+    }
+    $.get(url,success);
+    
 }
 /*-------------- 7 Pie chart chartjs end ------------*/

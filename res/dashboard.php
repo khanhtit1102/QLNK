@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Bảng điều khiển</title>
+    <title>NHK Bắc Ninh - Trang tổng quan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Bảng điều khiển</h4>
+                            <h4 class="page-title pull-left">Trang tổng quan</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -109,8 +109,35 @@
                     <div class="col-lg-4 mt-5">
                         <div class="card">
                             <div class="card-body pb-0">
-                                <h4 class="header-title">Social ads Campain</h4>
-                                <div id="socialads" style="height: 245px;"></div>
+                                <h4 class="header-title">Số liệu mới nhất</h4>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        Nhân khẩu mới
+                                        <span class="pull-right small"><em><?php if($dateNews['nhankhau']==0){echo "Hôm nay";} else{ echo $dateNews['nhankhau'].' ngày trước'; } ?></em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        Hộ khẩu mới
+                                        <span class="pull-right small"><em><?php if($dateNews['hokhau']==0){echo "Hôm nay";} else{ echo $dateNews['hokhau'].' ngày trước'; } ?></em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        Chuyển/tách khẩu mới
+                                        <span class="pull-right small"><em><?php if($dateNews['cktk']==0){echo "Hôm nay";} else{ echo $dateNews['cktk'].' ngày trước'; } ?></em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        Tạm trú/Tạm vắng mới
+                                        <span class="pull-right small"><em><?php if($dateNews['tttv']==0){echo "Hôm nay";} else{ echo $dateNews['tttv'].' ngày trước'; } ?></em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        Nhân viên mới
+                                        <span class="pull-right small"><em><?php if($dateNews['nhanvien']==0){echo "Hôm nay";} else{ echo $dateNews['nhanvien'].' ngày trước'; } ?></em>
+                                        </span>
+                                    </a>
+                                </div>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -119,7 +146,7 @@
                     <div class="col-lg-4 mt-5">
                         <div class="card h-full">
                             <div class="card-body">
-                                <h4 class="header-title">Advertising & Marketing</h4>
+                                <h4 class="header-title">Số liệu tổng quát (%)</h4>
                                 <canvas id="seolinechart8" height="233"></canvas>
                             </div>
                         </div>
@@ -136,7 +163,7 @@
                                             <img src="<?php echo base_url('res/') ?>assets/images/team/team-author1.jpg" alt="author image">
                                         </div>
                                         <div class="tstu-content">
-                                            <h4 class="tstu-name">Nông Văn Khánh</h4>
+                                            <h4 class="tstu-name">Nguyễn Hoàng Lâm</h4>
                                             <span class="profsn">Trưởng phòng</span>
                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
                                         </div>
@@ -172,9 +199,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>
@@ -202,14 +227,10 @@
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-    <!-- all line chart activation -->
-    <script src="<?php echo base_url('res/') ?>assets/js/line-chart.js"></script>
     <!-- all pie chart -->
     <script src="<?php echo base_url('res/') ?>assets/js/pie-chart.js"></script>
     <!-- all bar chart -->
     <script src="<?php echo base_url('res/') ?>assets/js/bar-chart.js"></script>
-    <!-- all map chart -->
-    <script src="<?php echo base_url('res/') ?>assets/js/maps.js"></script>
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>

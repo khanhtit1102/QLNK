@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 11, 2019 lúc 07:55 PM
+-- Thời gian đã tạo: Th3 13, 2019 lúc 02:24 PM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -37,6 +37,13 @@ CREATE TABLE `cktk` (
   `loai` varchar(255) NOT NULL COMMENT 'Chuyển khẩu hoặc tách khẩu',
   `ngayth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `cktk`
+--
+
+INSERT INTO `cktk` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ngayth`) VALUES
+(1, '088868333', 'hk001', 'hk003', 'Đây là lý do', 'Chuyển khẩu', '2019-03-13');
 
 -- --------------------------------------------------------
 
@@ -190,17 +197,18 @@ INSERT INTO `diadiem` (`madd`, `tendd`) VALUES
 CREATE TABLE `hokhau` (
   `mahk` varchar(255) NOT NULL,
   `tench` varchar(255) NOT NULL,
-  `dc` varchar(255) NOT NULL
+  `dc` varchar(255) NOT NULL,
+  `ngay_tao_hk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `hokhau`
 --
 
-INSERT INTO `hokhau` (`mahk`, `tench`, `dc`) VALUES
-('hk001', 'Nông Văn Long', 'Xã 1, Huyện 2, Tỉnh 3'),
-('hk002', 'Hoàng Thị Lan', 'Xã A, Huyện B'),
-('hk003', 'Nguyễn Quang Huy', 'Thôn A, Xã B, Huyện C');
+INSERT INTO `hokhau` (`mahk`, `tench`, `dc`, `ngay_tao_hk`) VALUES
+('hk001', 'Nông Văn Long', 'Xã 1, Huyện 2, Tỉnh 3', '2019-03-01'),
+('hk002', 'Hoàng Thị Lan', 'Xã A, Huyện B', '2019-03-02'),
+('hk003', 'Nguyễn Quang Huy', 'Thôn A, Xã B, Huyện C', '2019-03-11');
 
 -- --------------------------------------------------------
 
@@ -270,19 +278,20 @@ CREATE TABLE `nhankhau` (
   `nghenghiep` varchar(255) NOT NULL,
   `mavp` varchar(255) DEFAULT NULL,
   `mahk` varchar(255) NOT NULL,
-  `qhvchuho` varchar(255) NOT NULL
+  `qhvchuho` varchar(255) NOT NULL,
+  `ngay_tao_nk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `nhankhau`
 --
 
-INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `quequan`, `tdhocvan`, `nghenghiep`, `mavp`, `mahk`, `qhvchuho`) VALUES
-('082255000', 'Hoàng Thị Lan', NULL, 1, '1991-02-02', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Tân Thịnh Thái Nguyên', '12/12', 'Tự do', NULL, 'hk002', 'Chủ hộ'),
-('088868000', 'Nông Văn Long', NULL, 1, '1999-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Chủ hộ'),
-('088868111', 'Hoàng Thị Lan', NULL, 0, '2002-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Vợ'),
-('088868222', 'Nông Quốc Minh', NULL, 1, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con'),
-('088868333', 'Nguyễn Thị Hoa', NULL, 0, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con dâu');
+INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `quequan`, `tdhocvan`, `nghenghiep`, `mavp`, `mahk`, `qhvchuho`, `ngay_tao_nk`) VALUES
+('082255000', 'Hoàng Thị Lan', NULL, 1, '1991-02-02', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Tân Thịnh Thái Nguyên', '12/12', 'Tự do', NULL, 'hk002', 'Chủ hộ', '2019-02-03'),
+('088868000', 'Nông Văn Long', NULL, 1, '1999-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Chủ hộ', '2019-02-06'),
+('088868111', 'Hoàng Thị Lan', NULL, 0, '2002-02-15', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Vợ', '2019-02-06'),
+('088868222', 'Nông Quốc Minh', NULL, 1, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk001', 'Con', '2019-02-06'),
+('088868333', 'Nguyễn Thị Hoa', NULL, 0, '2010-02-21', 'Kinh', 'Không', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Thái Nguyên', '12/12', 'Tự do', NULL, 'hk003', 'Con dâu - chuyển từ khẩu hk001', '2019-03-12');
 
 -- --------------------------------------------------------
 
@@ -300,17 +309,18 @@ CREATE TABLE `nhanvien` (
   `password` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `capbac` varchar(255) NOT NULL,
-  `mapb` int(11) NOT NULL
+  `mapb` int(11) NOT NULL,
+  `ngay_tao_nv` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`) VALUES
-('nv001', 'Hoàng Văn Long', 1, '1997-01-01', '0333444555', 'khanhnongvan0@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1),
-('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 1),
-('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 1);
+INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`, `ngay_tao_nv`) VALUES
+('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444666', 'hoanglam97dn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1, '2019-03-03'),
+('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 1, '2019-03-03'),
+('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 1, '2019-03-03');
 
 -- --------------------------------------------------------
 
@@ -322,7 +332,7 @@ CREATE TABLE `phongban` (
   `mapb` int(11) NOT NULL,
   `tenpb` varchar(255) NOT NULL,
   `dc` varchar(255) NOT NULL,
-  `sdt` varchar(10) NOT NULL
+  `sdt` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -330,7 +340,7 @@ CREATE TABLE `phongban` (
 --
 
 INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
-(1, 'Phòng 001', 'Phòng 102, tầng 2, nhà A', '0313121121');
+(1, 'Phòng 001', 'Phòng 102, tầng 2, nhà A', '0208384111');
 
 -- --------------------------------------------------------
 
@@ -347,8 +357,16 @@ CREATE TABLE `tttv` (
   `loai` varchar(255) NOT NULL COMMENT 'Tạm trú hoặc tạm vắng',
   `ngaybd` date NOT NULL,
   `thoihan` int(11) NOT NULL COMMENT 'Tính theo ngày',
-  `ngaykt` date NOT NULL
+  `ngaykt` date NOT NULL,
+  `ngay_tao_tttv` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `tttv`
+--
+
+INSERT INTO `tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ngaybd`, `thoihan`, `ngaykt`, `ngay_tao_tttv`) VALUES
+(2, '088868333', 'hk001', NULL, 'Đây là lý do', 'Tạm trú', '2019-03-13', 5, '2019-03-18', '2019-03-13');
 
 -- --------------------------------------------------------
 
@@ -447,7 +465,7 @@ ALTER TABLE `vipham`
 -- AUTO_INCREMENT cho bảng `cktk`
 --
 ALTER TABLE `cktk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `log_hokhau`
@@ -471,7 +489,7 @@ ALTER TABLE `phongban`
 -- AUTO_INCREMENT cho bảng `tttv`
 --
 ALTER TABLE `tttv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

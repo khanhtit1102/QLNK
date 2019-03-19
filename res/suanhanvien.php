@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Sửa thông tin tội danh</b></u></h4>
+                            <h4 class="page-title pull-left">Sửa thông tin nhân viên</b></u></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -145,9 +145,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>

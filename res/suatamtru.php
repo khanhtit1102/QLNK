@@ -78,7 +78,7 @@
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="socmnd" class="col-form-label">Người vi phạm</label>
+                                                <label for="socmnd" class="col-form-label">Người tạm trú</label>
                                                 <select name="socmnd" id="socmnd" class="form-control">
                                                     <?php foreach ($nguoi as $col => $row) { ?>
                                                     <option value="<?php echo $row['socmnd'] ?>" <?php if ($row['socmnd'] == $value['socmnd']) { echo ' selected=""'; } ?>><?php echo $row['socmnd'].' - '.$row['hvt'] ?></option>
@@ -88,8 +88,9 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="thoihan" class="col-form-label">Thời hạn</label>
-                                                <input class="form-control" type="number" min="1" name="thoihan" value="<?php echo $value['thoihan']; ?>" id="thoihan">
+                                                <label for="dc" class="col-form-label">Tạm trú tại</label>
+                                                <input class="form-control" required="" type="text" name="dc" id="dc" autocomplete="off" value="<?php echo $value['dc']; ?>">
+                                                <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;height: 250px;overflow-y: scroll;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -131,9 +132,7 @@
         <!-- main content area end -->
         <!-- footer area start-->
         <footer>
-            <div class="footer-area">
-                <p>© BẢN QUYỀN THUỘC VỀ CÔNG AN TỈNH BẮC NINH</p>
-            </div>
+            <?php include 'res/includes/footer.php' ?>
         </footer>
         <!-- footer area end-->
     </div>
@@ -150,6 +149,7 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
+    <script src="<?php echo base_url('res/') ?>js/custom.js"></script>
 </body>
 
 </html>

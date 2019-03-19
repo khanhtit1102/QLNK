@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class V_Admin
 {
 	
-	public function index($data)
+	public function index($data, $dateNews)
 	{
 		include "res/dashboard.php";
 	}
@@ -111,5 +111,17 @@ class V_Admin
 	public function themnhanvien($phongban)
 	{
 		include "res/themnhanvien.php";
+	}
+	public function phongban($data_table)
+	{
+		include "res/phongban.php";
+	}
+	public function themphongban()
+	{
+		include "res/themphongban.php";
+	}
+	public function suaphongban($data)
+	{
+		include "res/suaphongban.php";
 	}
 }

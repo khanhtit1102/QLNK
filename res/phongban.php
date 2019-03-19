@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Danh sách tạm vắng</title>
+    <title>NHK Bắc Ninh - Danh sách Hộ khẩu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -50,7 +50,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Quản lý tạm vắng</h4>
+                            <h4 class="page-title pull-left">Quản lý phòng ban</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -80,30 +80,23 @@
                 					<table id="dataTable" class="text-center table-hover">
                 						<thead class="bg-light text-capitalize">
                 							<tr>
-                                                <th></th>
-                                                <th>Số CMND</th>
-                                                <th>Khẩu hiện tại</th>
-                                                <th>Lý do</th>
-                                                <th>Ngày BĐ</th>
-                                                <th>Ngày KT</th>
-                                                <th>Tạm vắng tại</th>
-                                                <th></th>
+                                                <th>Mã Phòng Ban</th>
+                                                <th>Tên Phòng Ban</th>
+                                                <th>Địa chỉ văn phòng</th>
+                                                <th>Số điện thoại</th>
+                								<th>Thao tác</th>
                 							</tr>
                 						</thead>
                 						<tbody>
                                             <?php $i = 0; foreach ($data_table as $key => $value) { $i++; ?>
                 							<tr>
-                								<td><?php echo $i; ?></td>
-                								<td><a href="<?php echo base_url('admin/xemnhankhau/').$value['socmnd']; ?>" target="_blank"><?php echo $value['socmnd']; ?></a></td>
-                                                <td><a href="<?php echo base_url('admin/xemhokhau/').$value['khaucu']; ?>"><?php echo $value['khaucu']; ?></a></td>
-                                                <td><?php echo $value['lydo']; ?></td>
-                                                <td><?php echo $value['ngaybd']; ?></td>
-                                                <td><?php echo $value['ngaykt']; ?></td>
+                                                <td><?php echo $value['mapb']; ?></td>
+                                                <td><?php echo $value['tenpb']; ?></td>
                                                 <td><?php echo $value['dc']; ?></td>
+                                                <td><?php echo $value['sdt']; ?></td>
                 								<td>
-                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <a href="<?php echo base_url('admin/suatamvang/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
-                									<a href="<?php echo base_url('admin/xoatamvang/').$value['id']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>
+                									<a href="<?php echo base_url('admin/suaphongban/').$value['mapb']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?php echo base_url('admin/xoaphongban/').$value['mapb']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>
                 								</td>
                 							</tr>
                                             <?php } ?>
