@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 19, 2019 lúc 07:26 PM
+-- Thời gian đã tạo: Th3 20, 2019 lúc 08:05 PM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -37,6 +37,18 @@ CREATE TABLE `cktk` (
   `loai` varchar(255) NOT NULL COMMENT 'Chuyển khẩu hoặc tách khẩu',
   `ngayth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `cktk`
+--
+
+INSERT INTO `cktk` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ngayth`) VALUES
+(1, '093333333', 'hk002', 'hk003', 'Đây là lý do', 'Chuyển khẩu', '2019-03-20'),
+(3, '092222222', 'hk002', 'hk001', 'Debugging', 'Tách khẩu', '2019-03-21'),
+(4, '092222222', 'hk001', 'hk002', 'Debugging', 'Tách khẩu', '2019-03-21'),
+(5, '095555555', 'hk001', 'hk004', 'Debugging', 'Tách khẩu', '2019-03-21'),
+(6, '096666666', 'hk001', 'hk005', 'Debuggggggggggg', 'Tách khẩu', '2019-03-21'),
+(7, '097777777', 'hk001', 'hk006', 'Deuvayhsdbasd', 'Tách khẩu', '2019-03-21');
 
 -- --------------------------------------------------------
 
@@ -199,7 +211,44 @@ CREATE TABLE `hokhau` (
 --
 
 INSERT INTO `hokhau` (`mahk`, `tench`, `dc`, `ngay_tao_hk`) VALUES
-('hk001', 'Hoàng Công Thịnh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19');
+('hk001', 'Hoàng Mỹ Lệ', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '2019-03-21'),
+('hk002', 'Nguyễn Thị Lan Anh', 'Xã Bình Định-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-03-21'),
+('hk003', 'Nguyễn Ngọc Hiên', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-20'),
+('hk004', 'Hoàng Công Dũng', 'Xã Giang Sơn-Huyện Gia Bình-Tỉnh Bắc Ninh', '2019-03-21'),
+('hk006', 'Quang Ngọc Lan', 'Xã Bình Định-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-03-21');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `log_cktk`
+--
+
+CREATE TABLE `log_cktk` (
+  `id` int(11) NOT NULL,
+  `socmnd` varchar(255) NOT NULL,
+  `khaucu` varchar(255) NOT NULL,
+  `khaumoi` varchar(255) NOT NULL,
+  `lydo` varchar(255) NOT NULL,
+  `loai` varchar(255) NOT NULL COMMENT 'Chuyển khẩu hoặc tách khẩu',
+  `ngayth` date NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `nguoi_th` varchar(255) NOT NULL,
+  `ngay_th` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `log_cktk`
+--
+
+INSERT INTO `log_cktk` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ngayth`, `type`, `nguoi_th`, `ngay_th`) VALUES
+(0, '093333333', 'hk002', 'hk003', 'Đây là lý do', 'Chuyển khẩu', '2019-03-20', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:08:33'),
+(0, '091111111', 'hk001', 'hk003', 'Debugging', 'Chuyển khẩu', '2019-03-20', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:50:06'),
+(2, '091111111', 'hk001', 'hk003', 'Debugging', 'Chuyển khẩu', '2019-03-20', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 00:12:53'),
+(0, '092222222', 'hk002', 'hk001', 'Debugging', 'Tách khẩu', '2019-03-21', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:17:00'),
+(0, '092222222', 'hk001', 'hk002', 'Debugging', 'Tách khẩu', '2019-03-21', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:20:55'),
+(0, '095555555', 'hk001', 'hk004', 'Debugging', 'Tách khẩu', '2019-03-21', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:34:47'),
+(0, '096666666', 'hk001', 'hk005', 'Debuggggggggggg', 'Tách khẩu', '2019-03-21', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:48:51'),
+(0, '097777777', 'hk001', 'hk006', 'Deuvayhsdbasd', 'Tách khẩu', '2019-03-21', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:57:06');
 
 -- --------------------------------------------------------
 
@@ -227,7 +276,25 @@ INSERT INTO `log_hokhau` (`mahk`, `tench`, `dc`, `ngay_tao_hk`, `lydo`, `type`, 
 ('hk001', 'Hoàng Công Thịnh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19', 'Debugging', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-19 23:27:31'),
 ('hk001', '', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19', 'Thêm mới hộ khẩu chưa có chủ hộ', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-19 23:27:58'),
 ('hk001', 'Hoàng Công Thịnh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19', 'Sửa địa chỉ', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 00:27:21'),
-('hk001', 'Hoàng Công Thịnh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-03-19', 'Sửa địa chỉ', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 00:27:49');
+('hk001', 'Hoàng Công Thịnh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-03-19', 'Sửa địa chỉ', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 00:27:49'),
+('hk002', '', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-03-20', 'Thêm mới hộ khẩu chưa có chủ hộ', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 13:56:08'),
+('hk003', '', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-20', 'Thêm mới hộ khẩu chưa có chủ hộ', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:15:21'),
+('hk002', 'Nguyễn Minh Giang', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-03-20', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:57:13'),
+('hk002', '', 'Phường Kinh Bắc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-20', 'Thêm mới hộ khẩu chưa có chủ hộ', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:58:49'),
+('hk002', 'Nguyễn Minh Giang', 'Phường Kinh Bắc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-20', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:08:33'),
+('hk001', 'Hoàng Công Thịnh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:39:43'),
+('', '', '', '0000-00-00', 'Chủ hộ chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:44:43'),
+('', '', '', '0000-00-00', 'Chủ hộ chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:50:06'),
+('hk002', 'Nguyễn Thị Lan Anh', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:14:27'),
+('hk001', 'Nguyễn Thị Lan Anh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-19', 'Tách khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:14:27'),
+('hk001', 'Nguyễn Thị Lan Anh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:17:00'),
+('hk002', 'Nguyễn Thị Lan Anh', 'Phường Vũ Ninh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:17:00'),
+('hk002', 'Nguyễn Thị Lan Anh', 'Xã Bình Định-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:20:54'),
+('hk004', 'Hoàng Công Dũng', 'Xã Giang Sơn-Huyện Gia Bình-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:34:47'),
+('hk005', 'Hoàng Mỹ Lệ', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:48:50'),
+('', '', '', '0000-00-00', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:48:51'),
+('hk006', 'Quang Ngọc Lan', 'Xã Bình Định-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-03-21', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:57:06'),
+('hk001', 'Quang Ngọc Lan', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '2019-03-21', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:57:06');
 
 -- --------------------------------------------------------
 
@@ -269,7 +336,30 @@ INSERT INTO `log_nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, 
 ('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Debugging', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-19 23:27:17'),
 ('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-19 23:29:51'),
 ('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-19', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-19 23:31:48'),
-('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-19', 'Debugging', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 00:25:30');
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-19', 'Debugging', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 00:25:30'),
+('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-20', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 13:56:42'),
+('094444444', 'Nguyễn Ngọc Hiên', '', 0, '1978-03-01', 'Kinh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chủ hộ', '2019-03-20', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:16:51'),
+('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-20', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:56:41'),
+('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-20', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 14:57:13'),
+('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-20', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:08:32'),
+('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:39:43'),
+('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:44:42'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ bé', '2019-03-19', 'Chủ hộ chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:44:42'),
+('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:50:06'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-19', 'Chủ hộ chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 15:50:06'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:14:27'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-19', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:17:00'),
+('095555555', 'Hoàng Công Dũng', '', 1, '1999-03-02', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'B1', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Đại học', 'Sinh viên', 'hk001', 'Con', '2019-03-21', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:19:50'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:20:54'),
+('095555555', 'Hoàng Công Dũng', '', 1, '1999-03-02', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'B1', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Đại học', 'Sinh viên', 'hk001', 'Con', '2019-03-21', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:20:54'),
+('096666666', 'Hoàng Mỹ Lệ', '', 0, '2000-05-15', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'A2', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-21', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:33:17'),
+('095555555', 'Hoàng Công Dũng', '', 1, '1999-03-02', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'B1', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Đại học', 'Sinh viên', 'hk001', 'Chủ hộ', '2019-03-21', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:34:47'),
+('096666666', 'Hoàng Mỹ Lệ', '', 0, '2000-05-15', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'A2', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ', '2019-03-21', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:34:47'),
+('097777777', 'Quang Ngọc Lan', '', 0, '2000-03-06', 'Kinh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Dì', '2019-03-21', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:44:52'),
+('096666666', 'Hoàng Mỹ Lệ', '', 0, '2000-05-15', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'A2', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-21', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:48:51'),
+('097777777', 'Quang Ngọc Lan', '', 0, '2000-03-06', 'Kinh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Dì', '2019-03-21', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:48:51'),
+('097777777', 'Quang Ngọc Lan', '', 0, '2000-03-06', 'Kinh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-21', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:57:06'),
+('096666666', 'Hoàng Mỹ Lệ', '', 0, '2000-05-15', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'A2', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Cháu', '2019-03-21', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-21 01:57:06');
 
 -- --------------------------------------------------------
 
@@ -335,8 +425,13 @@ CREATE TABLE `nhankhau` (
 --
 
 INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `trinhdonn`, `noilamviec`, `choohiennay`, `quequan`, `tdhocvan`, `nghenghiep`, `mahk`, `qhvchuho`, `ngay_tao_nk`) VALUES
-('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-19'),
-('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Vợ bé', '2019-03-19');
+('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chú', '2019-03-19'),
+('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-19'),
+('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Cháu', '2019-03-20'),
+('094444444', 'Nguyễn Ngọc Hiên', '', 0, '1978-03-01', 'Kinh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chủ hộ', '2019-03-20'),
+('095555555', 'Hoàng Công Dũng', '', 1, '1999-03-02', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'B1', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Đại học', 'Sinh viên', 'hk004', 'Chủ hộ', '2019-03-21'),
+('096666666', 'Hoàng Mỹ Lệ', '', 0, '2000-05-15', 'Kinh', 'Không', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'A2', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', 'Xã An Bình-Huyện Thuận Thành-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-03-21'),
+('097777777', 'Quang Ngọc Lan', '', 0, '2000-03-06', 'Kinh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Không', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', 'Xã Bình Dương-Huyện Gia Bình-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk006', 'Chủ hộ', '2019-03-21');
 
 -- --------------------------------------------------------
 
@@ -363,7 +458,7 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`, `ngay_tao_nv`) VALUES
-('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444666', 'hoanglam97dn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1, '2019-03-03'),
+('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444666', 'hoanglam97bn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1, '2019-03-03'),
 ('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 1, '2019-03-03'),
 ('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 1, '2019-03-03');
 
@@ -421,17 +516,12 @@ INSERT INTO `tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `dc`, `lydo`, `loai`, `
 
 CREATE TABLE `vipham` (
   `mavp` varchar(255) NOT NULL,
+  `socmnd` varchar(255) NOT NULL,
   `toidanh` varchar(255) NOT NULL,
   `hinhphat` varchar(255) NOT NULL,
+  `dvlap` varchar(255) NOT NULL,
   `ngay` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `vipham`
---
-
-INSERT INTO `vipham` (`mavp`, `toidanh`, `hinhphat`, `ngay`) VALUES
-('viphamnd12-hc-2015', 'Buôn bán hàng cấm', 'Phạt tiền 5 triệu đồng và đi tu 2 năm', '2015-03-01');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -487,7 +577,8 @@ ALTER TABLE `tttv`
 -- Chỉ mục cho bảng `vipham`
 --
 ALTER TABLE `vipham`
-  ADD PRIMARY KEY (`mavp`);
+  ADD PRIMARY KEY (`mavp`),
+  ADD KEY `socmnd` (`socmnd`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -497,7 +588,7 @@ ALTER TABLE `vipham`
 -- AUTO_INCREMENT cho bảng `cktk`
 --
 ALTER TABLE `cktk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `phongban`
@@ -538,6 +629,12 @@ ALTER TABLE `nhanvien`
 --
 ALTER TABLE `tttv`
   ADD CONSTRAINT `tttv_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);
+
+--
+-- Các ràng buộc cho bảng `vipham`
+--
+ALTER TABLE `vipham`
+  ADD CONSTRAINT `vipham_ibfk_1` FOREIGN KEY (`socmnd`) REFERENCES `nhankhau` (`socmnd`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

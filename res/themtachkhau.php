@@ -78,7 +78,7 @@
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
                                                 <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
-                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk']; ?></option>
+                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -89,12 +89,14 @@
                                                 <input class="form-control" type="text" name="khaumoi" id="khaumoi">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="lydo" class="col-form-label">Lý do</label>
-                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"></textarea>
+                                                <label for="chuhomoi" class="col-form-label">Chọn chủ hộ mới (Khi chủ hộ tách khẩu)</label>
+                                                <select name="chuhomoi" id="chuhomoi" class="form-control">
+                                                    <?php foreach ($nhankhau as $col => $row) { ?>
+                                                        <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho'] ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -102,6 +104,12 @@
                                                 <label for="dc" class="col-form-label">Địa chỉ thường trú</label>
                                                 <input class="form-control" type="text" name="dc" placeholder="Điền để hiển thị gợi ý..." id="dc" autocomplete="off" >
                                                 <ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;cursor: pointer;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="lydo" class="col-form-label">Lý do</label>
+                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>

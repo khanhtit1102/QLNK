@@ -144,9 +144,9 @@ class M_Admin extends CI_Model
 		$this->db->where('mahk', $mahk);
 		$this->db->update('hokhau');
 	}
-	public function doiten_chuho($hokhau, $mahk)
+	public function doiten_chuho($ten_ch_moi, $mahk)
 	{
-		$this->db->set('tench', $hokhau['tench']);
+		$this->db->set('tench', $ten_ch_moi);
 		$this->db->where('mahk', $mahk);
 		$this->db->update('hokhau');
 	}
@@ -348,7 +348,7 @@ class M_Admin extends CI_Model
 	public function update_nhankhau_tachkhau($socmnd, $khaumoi, $khaucu)
 	{
 		$this->db->set('mahk', $khaumoi);
-		$this->db->set('qhvchuho', 'Chủ hộ - tách từ khẩu '.$khaucu);
+		$this->db->set('qhvchuho', 'Chủ hộ');
 		$this->db->where('socmnd', $socmnd);
 		$this->db->update('nhankhau');
 	}

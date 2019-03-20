@@ -28,7 +28,7 @@
 							</div>
 							<form action="" method="post">
 								<div class="input-field">
-									<input id="email" type="text" name="email" class="validate" autocomplete="off" value="hoanglam97dn@gmail.com">
+									<input id="email" type="email" name="email" class="validate" autocomplete="off" value="hoanglam97bn@gmail.com">
 									<label for="email" class="">Email</label>
 								</div>
 								<div class="input-field">

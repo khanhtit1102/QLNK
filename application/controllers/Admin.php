@@ -486,7 +486,6 @@ class Admin extends CI_Controller {
 						// Check khẩu cá nhân
 						$check_only = $model->check_khau_ca_nhan($add_data['khaucu']);
 						if ($check_only == 1) {
-							// Check 2 chủ hộ
 							$mot_nhankhau = $model->mot_nhankhau($add_data['socmnd']);
 							foreach ($mot_nhankhau as $key => $value){
 								$nhankhau_data = $value;
@@ -559,7 +558,7 @@ class Admin extends CI_Controller {
 
 // Đổi tên chủ hộ mới
 							// Insert Log
-							$doiten_chuho = $model->show_once_hk($add_data['khaucu']);
+							$doiten_chuho = $model->mot_hokhau($add_data['khaucu']);
 							foreach ($doiten_chuho as $key => $value){
 								$hokhau_cu = $value;
 							}
@@ -596,19 +595,21 @@ class Admin extends CI_Controller {
 	public function xoachuyenkhau($id)
 	{
 		$model = new M_Admin();
-		$select = $model->select_cktk_nhankhau($id);
-		foreach ($select as $key => $value){
-			$socmnd = $value['socmnd'];
-			$khaucu = $value['khaucu'];
-			$substr = explode(' - ', $value['qhvchuho']);
+		$data_fetch = $model->show_chuyenkhau($id);
+		foreach ($data_fetch as $key => $value){
+			$chuyenkhau_data = $value;
 		}
-		$qhvchuho = $substr[0];
-		$model->update_lai_nhankhau($socmnd, $khaucu, $qhvchuho);
+		$chuyenkhau_data['type'] = 'Xóa';
+		$chuyenkhau_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+		$chuyenkhau_data['ngay_th'] = date("Y-m-d H:i:s");
+		$model->insert_log_cktk($chuyenkhau_data);
+
 		$model->xoachuyenkhau($id);
 		$this->session->set_flashdata('error', '- Xóa thông tin chuyển khẩu thành công!');
 		redirect(base_url('admin/chuyenkhau'));
 	}
-	public function suachuyenkhau($id)
+	// Sửa chuyển khẩu hiện tại không làm
+	private function suachuyenkhau($id)
 	{
 		$model = new M_Admin();
 		$view = new V_Admin();
@@ -657,12 +658,12 @@ class Admin extends CI_Controller {
 		if ($this->input->post('add') == 'submit') {
 			$socmnd = $this->input->post('socmnd');
 			$count = count($socmnd);
-			$dc = $this->input->post('dc');
+			$add_data['dc'] = $this->input->post('dc');
 			$add_data['khaumoi'] = $this->input->post('khaumoi');
 			$add_data['lydo'] = $this->input->post('lydo');
 			$add_data['loai'] = 'Tách khẩu';
 			$add_data['ngayth'] = date("Y-m-d");
-			if ($socmnd == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL || $dc == NULL ) {
+			if ($socmnd == NULL || $add_data['khaumoi'] == NULL || $add_data['lydo'] == NULL || $add_data['dc'] == NULL ) {
 				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
 			}
 			else{
@@ -670,7 +671,7 @@ class Admin extends CI_Controller {
 					$add_data['socmnd'] = $socmnd[$i];
 					$khaucu = $model->mot_nhankhau($add_data['socmnd']);
 					foreach ($khaucu as $key => $value){
-						$tench = $value['hvt'];
+						$add_data['tench'] = $value['hvt'];
 						$add_data['khaucu'] = $value['mahk'];
 					}
 					if ($add_data['khaucu'] == $add_data['khaumoi']) {
@@ -682,11 +683,130 @@ class Admin extends CI_Controller {
 							$this->session->set_flashdata('error', '- Mã hộ khẩu đã tồn tại!');
 						}
 						else{
-							$model->them_ho_khau($add_data['khaumoi'], $add_data['socmnd'], $tench, $dc);
-							$model->themtachkhau($add_data);
-							$model->update_nhankhau_tachkhau($add_data['socmnd'], $add_data['khaumoi'], $add_data['khaucu']);
+							// Phân biệt khẩu cá nhân
+							$check_only = $model->check_khau_ca_nhan($add_data['khaucu']);
+							if ($check_only == 1) {
+								// Thêm khẩu mới
+								$data_them['mahk'] = $add_data['khaumoi'];
+								$data_them['tench'] = $add_data['tench'];
+								$data_them['dc'] = $add_data['dc'];
+								$data_them['ngay_tao_hk'] = $add_data['ngayth'];
+								$model->them_ho_khau($data_them);
+
+								$data_them['lydo'] = 'Tách khẩu';
+								$data_them['type'] = 'Thêm';
+								$data_them['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$data_them['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_hokhau($data_them);
+
+								// Sửa nhân khẩu
+								$mot_nhankhau = $model->mot_nhankhau($add_data['socmnd']);
+								foreach ($mot_nhankhau as $key => $value){
+									$nhankhau_data = $value;
+								}
+								$nhankhau_data['lydo'] = 'Tách khẩu';
+								$nhankhau_data['type'] = 'Sửa';
+								$nhankhau_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$nhankhau_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_nhankhau($nhankhau_data);
+
+								$nhankhau_data['mahk'] = $add_data['khaumoi'];
+								$nhankhau_data['qhvchuho'] = 'Chủ hộ';
+								unset($nhankhau_data['lydo'], $nhankhau_data['type'], $nhankhau_data['nguoi_th'], $nhankhau_data['ngay_th']);
+								$model->suanhankhau($add_data['socmnd'], $nhankhau_data);
+
+								// Xóa khẩu cũ
+								$mot_hokhau = $model->mot_hokhau($add_data['khaucu']);
+								foreach ($mot_hokhau as $key => $value){
+									$delete_data = $value;
+								}
+								$delete_data['lydo'] = 'Tách khẩu';
+								$delete_data['type'] = 'Xóa';
+								$delete_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$delete_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_hokhau($delete_data);
+
+								$model->delete_hokhau($add_data['khaucu']);
+
+								// Thêm vào bảng tách khẩu
+								unset($add_data['tench'], $add_data['dc']);
+								$model->themtachkhau($add_data);
+								$add_data['type'] = 'Thêm';
+								$add_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$add_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_cktk($add_data);
+							}
+							else{
+								// Thêm hộ khẩu mới
+								$data_them['mahk'] = $add_data['khaumoi'];
+								$data_them['tench'] = $add_data['tench'];
+								$data_them['dc'] = $add_data['dc'];
+								$data_them['ngay_tao_hk'] = $add_data['ngayth'];
+								$model->them_ho_khau($data_them);
+
+								$data_them['lydo'] = 'Tách khẩu';
+								$data_them['type'] = 'Thêm';
+								$data_them['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$data_them['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_hokhau($data_them);
+								// Đã xong thêm hộ khẩu mới
+
+								$cmnd_chuhomoi = $this->input->post('chuhomoi');
+								// Sửa người tách khẩu
+								$mot_nhankhau = $model->mot_nhankhau($add_data['socmnd']);
+								foreach ($mot_nhankhau as $key => $value){
+									$nhankhau_data = $value;
+								}
+								$nhankhau_data['lydo'] = 'Tách khẩu';
+								$nhankhau_data['type'] = 'Sửa';
+								$nhankhau_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$nhankhau_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_nhankhau($nhankhau_data);
+
+								$nhankhau_data['mahk'] = $add_data['khaumoi'];
+								$nhankhau_data['qhvchuho'] = 'Chủ hộ';
+								unset($nhankhau_data['lydo'], $nhankhau_data['type'], $nhankhau_data['nguoi_th'], $nhankhau_data['ngay_th']);
+								$model->suanhankhau($add_data['socmnd'], $nhankhau_data);
+
+								// Sửa chủ hộ mới
+								$mot_nhankhau = $model->mot_nhankhau($cmnd_chuhomoi);
+								foreach ($mot_nhankhau as $key => $value){
+									$nhankhau_data = $value;
+								}
+								$nhankhau_data['lydo'] = 'Chủ hộ tách khẩu';
+								$nhankhau_data['type'] = 'Sửa';
+								$nhankhau_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$nhankhau_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_nhankhau($nhankhau_data);
+
+								$nhankhau_data['qhvchuho'] = 'Chủ hộ';
+								unset($nhankhau_data['lydo'], $nhankhau_data['type'], $nhankhau_data['nguoi_th'], $nhankhau_data['ngay_th']);
+								$model->suanhankhau($cmnd_chuhomoi, $nhankhau_data);
+
+								// Sửa tên chủ hộ ở hộ khẩu cũ
+								$doiten_chuho = $model->mot_hokhau($add_data['khaucu']);
+								foreach ($doiten_chuho as $key => $value){
+									$hokhau_cu = $value;
+								}
+								$hokhau_cu['lydo'] = 'Chủ hộ tách khẩu';
+								$hokhau_cu['type'] = 'Sửa';
+								$hokhau_cu['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$hokhau_cu['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_hokhau($hokhau_cu);
+
+
+								$ten_ch_moi = $nhankhau_data['hvt'];
+								$model->doiten_chuho($ten_ch_moi, $add_data['khaucu']);
+
+								// Thêm vào bảng tách khẩu
+								unset($add_data['tench'], $add_data['dc']);
+								$model->themtachkhau($add_data);
+								$add_data['type'] = 'Thêm';
+								$add_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+								$add_data['ngay_th'] = date("Y-m-d H:i:s");
+								$model->insert_log_cktk($add_data);
+							}
 							$this->session->set_flashdata('error', '- Thêm thông tin tách khẩu thành công!');
-						// redirect(base_url('admin/chuyenkhau'));
 						}
 					}
 				}

@@ -78,7 +78,7 @@
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
                                                 <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
-                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho'] ?></option>
+                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho']; ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="chuhomoi" class="col-form-label">Chọn chủ hộ mới (Dành để chuyển khẩu cho chủ hộ)</label>
+                                                <label for="chuhomoi" class="col-form-label">Chọn chủ hộ mới (Khi chủ hộ chuyển khẩu)</label>
                                                 <select name="chuhomoi" id="chuhomoi" class="form-control">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
                                                         <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho'] ?></option>

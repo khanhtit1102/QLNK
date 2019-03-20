@@ -99,8 +99,9 @@
                                                 <td><?php echo $value['lydo']; ?></td>
                                                 <td><?php echo $value['ngayth']; ?></td>
                 								<td>
-                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <a href="<?php echo base_url('admin/suatachkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="top" data-content="Chức năng này đang phát triển." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
+                                                    <!-- <a href="<?php echo base_url('admin/suatachkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a> -->
                                                     <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Vui lòng chọn chức năng xóa hộ khẩu." style="padding: .375rem .75rem;"><i class="fa fa-trash"></i></button>
                 								</td>
                 							</tr>
