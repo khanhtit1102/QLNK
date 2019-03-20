@@ -144,6 +144,12 @@ class M_Admin extends CI_Model
 		$this->db->where('mahk', $mahk);
 		$this->db->update('hokhau');
 	}
+	public function doiten_chuho($hokhau, $mahk)
+	{
+		$this->db->set('tench', $hokhau['tench']);
+		$this->db->where('mahk', $mahk);
+		$this->db->update('hokhau');
+	}
 	public function set_chu_ho($mahk, $tench)
 	{
 		$this->db->set('tench', $tench);
@@ -272,6 +278,11 @@ class M_Admin extends CI_Model
 		$query = $this->db->get('cktk');
         return $query->result_array();
 	}
+	public function check_khau_ca_nhan($mahk)
+	{
+		$this->db->from('nhankhau')->where('mahk', $mahk);
+		return $this->db->count_all_results();
+	}
 	public function update_chuyenkhau_nhankhau($qhvchuho, $add_data)
 	{
 		$this->db->set('mahk', $add_data['khaumoi']);
@@ -282,6 +293,10 @@ class M_Admin extends CI_Model
 	public function themchuyenkhau($add_data)
 	{
 		$this->db->insert('cktk', $add_data);
+	}
+	public function insert_log_cktk($data)
+	{
+		$this->db->insert('log_cktk', $data);
 	}
 	public function select_cktk_nhankhau($id)
 	{

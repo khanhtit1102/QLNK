@@ -100,8 +100,11 @@
                                                 <td><?php echo $value['ngayth']; ?></td>
                 								<td>
                                                     <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <a href="<?php echo base_url('admin/suachuyenkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
-                									<a href="<?php echo base_url('admin/xoachuyenkhau/').$value['id']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>
+                                                    <button type="button" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="top" data-content="Chức năng đang phát triển." style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Chức năng đang phát triển." style="padding: .375rem .75rem;"><i class="fa fa-trash"></i></button>
+
+                                                    <!-- <a href="<?php echo base_url('admin/suachuyenkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
+                									<a href="<?php echo base_url('admin/xoachuyenkhau/').$value['id']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a> -->
                 								</td>
                 							</tr>
                                             <?php } ?>

@@ -62,7 +62,7 @@
                 	<div class="col-12 mt-5">
                 		<div class="card">
                 			<div class="card-body">
-                                <!-- <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Để thay đổi chủ hộ, vui lòng nhập đúng thông tin số CMND và tên chủ hộ.</div> -->
+                                <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Nếu chuyển khẩu chủ hộ, sau đó vui lòng chọn chủ hộ mới cho hộ khẩu cũ!</div>
                                 <div class="noti">
                                     <p style="color: red;">
                                         <?php if (isset($_SESSION['error'])) {
@@ -78,7 +78,7 @@
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
                                                 <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
-                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'] ?></option>
+                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -93,8 +93,22 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="qhvchuho" class="col-form-label">Quan hệ với chủ hộ mới</label>
+                                                <input type="text" name="qhvchuho" id="qhvchuho" class="form-control" value="" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="chuhomoi" class="col-form-label">Chọn chủ hộ mới (Dành để chuyển khẩu cho chủ hộ)</label>
+                                                <select name="chuhomoi" id="chuhomoi" class="form-control">
+                                                    <?php foreach ($nhankhau as $col => $row) { ?>
+                                                        <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="lydo" class="col-form-label">Lý do</label>
