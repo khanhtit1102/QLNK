@@ -50,7 +50,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Quản lý địa điểm</h4>
+                            <h4 class="page-title pull-left">Quản lý địa bàn</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">

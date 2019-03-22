@@ -19,7 +19,7 @@
 							<img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-cave.jpg?5818699651879506597" alt="">
 						</div>
 						<div class="card-content">
-							<span class="card-title">Đăng nhập Quản trị viên</span>
+							<span class="card-title">Đăng nhập Hệ thống</span>
 							<div class="error center" style="color: red;">
 								<?php echo validation_errors('- '); ?>
 								<?php if (isset($_SESSION['error'])) {

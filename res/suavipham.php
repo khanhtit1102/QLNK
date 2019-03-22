@@ -84,6 +84,12 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
+                                                <label for="doituong" class="col-form-label">Đối tượng</label>
+                                                <input class="form-control" type="text" name="" value="<?php echo $value['socmnd'].' - '.$value['hvt']; ?>" id="doituong" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
                                                 <label for="toidanh" class="col-form-label">Tên tội danh</label>
                                                 <input class="form-control" type="text" name="toidanh" value="<?php echo $value['toidanh']; ?>" id="toidanh">
                                             </div>
@@ -92,6 +98,12 @@
                                             <div class="form-group">
                                                 <label for="hinhphat" class="col-form-label">Hình phạt</label>
                                                 <input class="form-control" type="text" name="hinhphat" value="<?php echo $value['hinhphat']; ?>" id="hinhphat">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="dvlap" class="col-form-label">Đơn vị lập</label>
+                                                <input class="form-control" type="text" name="dvlap" value="<?php echo $value['dvlap']; ?>" id="dvlap">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

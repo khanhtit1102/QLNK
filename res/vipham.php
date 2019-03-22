@@ -80,11 +80,14 @@
                 					<table id="dataTable" class="text-center table-hover">
                 						<thead class="bg-light text-capitalize">
                 							<tr>
-                								<th></th>
                                                 <th>Mã tội danh</th>
+                                                <th>Đối tượng</th>
                                                 <th>Tên tội danh</th>
                                                 <th>Hình phạt</th>
-                                                <th>Ngày thêm</th>
+                                                <th>Đơn vị lập</th>
+                                                <th>Người lập</th>
+                                                <th>Ngày quyết định</th>
+                                                <th>Ngày lập</th>
                                                 <th></th>
                 							</tr>
                 						</thead>
@@ -93,11 +96,14 @@
                                                 foreach ($data_table as $key => $value) { $i++;
                                             ?>
                                             <tr>
-                                                <td><?php echo $i; ?></td>
                                                 <td><?php echo $value['mavp']; ?></td>
+                                                <td><?php echo '<a href="'.base_url("admin/xemnhankhau/").$value['socmnd'].'">'.$value['socmnd'].'</a><br>'.$value['hvt']; ?></td>
                                                 <td><?php echo $value['toidanh']; ?></td>
                                                 <td><?php echo $value['hinhphat']; ?></td>
+                                                <td><?php echo $value['dvlap']; ?></td>
+                                                <td><?php echo $value['nguoilap']; ?></td>
                                                 <td><?php echo $value['ngay']; ?></td>
+                                                <td><?php echo $value['ngaylap']; ?></td>
                                                 <td>
                                                     <a href="<?php echo base_url('admin/suavipham/').$value['mavp']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
                                                     <a href="<?php echo base_url('admin/xoavipham/').$value['mavp']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>

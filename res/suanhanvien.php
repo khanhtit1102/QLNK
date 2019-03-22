@@ -85,13 +85,13 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="hvt" class="col-form-label">Họ và tên</label>
-                                                <input class="form-control" type="text" name="hvt" value="<?php echo $value['hvt']; ?>" id="hvt">
+                                                <input class="form-control" type="text" name="hvt" value="<?php echo $value['hvt']; ?>" id="hvt" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="gt" class="col-form-label">Giới tính</label>
-                                                <select name="gt" id="gt" class="form-control">
+                                                <select name="gt" id="gt" class="form-control" required="">
                                                     <option value="1" <?php if($value['gt'] == 1){echo "selected";} ?> >Nam</option>
                                                     <option value="0" <?php if($value['gt'] == 0){echo "selected";} ?> >Nữ</option>
                                                     <option value="2" <?php if($value['gt'] == 2){echo "selected";} ?> >Không xác định</option>
@@ -101,37 +101,51 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ns" class="col-form-label">Ngày sinh</label>
-                                                <input class="form-control" type="date" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
+                                                <input class="form-control" type="date" name="ns" value="<?php echo $value['ns']; ?>" id="ns" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="sdt" class="col-form-label">Số điện thoại</label>
-                                                <input class="form-control" type="text" name="sdt" value="<?php echo $value['sdt']; ?>" id="sdt">
+                                                <input class="form-control" type="text" name="sdt" value="<?php echo $value['sdt']; ?>" id="sdt" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="email" class="col-form-label">Email</label>
-                                                <input class="form-control" type="email" name="email" value="<?php echo $value['email']; ?>" id="email">
+                                                <input class="form-control" type="email" name="email" value="<?php echo $value['email']; ?>" id="email" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="capbac" class="col-form-label">Cấp bậc</label>
-                                                <input class="form-control" type="text" name="capbac" value="<?php echo $value['capbac']; ?>" id="capbac">
+                                                <input class="form-control" type="text" name="capbac" value="<?php echo $value['capbac']; ?>" id="capbac" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="mapb" class="col-form-label">Phòng ban</label>
-                                                <select name="mapb" id="mapb" class="form-control">
-                                                    <?php foreach ($phongban as $key => $pb) { ?>
-                                                        <option value="<?php echo $pb['mapb'] ?>" <?php if ($pb['mapb'] == $value['mapb']) { echo ' selected=""'; } ?>><?php echo $pb['tenpb'] ?></option>
-                                                    <?php } ?>
+                                                <label for="chucvu" class="col-form-label">Chức vụ</label>
+                                                <input class="form-control" type="text" name="chucvu" value="<?php echo $value['chucvu']; ?>" id="chucvu" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="donvi" class="col-form-label">Đơn vị</label>
+                                                <input class="form-control" type="text" name="donvi" value="<?php echo $value['donvi']; ?>" id="donvi" required="">
+                                            </div>
+                                        </div>
+                                        <?php if($_SESSION['quyenhan'] == 2){ ?>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="quyenhan" class="col-form-label">Quyền hạn</label>
+                                                <select name="quyenhan" id="quyenhan" class="form-control" required="">
+                                                    <option value="2" <?php if($value['quyenhan'] == 2){echo "selected";} ?> >Quản trị viên</option>
+                                                    <option value="1" <?php if($value['quyenhan'] == 1){echo "selected";} ?> >Nhân viên</option>
+                                                    <option value="0" <?php if($value['quyenhan'] == 0){echo "selected";} ?> >Nhân viên thống kê</option>
                                                 </select>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                     <button class="btn btn-rounded btn-info" name="edit" value="submit" type="submit">Xác nhận sửa</button>
                                 </form>

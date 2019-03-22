@@ -76,25 +76,41 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="mavp" class="col-form-label">Mã tội danh</label>
-                                                <input class="form-control" type="text" name="mavp" id="mavp">
+                                                <input class="form-control" type="text" name="mavp" id="mavp" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="toidanh" class="col-form-label">Tên tội danh</label>
-                                                <input class="form-control" type="text" name="toidanh" id="toidanh">
+                                                <label for="socmnd" class="col-form-label">Đối tượng</label>
+                                                <select name="socmnd" id="socmnd" class="form-control" required="">
+                                                    <?php foreach ($nhankhau as $col => $row) { ?>
+                                                    <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="toidanh" class="col-form-label">Tội danh</label>
+                                                <input class="form-control" type="text" name="toidanh" id="toidanh" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="hinhphat" class="col-form-label">Hình phạt</label>
-                                                <input class="form-control" type="text" name="hinhphat" id="hinhphat">
+                                                <input class="form-control" type="text" name="hinhphat" id="hinhphat" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="ngay" class="col-form-label">Ngày thêm</label>
-                                                <input class="form-control" type="date" name="ngay" id="ngay">
+                                                <label for="dvlap" class="col-form-label">Đơn vị lập</label>
+                                                <input class="form-control" type="text" name="dvlap" id="dvlap" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="ngay" class="col-form-label">Ngày quyết định</label>
+                                                <input class="form-control" type="date" name="ngay" id="ngay" required="">
                                             </div>
                                         </div>
                                     </div>

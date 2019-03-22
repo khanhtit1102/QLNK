@@ -372,7 +372,8 @@ class M_Admin extends CI_Model
     }
     public function vipham()
     {
-    	$query = $this->db->get('vipham');
+		$this->db->where('vipham.socmnd = nhankhau.socmnd');
+    	$query = $this->db->get('vipham, nhankhau');
         return $query->result_array();
     }
     public function xoavipham($id)
@@ -381,8 +382,8 @@ class M_Admin extends CI_Model
     }
     public function show_vipham($id)
     {
-		$this->db->where('mavp', $id);
-		$query = $this->db->get('vipham');
+		$this->db->where('vipham.mavp', $id)->where('vipham.socmnd = nhankhau.socmnd');
+		$query = $this->db->get('vipham, nhankhau');
         return $query->result_array();
     }
     public function update_vipham($update_data)
@@ -396,8 +397,7 @@ class M_Admin extends CI_Model
     }
     public function nhanvien()
     {
-		$this->db->select('nhanvien.*, phongban.tenpb')->where('nhanvien.mapb = phongban.mapb');
-    	$query = $this->db->get('nhanvien, phongban');
+    	$query = $this->db->get('nhanvien');
         return $query->result_array();
     }
     public function xoanhanvien($manv)
@@ -419,28 +419,4 @@ class M_Admin extends CI_Model
     {
 		$this->db->insert('nhanvien', $add_data);
     }
-   	public function phongban()
-   	{
-    	$query = $this->db->get('phongban');
-        return $query->result_array();
-   	}
-   	public function mot_phongban($mapb)
-   	{
-   		$this->db->where('mapb', $mapb);
-    	$query = $this->db->get('phongban');
-        return $query->result_array();
-   	}
-   	public function themphongban($add_data)
-   	{
-		$this->db->insert('phongban', $add_data);
-   	}
-   	public function suaphongban($update_data, $mapb)
-   	{
-   		$this->db->where('mapb', $mapb);
-		$this->db->update('phongban', $update_data);
-   	}
-   	public function xoaphongban($mapb)
-   	{
-    	$this->db->where('mapb', $mapb)->delete('phongban');
-   	}
 }

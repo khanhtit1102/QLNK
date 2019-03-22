@@ -83,11 +83,12 @@
                                                 <th>Mã NV</th>
                                                 <th>Họ và Tên</th>
                                                 <th>GT</th>
-                                                <th>Ngày sinh</th>
                                                 <th>SĐT</th>
                                                 <th>Email</th>
                                                 <th>Cấp bậc</th>
-                								<th>Phòng Ban</th>
+                                                <th>Chức vụ</th>
+                                                <th>Đơn vị</th>
+                                                <th>Quyền hạn</th>
                 								<th>Thao tác</th>
                 							</tr>
                 						</thead>
@@ -97,11 +98,12 @@
                                                 <td><?php echo $value['manv']; ?></td>
                                                 <td><?php echo $value['hvt']; ?></td>
                                                 <td><?php if($value['gt'] == 1){echo "Nam";} else{echo "Nữ";} ?></td>
-                                                <td><?php echo $value['ns']; ?></td>
                                                 <td><?php echo $value['sdt']; ?></td>
                                                 <td><a href="mailto:<?php echo $value['email']; ?>"><?php echo $value['email']; ?></a></td>
                                                 <td><?php echo $value['capbac']; ?></td>
-                								<td><a href=""><?php echo $value['tenpb']; ?></a></td>
+                                                <td><?php echo $value['chucvu']; ?></td>
+                                                <td><?php echo $value['donvi']; ?></td>
+                                                <td><?php if($value['quyenhan'] == 2){echo "QTV";} if($value['quyenhan'] == 1){echo "NV";} if($value['quyenhan'] == 0){echo "NVTK";} ?></td>
                 								<td>
                 									<a href="<?php echo base_url('admin/suanhanvien/').$value['manv']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
                 									<?php if ($_SESSION['manv'] != $value['manv']) { ?>

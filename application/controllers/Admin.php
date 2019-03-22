@@ -918,15 +918,12 @@ class Admin extends CI_Controller {
 			$update_data['mavp'] = $this->input->post('mavp');
 			$update_data['toidanh'] = $this->input->post('toidanh');
 			$update_data['hinhphat'] = $this->input->post('hinhphat');
+			$update_data['dvlap'] = $this->input->post('dvlap');
 			$update_data['ngay'] = $this->input->post('ngay');
-			if ($update_data['mavp'] == NULL || $update_data['toidanh'] == NULL || $update_data['hinhphat'] == NULL || $update_data['ngay'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->update_vipham($update_data);
-				$this->session->set_flashdata('error', '- Sửa thông tin tội danh thành công!');
-				redirect(base_url('admin/vipham'));
-			}
+
+			$model->update_vipham($update_data);
+			$this->session->set_flashdata('error', '- Sửa thông tin tội danh thành công!');
+			redirect(base_url('admin/vipham'));
 		}
 		$data = $model->show_vipham($id);
 		$view->suavipham($data);
@@ -937,19 +934,20 @@ class Admin extends CI_Controller {
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
 			$add_data['mavp'] = $this->input->post('mavp');
+			$add_data['socmnd'] = $this->input->post('socmnd');
 			$add_data['toidanh'] = $this->input->post('toidanh');
 			$add_data['hinhphat'] = $this->input->post('hinhphat');
+			$add_data['dvlap'] = $this->input->post('dvlap');
+			$add_data['nguoilap'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
 			$add_data['ngay'] = $this->input->post('ngay');
-			if ($add_data['mavp'] == NULL || $add_data['toidanh'] == NULL || $add_data['hinhphat'] == NULL || $add_data['ngay'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->themvipham($add_data);
-				$this->session->set_flashdata('error', '- Thêm thông tin tội danh thành công!');
-				redirect(base_url('admin/vipham'));
-			}
+			$add_data['ngaylap'] = date("Y-m-d");
+
+			$model->themvipham($add_data);
+			$this->session->set_flashdata('error', '- Thêm thông tin tội danh thành công!');
+			redirect(base_url('admin/vipham'));
 		}
-		$view->themvipham();
+		$nhankhau = $model->nhankhau();
+		$view->themvipham($nhankhau);
     }
     public function nhanvien()
     {
@@ -976,19 +974,16 @@ class Admin extends CI_Controller {
 			$update_data['sdt'] = $this->input->post('sdt');
 			$update_data['email'] = $this->input->post('email');
 			$update_data['capbac'] = $this->input->post('capbac');
-			$update_data['mapb'] = $this->input->post('mapb');
-			if ($update_data['hvt'] == NULL || $update_data['gt'] == NULL || $update_data['ns'] == NULL || $update_data['sdt'] == NULL || $update_data['email'] == NULL || $update_data['capbac'] == NULL || $update_data['mapb'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->update_nhanvien($update_data, $manv);
-				$this->session->set_flashdata('error', '- Sửa thông tin nhân viên thành công!');
-				redirect(base_url('admin/nhanvien'));
-			}
+			$update_data['chucvu'] = $this->input->post('chucvu');
+			$update_data['donvi'] = $this->input->post('donvi');
+			$update_data['quyenhan'] = $this->input->post('quyenhan');
+
+			$model->update_nhanvien($update_data, $manv);
+			$this->session->set_flashdata('error', '- Sửa thông tin nhân viên thành công!');
+			redirect(base_url('admin/nhanvien'));
 		}
 		$data = $model->mot_nhanvien($manv);
-		$phongban = $model->phongban();
-		$view->suanhanvien($data, $phongban);
+		$view->suanhanvien($data);
     }
     public function themnhanvien()
     {
@@ -1002,73 +997,70 @@ class Admin extends CI_Controller {
 			$add_data['sdt'] = $this->input->post('sdt');
 			$add_data['email'] = $this->input->post('email');
 			$add_data['capbac'] = $this->input->post('capbac');
-			$add_data['mapb'] = $this->input->post('mapb');
+			$add_data['chucvu'] = $this->input->post('chucvu');
+			$add_data['donvi'] = $this->input->post('donvi');
+			$add_data['quyenhan'] = $this->input->post('quyenhan');
 			$add_data['ngay_tao_nv'] = date('Y-m-d');
-			if ($add_data['manv'] == NULL || $add_data['hvt'] == NULL || $add_data['gt'] == NULL || $add_data['ns'] == NULL || $add_data['sdt'] == NULL || $add_data['email'] == NULL || $add_data['capbac'] == NULL || $add_data['mapb'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->themnhanvien($add_data);
-				$this->session->set_flashdata('error', '- Thêm thông tin nhân viên thành công!');
-				redirect(base_url('admin/nhanvien'));
-			}
+
+			$model->themnhanvien($add_data);
+			$this->session->set_flashdata('error', '- Thêm thông tin nhân viên thành công!');
+			redirect(base_url('admin/nhanvien'));
 		}
-		$phongban = $model->phongban();
-		$view->themnhanvien($phongban);
+		$view->themnhanvien();
     }
-    public function phongban()
-    {
-    	$model = new M_Admin();
-		$view = new V_Admin();
-		$data_table = $model->phongban();
-		$view->phongban($data_table);
-    }
-    public function themphongban()
-    {
-    	$model = new M_Admin();
-		$view = new V_Admin();
-		if ($this->input->post('add') == 'submit') {
-			$add_data['tenpb'] = $this->input->post('tenpb');
-			$add_data['dc'] = $this->input->post('dc');
-			$add_data['sdt'] = $this->input->post('sdt');
-			if ($add_data['tenpb'] == NULL || $add_data['dc'] == NULL || $add_data['sdt'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->themphongban($add_data);
-				$this->session->set_flashdata('error', '- Thêm thông tin phòng ban thành công!');
-				redirect(base_url('admin/phongban'));
-			}
-		}
-		$view->themphongban();
-    }
-    public function suaphongban($mapb)
-    {
-    	$model = new M_Admin();
-		$view = new V_Admin();
-		if ($this->input->post('edit') == 'submit') {
-			$update_data['tenpb'] = $this->input->post('tenpb');
-			$update_data['dc'] = $this->input->post('dc');
-			$update_data['sdt'] = $this->input->post('sdt');
-			if ($update_data['tenpb'] == NULL || $update_data['dc'] == NULL || $update_data['sdt'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->suaphongban($update_data, $mapb);
-				$this->session->set_flashdata('error', '- Sửa thông tin phòng ban thành công!');
-				redirect(base_url('admin/phongban'));
-			}
-		}
-		$data = $model->mot_phongban($mapb);
-		$view->suaphongban($data);
-    }
-    public function xoaphongban($mapb)
-    {
-    	$model = new M_Admin();
-		$model->xoaphongban($mapb);
-		$this->session->set_flashdata('error', '- Xóa thông tin phòng ban thành công!');
-		redirect(base_url('admin/phongban'));
-    }
+  //   public function phongban()
+  //   {
+  //   	$model = new M_Admin();
+		// $view = new V_Admin();
+		// $data_table = $model->phongban();
+		// $view->phongban($data_table);
+  //   }
+  //   public function themphongban()
+  //   {
+  //   	$model = new M_Admin();
+		// $view = new V_Admin();
+		// if ($this->input->post('add') == 'submit') {
+		// 	$add_data['tenpb'] = $this->input->post('tenpb');
+		// 	$add_data['dc'] = $this->input->post('dc');
+		// 	$add_data['sdt'] = $this->input->post('sdt');
+		// 	if ($add_data['tenpb'] == NULL || $add_data['dc'] == NULL || $add_data['sdt'] == NULL) {
+		// 		$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+		// 	}
+		// 	else{
+		// 		$model->themphongban($add_data);
+		// 		$this->session->set_flashdata('error', '- Thêm thông tin phòng ban thành công!');
+		// 		redirect(base_url('admin/phongban'));
+		// 	}
+		// }
+		// $view->themphongban();
+  //   }
+  //   public function suaphongban($mapb)
+  //   {
+  //   	$model = new M_Admin();
+		// $view = new V_Admin();
+		// if ($this->input->post('edit') == 'submit') {
+		// 	$update_data['tenpb'] = $this->input->post('tenpb');
+		// 	$update_data['dc'] = $this->input->post('dc');
+		// 	$update_data['sdt'] = $this->input->post('sdt');
+		// 	if ($update_data['tenpb'] == NULL || $update_data['dc'] == NULL || $update_data['sdt'] == NULL) {
+		// 		$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
+		// 	}
+		// 	else{
+		// 		$model->suaphongban($update_data, $mapb);
+		// 		$this->session->set_flashdata('error', '- Sửa thông tin phòng ban thành công!');
+		// 		redirect(base_url('admin/phongban'));
+		// 	}
+		// }
+		// $data = $model->mot_phongban($mapb);
+		// $view->suaphongban($data);
+  //   }
+  //   public function xoaphongban($mapb)
+  //   {
+  //   	$model = new M_Admin();
+		// $model->xoaphongban($mapb);
+		// $this->session->set_flashdata('error', '- Xóa thông tin phòng ban thành công!');
+		// redirect(base_url('admin/phongban'));
+  //   }
     public function thongtincanhan()
     {
     	$manv = $this->session->userdata('manv');
@@ -1082,14 +1074,10 @@ class Admin extends CI_Controller {
 			$update_data['sdt'] = $this->input->post('sdt');
 			$update_data['email'] = $this->input->post('email');
 			$update_data['capbac'] = $this->input->post('capbac');
-			$update_data['mapb'] = $this->input->post('mapb');
-			if ($update_data['hvt'] == NULL || $update_data['gt'] == NULL || $update_data['ns'] == NULL || $update_data['sdt'] == NULL || $update_data['email'] == NULL || $update_data['capbac'] == NULL || $update_data['mapb'] == NULL) {
-				$this->session->set_flashdata('error', '- Vui lòng điền đầy đủ thông tin!');
-			}
-			else{
-				$model->update_nhanvien($update_data, $manv);
-				$this->session->set_flashdata('error', '- Sửa thông tin cá nhân thành công!');
-			}
+			$update_data['chucvu'] = $this->input->post('chucvu');
+			$update_data['donvi'] = $this->input->post('donvi');
+			$model->update_nhanvien($update_data, $manv);
+			$this->session->set_flashdata('error', '- Sửa thông tin cá nhân thành công!');
 		}
 		$data = $model->mot_nhanvien($manv);
 		foreach ($data as $key => $value){
@@ -1101,12 +1089,13 @@ class Admin extends CI_Controller {
 				'sdt' => $value['sdt'],
 				'email' => $value['email'],
 				'capbac' => $value['capbac'],
-				'mapb' => $value['mapb'],
+				'chucvu' => $value['chucvu'],
+				'donvi' => $value['donvi'],
+				'quyenhan' => $value['quyenhan'],
 			);
 		}
 		$this->session->set_userdata($new_session);
-		$phongban = $model->phongban();
-		$view->suanhanvien($data, $phongban);
+		$view->suanhanvien($data);
     }
 	public function GetCountryName(){
 		$model = new M_Admin();

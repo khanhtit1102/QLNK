@@ -7,8 +7,9 @@
     <div class="main-menu">
         <div class="menu-inner">
             <nav>
+                <?php if($_SESSION['quyenhan'] == 2){ // ADMIN ?>
                 <ul class="metismenu" id="menu">
-                    <li class="active"><a href="<?php echo base_url('admin'); ?>"><i class="ti-dashboard"></i> <span>dashboard</span></a></li>
+                    <li class="active"><a href="<?php echo base_url('admin'); ?>"><i class="ti-dashboard"></i> <span>Trang tổng quan</span></a></li>
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-briefcase"></i><span>Quản lý hộ khẩu</span></a>
                         <ul class="collapse">
@@ -71,18 +72,77 @@
                             <li><a href="<?php echo base_url('admin/themnhanvien'); ?>">Thêm nhân viên mới</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout"></i><span>Quản lý phòng ban</span></a>
-                        <ul class="collapse">
-                            <li><a href="<?php echo base_url('admin/phongban'); ?>">Danh sách phòng ban</a></li>
-                            <li><a href="<?php echo base_url('admin/themphongban'); ?>">Thêm phòng ban mới</a></li>
-                        </ul>
-                    </li>
                     <li><a href="<?php echo base_url('admin/qldd'); ?>"><i class="ti-location-pin"></i> <span>Quản lý địa điểm</span></a></li>
                     <li><a href="<?php echo base_url('admin/thongke'); ?>"><i class="ti-location-pin"></i> <span>Báo cáo thống kê</span></a></li>
                     <li><a href="<?php echo base_url('admin/thongtincanhan'); ?>"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
                     <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
                 </ul>
+                <?php } ?>
+                <?php if($_SESSION['quyenhan'] == 1){ // NHÂN VIÊN ?>
+                <ul class="metismenu" id="menu">
+                    <li class="active"><a href="<?php echo base_url('admin'); ?>"><i class="ti-dashboard"></i> <span>Trang tổng quan</span></a></li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-briefcase"></i><span>Quản lý hộ khẩu</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/hokhau'); ?>">Tất cả hộ khẩu</a></li>
+                            <li><a href="<?php echo base_url('admin/themhokhau'); ?>">Thêm hộ khẩu mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-id-badge"></i><span>Quản lý nhân khẩu</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/nhankhau'); ?>">Tất cả nhân khẩu</a></li>
+                            <li><a href="<?php echo base_url('admin/themnhankhau'); ?>">Thêm nhân khẩu mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-time"></i><span>Quản lý tạm trú</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/tamtru'); ?>">Danh sách tạm trú</a></li>
+                            <li><a href="<?php echo base_url('admin/themtamtru'); ?>">Thêm tạm trú mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-share"></i><span>Quản lý tạm vắng</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/tamvang'); ?>">Danh sách tạm vắng</a></li>
+                            <li><a href="<?php echo base_url('admin/themtamvang'); ?>">Thêm tạm vắng mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-media-overlay"></i><span>Quản lý chuyển khẩu</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/chuyenkhau'); ?>">Danh sách chuyển khẩu</a></li>
+                            <li><a href="<?php echo base_url('admin/themchuyenkhau'); ?>">Thêm chuyển khẩu mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-support"></i><span>Quản lý tách khẩu</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/tachkhau'); ?>">Danh sách tách khẩu</a></li>
+                            <li><a href="<?php echo base_url('admin/themtachkhau'); ?>">Thêm tách khẩu mới</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-bookmark-alt"></i><span>Quản lý vi phạm</span></a>
+                        <ul class="collapse">
+                            <li><a href="<?php echo base_url('admin/vipham'); ?>">Danh sách vi phạm</a></li>
+                            <li><a href="<?php echo base_url('admin/themvipham'); ?>">Thêm vi phạm mới</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo base_url('admin/thongke'); ?>"><i class="ti-location-pin"></i> <span>Báo cáo thống kê</span></a></li>
+                    <li><a href="<?php echo base_url('admin/thongtincanhan'); ?>"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
+                    <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
+                </ul>
+                <?php } ?>
+                <?php if($_SESSION['quyenhan'] == 0){ // NHÂN VIÊN THỐNG KÊ ?>
+                <ul class="metismenu" id="menu">
+                    <li class="active"><a href="<?php echo base_url('admin'); ?>"><i class="ti-dashboard"></i> <span>Trang tổng quan</span></a></li>
+                    <li><a href="<?php echo base_url('admin/thongke'); ?>"><i class="ti-location-pin"></i> <span>Báo cáo thống kê</span></a></li>
+                    <li><a href="<?php echo base_url('admin/thongtincanhan'); ?>"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
+                    <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
+                </ul>
+                <?php } ?>
             </nav>
         </div>
     </div>

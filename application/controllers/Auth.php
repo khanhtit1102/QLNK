@@ -38,7 +38,10 @@ class Auth extends CI_Controller {
 					'sdt' => $value['sdt'],
 					'email' => $value['email'],
 					'capbac' => $value['capbac'],
-					'mapb' => $value['mapb'],
+					'chucvu' => $value['chucvu'],
+					'donvi' => $value['donvi'],
+					'quyenhan' => $value['quyenhan'],
+					
 					);
 				}
 				$this->session->set_userdata($new_session);

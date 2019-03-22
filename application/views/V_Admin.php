@@ -96,7 +96,7 @@ class V_Admin
 	{
 		include "res/suavipham.php";
 	}
-	public function themvipham()
+	public function themvipham($nhankhau)
 	{
 		include "res/themvipham.php";
 	}
@@ -104,24 +104,24 @@ class V_Admin
 	{
 		include "res/nhanvien.php";
 	}
-	public function suanhanvien($data, $phongban)
+	public function suanhanvien($data)
 	{
 		include "res/suanhanvien.php";
 	}
-	public function themnhanvien($phongban)
+	public function themnhanvien()
 	{
 		include "res/themnhanvien.php";
 	}
-	public function phongban($data_table)
-	{
-		include "res/phongban.php";
-	}
-	public function themphongban()
-	{
-		include "res/themphongban.php";
-	}
-	public function suaphongban($data)
-	{
-		include "res/suaphongban.php";
-	}
+	// public function phongban($data_table)
+	// {
+	// 	include "res/phongban.php";
+	// }
+	// public function themphongban()
+	// {
+	// 	include "res/themphongban.php";
+	// }
+	// public function suaphongban($data)
+	// {
+	// 	include "res/suaphongban.php";
+	// }
 }

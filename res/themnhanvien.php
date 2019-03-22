@@ -121,11 +121,22 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
-                                                <label for="mapb" class="col-form-label">Phòng ban</label>
-                                                <select name="mapb" id="mapb" class="form-control">
-                                                    <?php foreach ($phongban as $key => $pb) { ?>
-                                                        <option value="<?php echo $pb['mapb'] ?>"><?php echo $pb['tenpb'] ?></option>
-                                                    <?php } ?>
+                                                <label for="chucvu" class="col-form-label">Chức vụ</label>
+                                                <input class="form-control" type="text" name="chucvu" id="chucvu" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="donvi" class="col-form-label">Đơn vị</label>
+                                                <input class="form-control" type="text" name="donvi" id="donvi" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="quyenhan" class="col-form-label">Quyền hạn</label>
+                                                <select name="quyenhan" id="quyenhan" class="form-control" required="">
+                                                    <option value="1">Quản trị viên</option>
+                                                    <option value="0" selected="">Nhân viên</option>
                                                 </select>
                                             </div>
                                         </div>

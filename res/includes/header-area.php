@@ -8,9 +8,21 @@
                 <span></span>
             </div>
             <div class="search-box pull-left">
+                <?php switch ($_SESSION['quyenhan']) {
+                    case '2':
+                        $per = 'Quản trị viên';
+                        break;
+                    case '1':
+                        $per = 'Nhân viên';
+                        break;
+                    
+                    default:
+                        $per = 'Nhân viên thống kê';
+                        break;
+                } ?>
                 <form action="#">
-                    <input type="text" name="search" placeholder="Search..." required>
-                    <i class="ti-search"></i>
+                    <input type="text" name="search" placeholder="<?php echo 'Xin chào, '.$per.' !'; ?>" readonly="" style="cursor: auto;">
+                    <i class="ti-medall"></i>
                 </form>
             </div>
         </div>
