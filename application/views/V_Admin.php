@@ -112,6 +112,10 @@ class V_Admin
 	{
 		include "res/themnhanvien.php";
 	}
+	public function thongke()
+	{
+		include "res/thongke.php";
+	}
 	// public function phongban($data_table)
 	// {
 	// 	include "res/phongban.php";

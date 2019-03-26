@@ -1097,6 +1097,12 @@ class Admin extends CI_Controller {
 		$this->session->set_userdata($new_session);
 		$view->suanhanvien($data);
     }
+    public function thongke()
+    {
+    	$model = new M_Admin();
+		$view = new V_Admin();
+		$view->thongke();
+    }
 	public function GetCountryName(){
 		$model = new M_Admin();
         $keyword=$this->input->post('keyword');
@@ -1115,5 +1121,334 @@ class Admin extends CI_Controller {
 		$percent['tttv'] = round($all_data['tttv'] / $sum * 100,2);
 		$percent['cktk'] = round($all_data['cktk'] / $sum * 100,2);
 		echo json_encode($percent);
+    }
+    public function export_nhankhau() {
+		// create file name
+        $fileName = 'nhankhau-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->nhankhau();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Họ và tên');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Tên khác');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Giới tính');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Ngày sinh');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Dân tộc');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Tôn giáo');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Địa chỉ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Trình độ ngoại ngữ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Nơi làm việc');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Chỗ ở hiện nay');
+        $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Quê quán');
+        $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Trình độ học vấn');
+        $objPHPExcel->getActiveSheet()->SetCellValue('N1', 'Nghề nghiệp');
+        $objPHPExcel->getActiveSheet()->SetCellValue('O1', 'Mã hộ khẩu');
+        $objPHPExcel->getActiveSheet()->SetCellValue('P1', 'Quan hệ với chủ hộ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('Q1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['hvt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['tenkhac']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['gt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['ns']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['dt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['tg']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['dc']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $element['trinhdonn']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $element['noilamviec']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $element['choohiennay']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $element['quequan']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $element['tdhocvan']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('N' . $rowCount, $element['nghenghiep']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, $element['mahk']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, $element['qhvchuho']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('Q' . $rowCount, $element['ngay_tao_nk']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_hokhau() {
+		// create file name
+        $fileName = 'hokhau-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->hokhau();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Mã hộ khẩu');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tên chủ hộ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Địa chỉ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['mahk']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['tench']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['dc']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['ngay_tao_hk']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_tamtru() {
+		// create file name
+        $fileName = 'tamtru-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->tamtru();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'ID');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Khẩu hiện tại');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Lý do');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Ngày bắt đầu');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Ngày kết thúc');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Tạm trú tại');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['khaucu']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['lydo']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['ngaybd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['ngaykt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['dc']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['ngay_tao_tttv']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_tamvang() {
+		// create file name
+        $fileName = 'tamvang-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->tamvang();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'ID');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Khẩu hiện tại');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Lý do');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Ngày bắt đầu');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Ngày kết thúc');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Tạm vắng tại');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['khaucu']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['lydo']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['ngaybd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['ngaykt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['dc']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['ngay_tao_tttv']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_chuyenkhau() {
+		// create file name
+        $fileName = 'chuyenkhau-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->chuyenkhau();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'ID');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Khẩu cũ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Khẩu mới');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Lý do');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['khaucu']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['khaumoi']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['lydo']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['ngayth']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_tachkhau() {
+		// create file name
+        $fileName = 'tachkhau-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->tachkhau();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'ID');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Khẩu cũ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Khẩu mới');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Lý do');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['id']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['khaucu']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['khaumoi']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['lydo']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['ngayth']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_vipham() {
+		// create file name
+        $fileName = 'vipham-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->vipham();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Mã vi phạm');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Số CMND');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Tội danh');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Hình phạt');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Đơn vị lập');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Người lập');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Ngày quyết định');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['mavp']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['socmnd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['toidanh']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['hinhphat']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['dvlap']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['nguoilap']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['ngay']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['ngaylap']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_nhanvien() {
+		// create file name
+        $fileName = 'nhanvien-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->nhanvien();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Mã nhân viên');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Họ và tên');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Giới tính');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Ngày sinh');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Số điện thoại');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Email');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Cấp bậc');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Chức vụ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Đơn vị');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Quyền hạn');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Ngày tạo');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['manv']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['hvt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $element['gt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $element['ns']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $element['sdt']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $element['email']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $element['capbac']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $element['chucvu']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $element['donvi']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $element['quyenhan']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $element['ngay_tao_nv']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
+    }
+    public function export_diaban() {
+		// create file name
+        $fileName = 'diaban-'.time().'.xlsx';  
+		// load excel library
+        $this->load->library('excel');
+        $model = new M_Admin();
+        $empInfo = $model->diadiem();
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        // set Header
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Mã địa bàn');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tên địa bàn');
+        // set Row
+        $rowCount = 2;
+        foreach ($empInfo as $element) {
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $element['madd']);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $element['tendd']);
+            $rowCount++;
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save('././res/exports/'.$fileName);
+		// download file
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url('res/exports/').$fileName);   
     }
 }

@@ -130,7 +130,6 @@
                             <li><a href="<?php echo base_url('admin/themvipham'); ?>">Thêm vi phạm mới</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo base_url('admin/thongke'); ?>"><i class="ti-location-pin"></i> <span>Báo cáo thống kê</span></a></li>
                     <li><a href="<?php echo base_url('admin/thongtincanhan'); ?>"><i class="ti-info-alt"></i> <span>Thông tin cá nhân</span></a></li>
                     <li><a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?')" href="<?php echo base_url('auth/logout'); ?>"><i class="ti-power-off"></i> <span>Đăng xuất hệ thống</span></a></li>
                 </ul>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 20, 2019 lúc 08:05 PM
+-- Thời gian đã tạo: Th3 23, 2019 lúc 09:44 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -449,7 +449,9 @@ CREATE TABLE `nhanvien` (
   `password` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
   `capbac` varchar(255) NOT NULL,
-  `mapb` int(11) NOT NULL,
+  `chucvu` varchar(255) NOT NULL,
+  `donvi` varchar(255) NOT NULL,
+  `quyenhan` tinyint(4) NOT NULL COMMENT '2: QTV - 1: NV - 0: NVTK',
   `ngay_tao_nv` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -457,30 +459,10 @@ CREATE TABLE `nhanvien` (
 -- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `mapb`, `ngay_tao_nv`) VALUES
-('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444666', 'hoanglam97bn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 1, '2019-03-03'),
-('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 1, '2019-03-03'),
-('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 1, '2019-03-03');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `phongban`
---
-
-CREATE TABLE `phongban` (
-  `mapb` int(11) NOT NULL,
-  `tenpb` varchar(255) NOT NULL,
-  `dc` varchar(255) NOT NULL,
-  `sdt` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `phongban`
---
-
-INSERT INTO `phongban` (`mapb`, `tenpb`, `dc`, `sdt`) VALUES
-(1, 'Phòng 001', 'Phòng 102, tầng 2, nhà A', '0208384111');
+INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `code`, `capbac`, `chucvu`, `donvi`, `quyenhan`, `ngay_tao_nv`) VALUES
+('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444888', 'hoanglam97bn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Úy', 'Bộ trưởng', 'Bộ Công An', 2, '2019-03-03'),
+('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 'Nhân viên', 'Công An Xã', 1, '2019-03-03'),
+('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 'Nhân viên', 'Công An Xã', 0, '2019-03-03');
 
 -- --------------------------------------------------------
 
@@ -520,7 +502,9 @@ CREATE TABLE `vipham` (
   `toidanh` varchar(255) NOT NULL,
   `hinhphat` varchar(255) NOT NULL,
   `dvlap` varchar(255) NOT NULL,
-  `ngay` date NOT NULL
+  `nguoilap` varchar(255) NOT NULL,
+  `ngay` date NOT NULL,
+  `ngaylap` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -557,14 +541,7 @@ ALTER TABLE `nhankhau`
 -- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD PRIMARY KEY (`manv`,`email`),
-  ADD KEY `mapb` (`mapb`);
-
---
--- Chỉ mục cho bảng `phongban`
---
-ALTER TABLE `phongban`
-  ADD PRIMARY KEY (`mapb`);
+  ADD PRIMARY KEY (`manv`,`email`);
 
 --
 -- Chỉ mục cho bảng `tttv`
@@ -591,12 +568,6 @@ ALTER TABLE `cktk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `phongban`
---
-ALTER TABLE `phongban`
-  MODIFY `mapb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT cho bảng `tttv`
 --
 ALTER TABLE `tttv`
@@ -617,12 +588,6 @@ ALTER TABLE `cktk`
 --
 ALTER TABLE `nhankhau`
   ADD CONSTRAINT `nhankhau_ibfk_1` FOREIGN KEY (`mahk`) REFERENCES `hokhau` (`mahk`);
-
---
--- Các ràng buộc cho bảng `nhanvien`
---
-ALTER TABLE `nhanvien`
-  ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`mapb`) REFERENCES `phongban` (`mapb`);
 
 --
 -- Các ràng buộc cho bảng `tttv`
