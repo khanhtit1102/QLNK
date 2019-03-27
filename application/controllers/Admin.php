@@ -1101,7 +1101,78 @@ class Admin extends CI_Controller {
     {
     	$model = new M_Admin();
 		$view = new V_Admin();
-		$view->thongke();
+		$ngay = date('d');
+		$thang = date('m');
+		$nam = date('Y');
+		$pre_ngay = '01';
+		$pre_thang = '01';
+		$pre_nam = '2000';
+		if ($this->input->get('nam')) {
+			$nam = $this->input->get('nam');
+			$thang = '12';
+			$ngay = '31';
+			$pre_nam = $this->input->get('nam');
+		}
+		if ($this->input->get('thang')) {
+			$thang = $this->input->get('thang');
+			$ngay = '31';
+			$pre_thang = $this->input->get('thang');
+		}
+		if ($this->input->get('ngay')) {
+			$ngay = $this->input->get('ngay');
+			$pre_ngay = $this->input->get('ngay');
+		}
+
+		$date = $nam.'-'.$thang.'-'.$ngay;
+		$pre_date = $pre_nam.'-'.$pre_thang.'-'.$pre_ngay;
+		// Danh sách thống kê theo huyện
+			// Địa bàn
+		$data['diaban'][] = 'Thành phố Bắc Ninh';
+		$data['diaban'][] = 'Huyện Yên Phong';
+		$data['diaban'][] = 'Huyện Quế Võ';
+		$data['diaban'][] = 'Huyện Tiên Du';
+		$data['diaban'][] = 'Thị xã Từ Sơn';
+		$data['diaban'][] = 'Huyện Thuận Thành';
+		$data['diaban'][] = 'Huyện Gia Bình';
+		$data['diaban'][] = 'Huyện Lương Tài';
+			// Nhân khẩu
+		$data['nhankhau'][0] = $model->tk_huyen_nhankhau($data['diaban'][0], $date, $pre_date);
+		$data['nhankhau'][1] = $model->tk_huyen_nhankhau($data['diaban'][1], $date, $pre_date);
+		$data['nhankhau'][2] = $model->tk_huyen_nhankhau($data['diaban'][2], $date, $pre_date);
+		$data['nhankhau'][3] = $model->tk_huyen_nhankhau($data['diaban'][3], $date, $pre_date);
+		$data['nhankhau'][4] = $model->tk_huyen_nhankhau($data['diaban'][4], $date, $pre_date);
+		$data['nhankhau'][5] = $model->tk_huyen_nhankhau($data['diaban'][5], $date, $pre_date);
+		$data['nhankhau'][6] = $model->tk_huyen_nhankhau($data['diaban'][6], $date, $pre_date);
+		$data['nhankhau'][7] = $model->tk_huyen_nhankhau($data['diaban'][7], $date, $pre_date);
+			// Hộ khẩu
+		$data['hokhau'][0] = $model->tk_huyen_hokhau($data['diaban'][0], $date, $pre_date);
+		$data['hokhau'][1] = $model->tk_huyen_hokhau($data['diaban'][1], $date, $pre_date);
+		$data['hokhau'][2] = $model->tk_huyen_hokhau($data['diaban'][2], $date, $pre_date);
+		$data['hokhau'][3] = $model->tk_huyen_hokhau($data['diaban'][3], $date, $pre_date);
+		$data['hokhau'][4] = $model->tk_huyen_hokhau($data['diaban'][4], $date, $pre_date);
+		$data['hokhau'][5] = $model->tk_huyen_hokhau($data['diaban'][5], $date, $pre_date);
+		$data['hokhau'][6] = $model->tk_huyen_hokhau($data['diaban'][6], $date, $pre_date);
+		$data['hokhau'][7] = $model->tk_huyen_hokhau($data['diaban'][7], $date, $pre_date);
+			// Tạm trú tạm vắng
+		$data['tttv'][0] = $model->tk_huyen_tttv($data['diaban'][0], $date, $pre_date);
+		$data['tttv'][1] = $model->tk_huyen_tttv($data['diaban'][1], $date, $pre_date);
+		$data['tttv'][2] = $model->tk_huyen_tttv($data['diaban'][2], $date, $pre_date);
+		$data['tttv'][3] = $model->tk_huyen_tttv($data['diaban'][3], $date, $pre_date);
+		$data['tttv'][4] = $model->tk_huyen_tttv($data['diaban'][4], $date, $pre_date);
+		$data['tttv'][5] = $model->tk_huyen_tttv($data['diaban'][5], $date, $pre_date);
+		$data['tttv'][6] = $model->tk_huyen_tttv($data['diaban'][6], $date, $pre_date);
+		$data['tttv'][7] = $model->tk_huyen_tttv($data['diaban'][7], $date, $pre_date);
+			// Vi phạm
+		$data['vipham'][0] = $model->tk_huyen_vipham($data['diaban'][0], $date, $pre_date);
+		$data['vipham'][1] = $model->tk_huyen_vipham($data['diaban'][1], $date, $pre_date);
+		$data['vipham'][2] = $model->tk_huyen_vipham($data['diaban'][2], $date, $pre_date);
+		$data['vipham'][3] = $model->tk_huyen_vipham($data['diaban'][3], $date, $pre_date);
+		$data['vipham'][4] = $model->tk_huyen_vipham($data['diaban'][4], $date, $pre_date);
+		$data['vipham'][5] = $model->tk_huyen_vipham($data['diaban'][5], $date, $pre_date);
+		$data['vipham'][6] = $model->tk_huyen_vipham($data['diaban'][6], $date, $pre_date);
+		$data['vipham'][7] = $model->tk_huyen_vipham($data['diaban'][7], $date, $pre_date);
+		
+		$view->thongke($data);
     }
 	public function GetCountryName(){
 		$model = new M_Admin();

@@ -112,7 +112,7 @@ class V_Admin
 	{
 		include "res/themnhanvien.php";
 	}
-	public function thongke()
+	public function thongke($data)
 	{
 		include "res/thongke.php";
 	}

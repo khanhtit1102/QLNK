@@ -76,39 +76,90 @@
                                         ?>
                                     </p>
                                 </div>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-lg">Bạn cần xuất file <strong>Excel</strong>?</button>
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target=".bd-example-modal-lg">Bạn cần xuất file <strong>Excel</strong> từ cơ sở dữ liệu?</button>
 
                                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                   <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalCenterTitle">Chức năng xuất Excel</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                                              <span aria-hidden="true">&times;</span>
-                                          </button>
-                                      </div>
-                                      <style>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <style>
                                           .btnexport{
                                             width: 100%;
-                                          }
-                                      </style>
-                                      <div class="modal-body" align="center">
-                                        <div class="row">
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_nhankhau') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin nhân khẩu</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_hokhau') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin hộ khẩu</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_tamtru') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin tạm trú</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_tamvang') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin tạm vắng</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_chuyenkhau') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin chuyển khẩu</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_tachkhau') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin tách khẩu</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_vipham') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin vi phạm</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_nhanvien') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin nhân viên</button></a><br><br></div>
-                                            <div class="col-md-4"><a href="<?php echo base_url('admin/export_diaban') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin địa bàn</button></a><br><br></div>
+                                        }
+                                        </style>
+                                        <div class="modal-body" align="center">
+                                            <div class="row">
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_nhankhau') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin nhân khẩu</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_hokhau') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin hộ khẩu</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_tamtru') ?>"><button type="button" class="btn btn-primary btnexport">Xuất thông tin tạm trú</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_tamvang') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin tạm vắng</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_chuyenkhau') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin chuyển khẩu</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_tachkhau') ?>"><button type="button" class="btn btn-success btnexport">Xuất thông tin tách khẩu</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_vipham') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin vi phạm</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_nhanvien') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin nhân viên</button></a><br><br></div>
+                                                <div class="col-md-4"><a href="<?php echo base_url('admin/export_diaban') ?>"><button type="button" class="btn btn-secondary btnexport">Xuất thông tin địa bàn</button></a><br><br></div>
+                                            </div>
                                         </div>
                                     </div>
-                                  </div>
-                              </div>
+                                </div>
                             </div>
-                            
+                            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#filterModal">Bạn cần lọc?</button>
+                            <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="filterModalLabel">Lọc theo thời gian</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body" align="center">
+                                            <form action="" method="get">
+                                                <input type="number" name="ngay" min="1" max="31" class="form-control" value="<?php if(isset($_GET['ngay'])){echo $_GET['ngay'];} ?>" placeholder="Ngày" style="width: 30%; display: unset;">
+                                                <input type="number" name="thang" min="1" max="12" class="form-control" value="<?php if(isset($_GET['thang'])){echo $_GET['thang'];} ?>" placeholder="Tháng" style="width: 30%; display: unset;">
+                                                <input type="number" name="nam" min="2000" max="<?php echo date('Y'); ?>" class="form-control" value="<?php if(isset($_GET['nam'])){echo $_GET['nam'];} ?>" placeholder="Năm" style="width: 30%; display: unset;">
+                                                <br><br>
+                                                <button type="submit" class="btn btn-primary" style="width: 40%">Lọc</button>
+                                                <a href="<?php echo base_url('admin/thongke') ?>"><button type="button" class="btn btn-danger" style="width: 40%">Hủy lọc</button></a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="data-tables">
+                                <table id="dataTable" class="text-center table-hover table-bordered">
+                                    <thead class="bg-light text-capitalize">
+                                        <tr>
+                                            <th>Huyện/Thị xã/Thành phố</th>
+                                            <th>Số nhân khẩu</th>
+                                            <th>Số hộ khẩu</th>
+                                            <th>Số tạm trú/tạm vắng</th>
+                                            <th>Số người có tiền án tiền sự</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php for ($i=0; $i < 7; $i++) { 
+                                            echo '<tr>';
+                                            echo '<td>'.$data['diaban'][$i].'</th>';
+                                            echo '<td>'.$data['nhankhau'][$i].'</th>';
+                                            echo '<td>'.$data['hokhau'][$i].'</th>';
+                                            echo '<td>'.$data['tttv'][$i].'</th>';
+                                            echo '<td>'.$data['vipham'][$i].'</th>';
+                                            echo '</tr>';
+                                        } ?>
+                                    </tbody>
+                                    <thead class="bg-light text-capitalize">
+                                        <tr>
+                                            <th>Tổng</th>
+                                            <th><?php echo array_sum($data['nhankhau']); ?></th>
+                                            <th><?php echo array_sum($data['hokhau']); ?></th>
+                                            <th><?php echo array_sum($data['tttv']); ?></th>
+                                            <th><?php echo array_sum($data['vipham']); ?></th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -142,12 +193,6 @@
     <!-- others plugins -->
     <script src="<?php echo base_url('res/') ?>assets/js/plugins.js"></script>
     <script src="<?php echo base_url('res/') ?>assets/js/scripts.js"></script>
-    <script>
-        $('#userfile').on('change',function(){
-            var fileName = $(this).val();
-            $(this).next('.custom-file-label').html(fileName);
-        })
-    </script>
 </body>
 
 </html>

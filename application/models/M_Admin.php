@@ -419,4 +419,31 @@ class M_Admin extends CI_Model
     {
 		$this->db->insert('nhanvien', $add_data);
     }
+    public function tk_huyen_nhankhau($like, $date, $pre_date)
+    {
+    	// SELECT * FROM diadiem, nhankhau WHERE diadiem.tendd = nhankhau.dc AND diadiem.tendd LIKE '%Thành phố Bắc Ninh%' AND nhankhau.ngay_tao_nk <= '2019-03-28' AND nhankhau.ngay_tao_nk >= '2000-01-01'
+    	$this->db->where('nhankhau.ngay_tao_nk <=', $date)->where('nhankhau.ngay_tao_nk >=', $pre_date);
+    	$this->db->where('diadiem.tendd = nhankhau.dc')->like('diadiem.tendd', $like)->from('diadiem, nhankhau');
+    	return $this->db->count_all_results();
+    }
+    public function tk_huyen_hokhau($like, $date, $pre_date)
+    {
+    	$this->db->where('hokhau.ngay_tao_hk <=', $date)->where('hokhau.ngay_tao_hk >=', $pre_date);
+    	$this->db->where('diadiem.tendd = hokhau.dc')->like('diadiem.tendd', $like)->from('diadiem, hokhau');
+    	return $this->db->count_all_results();
+    }
+    public function tk_huyen_tttv($like, $date, $pre_date)
+    {
+    	// SELECT * FROM diadiem, tttv WHERE diadiem.tendd = tttv.dc AND diadiem.tendd LIKE '%Thành phố Bắc Ninh%'
+    	$this->db->where('tttv.ngay_tao_tttv <=', $date)->where('tttv.ngay_tao_tttv >=', $pre_date);
+    	$this->db->where('diadiem.tendd = tttv.dc')->like('diadiem.tendd', $like)->from('diadiem, tttv');
+    	return $this->db->count_all_results();
+    }
+    public function tk_huyen_vipham($like, $date, $pre_date)
+    {
+    	// SELECT * FROM diadiem, vipham, nhankhau WHERE diadiem.tendd = nhankhau.dc AND diadiem.tendd LIKE '%Thành phố Bắc Ninh%' AND vipham.socmnd = nhankhau.socmnd
+    	$this->db->where('vipham.ngaylap <=', $date)->where('vipham.ngaylap >=', $pre_date);
+    	$this->db->where('diadiem.tendd = nhankhau.dc')->like('diadiem.tendd', $like)->where('vipham.socmnd = nhankhau.socmnd')->from('diadiem, vipham, nhankhau');
+    	return $this->db->count_all_results();
+    }
 }

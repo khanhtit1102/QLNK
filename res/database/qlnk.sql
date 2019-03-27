@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 23, 2019 lúc 09:44 AM
+-- Thời gian đã tạo: Th3 27, 2019 lúc 08:37 PM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -392,7 +392,8 @@ INSERT INTO `log_tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `dc`, `lydo`, `loai
 (NULL, '092222222', 'hk001', NULL, 'Phường Khắc Niệm-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'aaaa', 'Tạm trú', '2019-02-28', '2019-03-07', '2019-03-20', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:14:22'),
 (NULL, '', '', NULL, NULL, '', '', '0000-00-00', '0000-00-00', '0000-00-00', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:18:08'),
 (3, '092222222', 'hk001', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Sửa lý do (Debugging)', 'Tạm vắng', '2019-03-01', '2019-03-01', '2019-03-20', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:19:08'),
-(3, '092222222', 'hk001', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đi tù (Debugging)', 'Tạm vắng', '2019-03-01', '2019-03-01', '2019-03-20', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:19:29');
+(3, '092222222', 'hk001', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đi tù (Debugging)', 'Tạm vắng', '2019-03-01', '2019-03-01', '2019-03-20', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:19:29'),
+(NULL, '093333333', 'hk003', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đây là lý do', 'Tạm vắng', '2019-03-01', '2019-03-30', '2019-03-26', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-26 15:21:09');
 
 -- --------------------------------------------------------
 
@@ -425,7 +426,7 @@ CREATE TABLE `nhankhau` (
 --
 
 INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `trinhdonn`, `noilamviec`, `choohiennay`, `quequan`, `tdhocvan`, `nghenghiep`, `mahk`, `qhvchuho`, `ngay_tao_nk`) VALUES
-('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chú', '2019-03-19'),
+('091111111', 'Hoàng Công Thịnh', '', 1, '1987-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chú', '2018-03-19'),
 ('092222222', 'Nguyễn Thị Lan Anh', '', 0, '1989-03-05', 'Kinh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-03-19'),
 ('093333333', 'Nguyễn Minh Giang', '', 1, '1985-03-01', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Cháu', '2019-03-20'),
 ('094444444', 'Nguyễn Ngọc Hiên', '', 0, '1978-03-01', 'Kinh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Không', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'Phường Hạp Lĩnh-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk003', 'Chủ hộ', '2019-03-20'),
@@ -488,7 +489,8 @@ CREATE TABLE `tttv` (
 --
 
 INSERT INTO `tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `dc`, `lydo`, `loai`, `ngaybd`, `ngaykt`, `ngay_tao_tttv`) VALUES
-(4, '092222222', 'hk001', NULL, 'Phường Khắc Niệm-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'aaaa', 'Tạm trú', '2019-02-28', '2019-03-07', '2019-03-20');
+(4, '092222222', 'hk001', NULL, 'Phường Khắc Niệm-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'aaaa', 'Tạm trú', '2019-02-28', '2019-03-07', '2019-03-20'),
+(5, '093333333', 'hk003', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đây là lý do', 'Tạm vắng', '2019-03-01', '2019-03-30', '2019-03-26');
 
 -- --------------------------------------------------------
 
@@ -506,6 +508,13 @@ CREATE TABLE `vipham` (
   `ngay` date NOT NULL,
   `ngaylap` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `vipham`
+--
+
+INSERT INTO `vipham` (`mavp`, `socmnd`, `toidanh`, `hinhphat`, `dvlap`, `nguoilap`, `ngay`, `ngaylap`) VALUES
+('toidanh001', '096666666', 'Xàm sỡ trong thang máy', '200.000 nghìn', 'Hà Nội', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-01', '2019-03-26');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -571,7 +580,7 @@ ALTER TABLE `cktk`
 -- AUTO_INCREMENT cho bảng `tttv`
 --
 ALTER TABLE `tttv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
