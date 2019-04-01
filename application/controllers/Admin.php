@@ -160,6 +160,13 @@ class Admin extends CI_Controller {
 		$data_table = $model->xemhokhau($mahk);
 		$view->xemhokhau($mahk, $data_table);
 	}
+	public function nhatkyhokhau()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkyhokhau();
+		$view->nhatkyhokhau($data_table);
+	}
 	public function nhankhau()
 	{
 		$model = new M_Admin();
@@ -268,6 +275,13 @@ class Admin extends CI_Controller {
 		$data_hokhau = $model->hokhau();
 		$view->themnhankhau($data_hokhau);
 	}
+	public function nhatkynhankhau()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkynhankhau();
+		$view->nhatkynhankhau($data_table);
+	}
 	public function tamtru()
 	{
 		$model = new M_Admin();
@@ -357,6 +371,13 @@ class Admin extends CI_Controller {
 		}
 		$nhankhau = $model->nhankhau();
 		$view->themtamtru($nhankhau);
+	}
+	public function nhatkytamtru()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkytamtru();
+		$view->nhatkytamtru($data_table);
 	}
 	public function tamvang()
 	{
@@ -448,6 +469,13 @@ class Admin extends CI_Controller {
 		$nhankhau = $model->nhankhau();
 		$hokhau = $model->hokhau();
 		$view->themtamvang($nhankhau);
+	}
+	public function nhatkytamvang()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkytamvang();
+		$view->nhatkytamvang($data_table);
 	}
 	public function chuyenkhau()
 	{
@@ -644,6 +672,13 @@ class Admin extends CI_Controller {
 		$hokhau = $model->hokhau();
 		$view->suachuyenkhau($data, $nhankhau, $hokhau);
 	}
+	public function nhatkychuyenkhau()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkychuyenkhau();
+		$view->nhatkychuyenkhau($data_table);
+	}
 	public function tachkhau()
 	{
 		$model = new M_Admin();
@@ -814,6 +849,13 @@ class Admin extends CI_Controller {
 		}
 		$nhankhau = $model->nhankhau();
 		$view->themtachkhau($nhankhau);
+	}
+	public function nhatkytachkhau()
+	{
+		$model = new M_Admin();
+		$view = new V_Admin();
+		$data_table = $model->nhatkytachkhau();
+		$view->nhatkytachkhau($data_table);
 	}
 	public function qldd()
 	{

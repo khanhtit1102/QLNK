@@ -85,6 +85,40 @@ class M_Admin extends CI_Model
     	$newTime['nhanvien'] = floor(abs(strtotime(date('Y-m-d')) - strtotime($date['ngay_tao_nv'])) / (60*60*24));
 		return $newTime;
     }
+    public function nhatkyhokhau()
+	{
+		$query = $this->db->get('log_hokhau');
+        return $query->result_array();
+	}
+	public function nhatkynhankhau()
+	{
+		$query = $this->db->get('log_nhankhau');
+        return $query->result_array();
+	}
+	public function nhatkytamtru()
+	{
+		$this->db->where('loai', 'Tạm trú');
+		$query = $this->db->get('log_tttv');
+        return $query->result_array();
+	}
+	public function nhatkytamvang()
+	{
+		$this->db->where('loai', 'Tạm vắng');
+		$query = $this->db->get('log_tttv');
+        return $query->result_array();
+	}
+	public function nhatkychuyenkhau()
+	{
+		$this->db->where('loai', 'Chuyển khẩu');
+		$query = $this->db->get('log_cktk');
+        return $query->result_array();
+	}
+	public function nhatkytachkhau()
+	{
+		$this->db->where('loai', 'Tách khẩu');
+		$query = $this->db->get('log_cktk');
+        return $query->result_array();
+	}
 	public function hokhau()
 	{
 		$query = $this->db->get('hokhau');
@@ -111,6 +145,7 @@ class M_Admin extends CI_Model
 	{
 		$this->db->insert('log_hokhau', $delete_data);
 	}
+	
 	public function delete_nhankhau($socmnd)
 	{
 		$this->db->where('socmnd', $socmnd)->delete('tttv');

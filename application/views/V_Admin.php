@@ -24,6 +24,30 @@ class V_Admin
 	{
 		include "res/xemhokhau.php";
 	}
+	public function nhatkyhokhau($data_table)
+	{
+		include "res/nhatkyhokhau.php";
+	}
+	public function nhatkynhankhau($data_table)
+	{
+		include "res/nhatkynhankhau.php";
+	}
+	public function nhatkytamtru($data_table)
+	{
+		include "res/nhatkytamtru.php";
+	}
+	public function nhatkytamvang($data_table)
+	{
+		include "res/nhatkytamvang.php";
+	}
+	public function nhatkychuyenkhau($data_table)
+	{
+		include "res/nhatkychuyenkhau.php";
+	}
+	public function nhatkytachkhau($data_table)
+	{
+		include "res/nhatkytachkhau.php";
+	}
 	public function nhankhau($data_table)
 	{
 		include "res/nhankhau.php";
