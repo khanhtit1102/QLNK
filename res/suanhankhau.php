@@ -131,7 +131,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ns" class="col-form-label">Ngày sinh</label>
-                                                 <input class="form-control" required="" type="text" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
+                                                 <input class="form-control" required="" type="date" name="ns" value="<?php echo $value['ns']; ?>" id="ns">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

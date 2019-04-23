@@ -83,7 +83,7 @@
                 								<th></th>
                 								<th>Mã hộ khẩu</th>
                 								<th>Tên chủ hộ</th>
-                								<th>Địa chỉ</th>
+                								<th>HKTT</th>
                                                 <th>Lý do</th>
                                                 <th>Loại</th>
                                                 <th>Người TH</th>

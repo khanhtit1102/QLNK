@@ -87,7 +87,7 @@
                                                 <th>Ngày sinh</th>
                                                 <th>Dân tộc</th>
                                                 <th>Tôn giáo</th>
-                                                <th>Địa chỉ</th>
+                                                <th>HKTT</th>
                                                 <th>Trình độ NN</th>
                                                 <th>Nơi làm việc</th>
                                                 <th>Chỗ ở hiện nay</th>

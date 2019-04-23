@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Sửa thông tin tạm vắng</title>
+    <title>NHK Bắc Ninh - Thêm thông tin nhân viên</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Sửa thông tin tội danh</b></u></h4>
+                            <h4 class="page-title pull-left">Thêm thông tin nhân viên</b></u></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -76,19 +76,19 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="manv" class="col-form-label">Mã nhân viên</label>
-                                                <input class="form-control" type="text" name="manv" id="manv">
+                                                <input class="form-control" type="text" name="manv" id="manv" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="hvt" class="col-form-label">Họ và tên</label>
-                                                <input class="form-control" type="text" name="hvt" id="hvt">
+                                                <input class="form-control" type="text" name="hvt" id="hvt" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="gt" class="col-form-label">Giới tính</label>
-                                                <select name="gt" id="gt" class="form-control">
+                                                <select name="gt" id="gt" class="form-control" required="">
                                                     <option value="1">Nam</option>
                                                     <option value="0">Nữ</option>
                                                     <option value="2">Không xác định</option>
@@ -98,25 +98,19 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="ns" class="col-form-label">Ngày sinh</label>
-                                                <input class="form-control" type="date" name="ns" id="ns">
+                                                <input class="form-control" type="date" name="ns" id="ns" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="sdt" class="col-form-label">Số điện thoại</label>
-                                                <input class="form-control" type="text" name="sdt" id="sdt">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            <div class="form-group">
-                                                <label for="email" class="col-form-label">Email</label>
-                                                <input class="form-control" type="email" name="email" id="email">
+                                                <input class="form-control" type="text" name="sdt" id="sdt" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="capbac" class="col-form-label">Cấp bậc</label>
-                                                <input class="form-control" type="text" name="capbac" id="capbac">
+                                                <input class="form-control" type="text" name="capbac" id="capbac" required="">
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -133,10 +127,23 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
+                                                <label for="email" class="col-form-label">Email <span style="color: red">(Email dùng để đăng nhập và sử dụng hệ thống)</span></label>
+                                                <input class="form-control" type="email" name="email" id="email" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="password" class="col-form-label">Mật khẩu <span style="color: red">(Có thể đặt lại mật khẩu bằng Email)</span></label>
+                                                <input class="form-control" type="password" name="password" id="password" minlength="6" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-group">
                                                 <label for="quyenhan" class="col-form-label">Quyền hạn</label>
                                                 <select name="quyenhan" id="quyenhan" class="form-control" required="">
-                                                    <option value="1">Quản trị viên</option>
-                                                    <option value="0" selected="">Nhân viên</option>
+                                                    <option value="2">Quản trị viên</option>
+                                                    <option value="1" selected="">Nhân viên</option>
+                                                    <option value="0">Nhân viên thống kê</option>
                                                 </select>
                                             </div>
                                         </div>

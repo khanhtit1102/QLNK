@@ -87,34 +87,40 @@ class M_Admin extends CI_Model
     }
     public function nhatkyhokhau()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$query = $this->db->get('log_hokhau');
         return $query->result_array();
 	}
 	public function nhatkynhankhau()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$query = $this->db->get('log_nhankhau');
         return $query->result_array();
 	}
 	public function nhatkytamtru()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$this->db->where('loai', 'Tạm trú');
 		$query = $this->db->get('log_tttv');
         return $query->result_array();
 	}
 	public function nhatkytamvang()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$this->db->where('loai', 'Tạm vắng');
 		$query = $this->db->get('log_tttv');
         return $query->result_array();
 	}
 	public function nhatkychuyenkhau()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$this->db->where('loai', 'Chuyển khẩu');
 		$query = $this->db->get('log_cktk');
         return $query->result_array();
 	}
 	public function nhatkytachkhau()
 	{
+		$this->db->order_by('ngay_th', 'DESC');
 		$this->db->where('loai', 'Tách khẩu');
 		$query = $this->db->get('log_cktk');
         return $query->result_array();
@@ -449,6 +455,11 @@ class M_Admin extends CI_Model
     {
     	$this->db->where('manv', $manv);
 		$this->db->update('nhanvien', $update_data);
+    }
+    public function kiemtranhanvien($col, $value)
+    {
+    	$this->db->where($col, $value)->from('nhanvien');
+    	return $this->db->count_all_results();
     }
     public function themnhanvien($add_data)
     {

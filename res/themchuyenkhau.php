@@ -76,7 +76,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="socmnd" class="col-form-label">Đối tượng</label>
-                                                <select name="socmnd[]" id="socmnd" class="form-control" multiple="">
+                                                <select name="socmnd[]" id="socmnd" class="form-control" multiple="" required="">
                                                     <?php foreach ($nhankhau as $col => $row) { ?>
                                                     <option value="<?php echo $row['socmnd'] ?>"><?php echo $row['socmnd'].' - '.$row['hvt'].' - '.$row['mahk'].' - '.$row['qhvchuho']; ?></option>
                                                     <?php } ?>
@@ -86,7 +86,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="khaumoi" class="col-form-label">Khẩu mới</label>
-                                                <select name="khaumoi" id="khaumoi" class="form-control">
+                                                <select name="khaumoi" id="khaumoi" class="form-control" required="">
                                                     <?php foreach ($hokhau as $col => $row) { ?>
                                                     <option value="<?php echo $row['mahk'] ?>"><?php echo $row['mahk'].' - '.$row['tench'] ?></option>
                                                     <?php } ?>
@@ -112,7 +112,7 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label for="lydo" class="col-form-label">Lý do</label>
-                                                <textarea name="lydo" id="lydo" class="form-control" rows="3"></textarea>
+                                                <textarea name="lydo" id="lydo" class="form-control" rows="3" required=""></textarea>
                                             </div>
                                         </div>
                                     </div>

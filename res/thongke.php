@@ -127,8 +127,73 @@
                                     </div>
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#list14yearsold">Nhân khẩu 14 tuổi</button>
+                            <div class="modal fade" id="list14yearsold" tabindex="-1" role="dialog" aria-labelledby="list14yearsoldLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="list14yearsoldLabel">Hiển thị danh sách nhân khẩu 14 tuổi</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body" align="center">
+                                            <a href="<?php echo base_url('admin/thongke?screen=enough') ?>">
+                                                <button type="button" class="btn btn-primary" style="width: 40%">Hiển thị</button>
+                                            </a>
+                                            <a href="<?php echo base_url('admin/thongke') ?>">
+                                                <button type="button" class="btn btn-danger" style="width: 40%">Hiển thị thống kê</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <br><br>
                             <div class="data-tables">
+                                
+                                <?php if (isset($_GET['screen']) == 'enough') { ?>
+                                <table id="dataTable" class="text-center table-hover">
+                                        <thead class="bg-light text-capitalize">
+                                            <tr>
+                                                <th></th>
+                                                <th>Số CMND</th>
+                                                <th>Họ và tên</th>
+                                                <th>Giới tính</th>
+                                                <th>Ngày sinh</th>
+                                                <th>Mã hộ khẩu</th>
+                                                <th>QH với chủ hộ</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             <?php if(isset($data['socmnd'])){ for ($i=1; $i <= count($data['socmnd']); $i++) { ?>
+                                            <tr>
+                                                <td><?php echo $i; ?></td>
+                                                <td><?php echo $data['socmnd']; ?></td>
+                                                <td><?php echo $data['hvt']; ?></td>
+                                                <td>
+                                                    <?php 
+                                                        if ($data['gt'] == 0) {
+                                                            echo "Nữ";
+                                                        }
+                                                        else if ($data['gt'] == 1) {
+                                                            echo "Nam";
+                                                        }
+                                                        else{
+                                                            echo "Không xác định";
+                                                        }
+
+                                                    ?>
+                                                </td>
+                                                <td><?php echo $data['ns']; ?></td>
+                                                <td><a href="<?php echo base_url('admin/xemhokhau/').$data['mahk']; ?>"><?php echo $data['mahk']; ?></a></td>
+                                                <td><?php echo $data['qhvchuho']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/xemnhankhau/').$data['socmnd']; ?>" class="btn btn-primary" style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php }} ?>
+                                        </tbody>
+                                </table>
+                                <?php }else{ ?>
                                 <table id="dataTable" class="text-center table-hover table-bordered">
                                     <thead class="bg-light text-capitalize">
                                         <tr>
@@ -140,7 +205,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($i=0; $i < 7; $i++) { 
+                                        <?php for ($i=0; $i < count($data['diaban']); $i++) { 
                                             echo '<tr>';
                                             echo '<td>'.$data['diaban'][$i].'</th>';
                                             echo '<td>'.$data['nhankhau'][$i].'</th>';
@@ -160,6 +225,7 @@
                                         </tr>
                                     </thead>
                                 </table>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

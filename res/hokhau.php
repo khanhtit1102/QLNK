@@ -83,7 +83,7 @@
                 								<th></th>
                 								<th>Mã hộ khẩu</th>
                 								<th>Tên chủ hộ</th>
-                								<th>Địa chỉ</th>
+                								<th>Hộ khẩu thường trú</th>
                 								<th>Thao tác</th>
                 							</tr>
                 						</thead>

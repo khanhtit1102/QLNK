@@ -28,7 +28,7 @@
 									<label for="newpass" class="">Mật khẩu mới</label>
 								</div>
 								<div>
-									<input class="waves-effect waves-light btn right" type="submit" value="Thay đổi mật khẩu">
+									<button class="waves-effect waves-light btn right" type="submit">Thay đổi mật khẩu</button>
 								</form>
 							</div>
 						</div>

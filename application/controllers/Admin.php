@@ -600,7 +600,7 @@ class Admin extends CI_Controller {
 							// Đổi tên
 
 							$hokhau_cu['tench'] = $nhankhau_data['hvt'];
-							$model->doiten_chuho($hokhau_cu, $add_data['khaucu']);
+							$model->doiten_chuho($hokhau_cu['tench'], $add_data['khaucu']);
 
 // Thêm chuyển khẩu vào bảng
 							unset($add_data['qhvchuho']);
@@ -831,7 +831,7 @@ class Admin extends CI_Controller {
 
 
 								$ten_ch_moi = $nhankhau_data['hvt'];
-								$model->doiten_chuho($ten_ch_moi, $add_data['khaucu']);
+								$model->doiten_chuho($hokhau_cu['tench'], $add_data['khaucu']);
 
 								// Thêm vào bảng tách khẩu
 								unset($add_data['tench'], $add_data['dc']);
@@ -1028,7 +1028,7 @@ class Admin extends CI_Controller {
 		$view->suanhanvien($data);
     }
     public function themnhanvien()
-    {
+    { 
     	$model = new M_Admin();
 		$view = new V_Admin();
 		if ($this->input->post('add') == 'submit') {
@@ -1038,15 +1038,28 @@ class Admin extends CI_Controller {
 			$add_data['ns'] = $this->input->post('ns');
 			$add_data['sdt'] = $this->input->post('sdt');
 			$add_data['email'] = $this->input->post('email');
+			$add_data['password'] = md5($this->input->post('password'));
 			$add_data['capbac'] = $this->input->post('capbac');
 			$add_data['chucvu'] = $this->input->post('chucvu');
 			$add_data['donvi'] = $this->input->post('donvi');
 			$add_data['quyenhan'] = $this->input->post('quyenhan');
 			$add_data['ngay_tao_nv'] = date('Y-m-d');
 
-			$model->themnhanvien($add_data);
-			$this->session->set_flashdata('error', '- Thêm thông tin nhân viên thành công!');
-			redirect(base_url('admin/nhanvien'));
+			$report1 = $model->kiemtranhanvien('manv', $add_data['manv']);
+			if ($report1 > 0) {
+				$this->session->set_flashdata('error', '- Mã nhân viên đã bị trùng. Vui lòng nhập lại!');
+			}
+			else{
+				$report2 = $model->kiemtranhanvien('email', $add_data['email']);
+				if ($report2 > 0) {
+					$this->session->set_flashdata('error', '- Email của bạn đã bị trùng. Vui lòng nhập lại!');
+				}
+				else{
+					$model->themnhanvien($add_data);
+					$this->session->set_flashdata('error', '- Thêm thông tin nhân viên thành công!');
+					redirect(base_url('admin/nhanvien'));
+				}
+			}
 		}
 		$view->themnhanvien();
     }
@@ -1213,7 +1226,16 @@ class Admin extends CI_Controller {
 		$data['vipham'][5] = $model->tk_huyen_vipham($data['diaban'][5], $date, $pre_date);
 		$data['vipham'][6] = $model->tk_huyen_vipham($data['diaban'][6], $date, $pre_date);
 		$data['vipham'][7] = $model->tk_huyen_vipham($data['diaban'][7], $date, $pre_date);
-		
+		if ($this->input->get('screen') == 'enough') {
+			$nhankhau_14 = $model->nhankhau();
+			$data = '';
+			foreach ($nhankhau_14 as $key => $value){
+				$ages = abs(strtotime(date('Y-m-d')) - strtotime($value['ns'])) / (60*60*24*365);
+				if ($ages >=14 && $ages < 15) {
+					$data = $value;
+				}
+			}
+		}
 		$view->thongke($data);
     }
 	public function GetCountryName(){
@@ -1252,7 +1274,7 @@ class Admin extends CI_Controller {
         $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Ngày sinh');
         $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Dân tộc');
         $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Tôn giáo');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Địa chỉ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Hộ khẩu thường trú');
         $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Trình độ ngoại ngữ');
         $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Nơi làm việc');
         $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Chỗ ở hiện nay');
@@ -1302,7 +1324,7 @@ class Admin extends CI_Controller {
         // set Header
         $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Mã hộ khẩu');
         $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tên chủ hộ');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Địa chỉ');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Hộ khẩu thường trú');
         $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Ngày tạo');
         // set Row
         $rowCount = 2;

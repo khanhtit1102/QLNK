@@ -77,7 +77,14 @@ class Auth extends CI_Controller {
 				$code = $this->generateRandomString();
 				$model->set_code($email, $code);
 				$link = base_url('auth/reset_password/').'?email='.$email.'&code='.$code;
-				$this->session->set_flashdata('error', 'Đường link đặt lại mật khẩu của bạn : <a href="'.$link.'">Tại đây</a>.');
+				$message = 'Xin chào !<br>Bạn đã yêu cầu cấp lại mật khẩu tài khoản của bạn trên hệ thống NHK Bắc Ninh.<br>Nếu bạn thực hiện việc này, hãy bấm vào <a href="'.$link.'">đây</a> để đặt lại mật khẩu!<br>Hoặc đường liên kết sau: '.$link.'<br>- Nếu bạn không thực hiện việc này, hãy bỏ qua thư của chúng tôi.<br>Cảm ơn bạn!';
+				$result_email = $this->sendMail($email, $subject, $message);
+				if ($result_email == 1) {
+					$this->session->set_flashdata('error', 'Thư đã được gửi đến Email.<br>Lưu ý: Có thể thư của chúng tôi ở thư mục <strong>SPAM</strong>!!');
+				}
+				else{
+					$this->session->set_flashdata('error', 'Lỗi!!!<br>'.$message);
+				}
 			}
 			else{
 				$this->session->set_flashdata('error', 'Email bạn nhập vào không có trong hệ thống của chúng tôi!!');
@@ -116,4 +123,35 @@ class Auth extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect(base_url('auth/login'));
 	}
+	private function sendMail($email, $subject, $message)
+	{
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+  			'smtp_user' => 'khanhtitwebdev@gmail.com',
+  			'smtp_pass' => 'jigbqrllpxwgdgdo',
+  			'mailtype' => 'html',
+  			'charset' => 'UTF-8',
+  			'wordwrap' => TRUE
+  		);
+		
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+     	$this->email->from('khanhtitwebdev@gmail.com');
+    	$this->email->to($email);
+    	$this->email->subject($subject);
+    	$this->email->message($message);
+    	if($this->email->send())
+    	{
+    		$result = 1;
+    	}
+    	else
+    	{
+    		$result = 0;
+    		// show_error($this->email->print_debugger());
+    	}
+    	return $result;
+
+    }
 }
