@@ -19,6 +19,13 @@ class M_Admin extends CI_Model
 		$data['cktk'] = $this->db->count_all_results();
 		return $data;
 	}
+	public function get_3_staffs()
+	{
+		// SELECT * FROM `nhanvien` WHERE 1 ORDER BY ngay_tao_nv ASC LIMIT 3
+		$this->db->order_by('ngay_tao_nv', 'ASC')->limit(3);
+		$query = $this->db->get('nhanvien');
+        return $query->result_array();
+	}
 	public function dateNews()
     {
     	// SELECT ngay_tao_nk FROM nhankhau ORDER BY ngay_tao_nk DESC LIMIT 0,1
@@ -147,6 +154,11 @@ class M_Admin extends CI_Model
 		$query = $this->db->get('nhankhau');
         return $query->result_array();
 	}
+	public function check_trong_hk($socmnd, $mahk)
+	{
+		$this->db->from('nhankhau')->where('socmnd', $socmnd)->where('mahk', $mahk);
+		return $this->db->count_all_results();
+	}
 	public function insert_log_hokhau($delete_data)
 	{
 		$this->db->insert('log_hokhau', $delete_data);
@@ -156,6 +168,7 @@ class M_Admin extends CI_Model
 	{
 		$this->db->where('socmnd', $socmnd)->delete('tttv');
 		$this->db->where('socmnd', $socmnd)->delete('cktk');
+		$this->db->where('socmnd', $socmnd)->delete('vipham');
 		$this->db->where('socmnd', $socmnd)->delete('nhankhau');
 	}
 	public function show_once_hk($mahk)
@@ -460,6 +473,17 @@ class M_Admin extends CI_Model
     {
     	$this->db->where($col, $value)->from('nhanvien');
     	return $this->db->count_all_results();
+    }
+    public function check_pass($manv, $old_pass)
+    {
+    	$this->db->where('manv', $manv)->where('password', $old_pass)->from('nhanvien');
+    	return $this->db->count_all_results();
+    }
+    public function set_change_pass($manv, $new_pass)
+    {
+    	$this->db->set('password', $new_pass);
+		$this->db->where('manv', $manv);
+		$this->db->update('nhanvien');
     }
     public function themnhanvien($add_data)
     {

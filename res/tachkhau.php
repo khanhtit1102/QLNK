@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Danh sách tách khẩu</title>
+    <title>NHK Bắc Ninh - Quản lý tách khấu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -69,12 +69,10 @@
                 		<div class="card">
                 			<div class="card-body">
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                 				<div class="data-tables">
                 					<table id="dataTable" class="text-center table-hover">
@@ -99,10 +97,7 @@
                                                 <td><?php echo $value['lydo']; ?></td>
                                                 <td><?php echo $value['ngayth']; ?></td>
                 								<td>
-                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></button>
-                                                    <button type="button" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="top" data-content="Chức năng này đang phát triển." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <!-- <a href="<?php echo base_url('admin/suatachkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a> -->
-                                                    <button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Vui lòng chọn chức năng xóa hộ khẩu." style="padding: .375rem .75rem;"><i class="fa fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
                 								</td>
                 							</tr>
                                             <?php } ?>

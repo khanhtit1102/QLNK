@@ -158,36 +158,20 @@
                             <div class="card-body bg1">
                                 <h4 class="header-title text-white">Chịu trách nhiệm website</h4>
                                 <div class="testimonial-carousel owl-carousel">
+                                    <?php foreach ($staffs as $key => $value){ ?>
                                     <div class="tst-item">
                                         <div class="tstu-img">
-                                            <img src="<?php echo base_url('res/') ?>assets/images/team/team-author1.jpg" alt="author image">
+                                            <img src="<?php echo base_url('res/assets/images/author/') ?><?php if($value['gt'] == 1){echo 'men';} else{echo 'women';} ?>.png" alt="author image"> 
                                         </div>
                                         <div class="tstu-content">
-                                            <h4 class="tstu-name">Nguyễn Hoàng Lâm</h4>
-                                            <span class="profsn">Trưởng phòng</span>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
+                                            <h4 class="tstu-name"><?php echo $value['hvt']; ?></h4>
+                                            <span class="profsn">Ngày sinh: <?php echo date("d/m/Y", strtotime($value['ns'])); ?></span>
+                                            <p>Cấp bậc: <?php echo $value['capbac']; ?></p>
+                                            <p>Chức vụ: <?php echo $value['chucvu']; ?></p>
+                                            <p>Đơn vị: <?php echo $value['donvi']; ?></p>
                                         </div>
                                     </div>
-                                    <div class="tst-item">
-                                        <div class="tstu-img">
-                                            <img src="<?php echo base_url('res/') ?>assets/images/team/team-author2.jpg" alt="author image">
-                                        </div>
-                                        <div class="tstu-content">
-                                            <h4 class="tstu-name">Hoàng Thị Loan</h4>
-                                            <span class="profsn">Phó phòng</span>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="tst-item">
-                                        <div class="tstu-img">
-                                            <img src="<?php echo base_url('res/') ?>assets/images/team/team-author3.jpg" alt="author image">
-                                        </div>
-                                        <div class="tstu-content">
-                                            <h4 class="tstu-name">Nguyễn Lan Anh</h4>
-                                            <span class="profsn">Phó phòng</span>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
-                                        </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

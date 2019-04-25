@@ -22,7 +22,8 @@ class Admin extends CI_Controller {
 		$view = new V_Admin();
 		$data = $model->get_number_dash();
 		$dateNews = $model->dateNews();
-		$view->index($data, $dateNews);
+		$staffs = $model->get_3_staffs();
+		$view->index($data, $dateNews, $staffs);
 	}
 	public function hokhau()
 	{
@@ -61,34 +62,41 @@ class Admin extends CI_Controller {
 			$dc = $this->input->post('dc');
 			$check = $model->check_cmnd($socmnd, $tench);
 			if ($check == 1) {
-				// Check có thay đổi chủ hộ hay không
-				$check2 = $model->show_once_hk($mahk);
-				foreach ($check2 as $key => $value){
-					$chuhocu = $value['tench'];
-
-					$insert_log['mahk'] = $value['mahk'];
-					$insert_log['tench'] = $value['tench'];
-					$insert_log['dc'] = $value['dc'];
-					$insert_log['ngay_tao_hk'] = $value['ngay_tao_hk'];
-				}
-
-				$insert_log['lydo'] = $this->input->post('lydo');
-				$insert_log['type'] = 'Sửa';
-				$insert_log['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
-				$insert_log['ngay_th'] = date("Y-m-d H:i:s");
-				$model->insert_log_hokhau($insert_log);
-
-				if ($chuhocu != $tench) {
-					$qhcu = $this->input->post('qhcu');
-					$model->update_chuhocu($mahk, $qhcu);
-					$model->update_chuhomoi($mahk, $tench, $dc);
-					$model->update_nhankhau($mahk, $socmnd, $tench);
+				// Check có trong hộ khẩu đó hay không?
+				$is_in = $model->check_trong_hk($socmnd, $mahk);
+				if ($is_in != 1) {
+					$this->session->set_flashdata('error', '- Người bạn thay đổi không có trong hộ khẩu này!');
 				}
 				else{
-					$model->update_chuhomoi($mahk, $tench, $dc);
+					// Check có thay đổi chủ hộ hay không
+					$check2 = $model->show_once_hk($mahk);
+					foreach ($check2 as $key => $value){
+						$chuhocu = $value['tench'];
+
+						$insert_log['mahk'] = $value['mahk'];
+						$insert_log['tench'] = $value['tench'];
+						$insert_log['dc'] = $value['dc'];
+						$insert_log['ngay_tao_hk'] = $value['ngay_tao_hk'];
+					}
+
+					$insert_log['lydo'] = $this->input->post('lydo');
+					$insert_log['type'] = 'Sửa';
+					$insert_log['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+					$insert_log['ngay_th'] = date("Y-m-d H:i:s");
+					$model->insert_log_hokhau($insert_log);
+
+					if ($chuhocu != $tench) {
+						$qhcu = $this->input->post('qhcu');
+						$model->update_chuhocu($mahk, $qhcu);
+						$model->update_chuhomoi($mahk, $tench, $dc);
+						$model->update_nhankhau($mahk, $socmnd, $tench);
+					}
+					else{
+						$model->update_chuhomoi($mahk, $tench, $dc);
+					}
+
+					$this->session->set_flashdata('error', '- Thay đổi thông tin hộ khẩu thành công!');
 				}
-				
-                $this->session->set_flashdata('error', '- Thanh đổi thông tin hộ khẩu thành công!');
 			}
 			else{
                 $this->session->set_flashdata('error', '- Số cmnd và tên chủ hộ không hợp lệ!');
@@ -181,8 +189,30 @@ class Admin extends CI_Controller {
 			$delete_data['type'] = 'Xóa';
 			$delete_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
 			$delete_data['ngay_th'] = date("Y-m-d H:i:s");
-			$model->insert_log_nhankhau($delete_data);
-			$model->delete_nhankhau($delete_data['socmnd']);
+			$is_once = $model->check_khau_ca_nhan($delete_data['mahk']);
+			if ($is_once == 1) {
+				// Đây là khẩu cá nhân thì xóa luôn hộ khẩu đó.
+				$nhankhau = $model->get_nhankhau($delete_data['mahk']);
+				foreach ($nhankhau as $key => $value){
+					$model->delete_nhankhau($value['socmnd']);
+					$model->insert_log_nhankhau($delete_data);
+				}
+				$mot_hokhau = $model->mot_hokhau($delete_data['mahk']);
+				foreach ($mot_hokhau as $key => $value){
+					$delete_data = $value;
+				}
+				$delete_data['lydo'] = $this->input->post('lydo');
+				$delete_data['type'] = 'Xóa';
+				$delete_data['nguoi_th'] = $this->session->userdata('manv').' - '.$this->session->userdata('hvt');
+				$delete_data['ngay_th'] = date("Y-m-d H:i:s");
+				$model->delete_hokhau($delete_data['mahk']);
+				$model->insert_log_hokhau($delete_data);
+			}
+			else{
+				// Không phải khẩu cá nhân
+				$model->insert_log_nhankhau($delete_data);
+				$model->delete_nhankhau($delete_data['socmnd']);
+			}
 			$this->session->set_flashdata('error', '- Xóa nhân khẩu thành công!');
 		}
 		$data_table = $model->nhankhau();
@@ -1133,6 +1163,19 @@ class Admin extends CI_Controller {
 			$update_data['donvi'] = $this->input->post('donvi');
 			$model->update_nhanvien($update_data, $manv);
 			$this->session->set_flashdata('error', '- Sửa thông tin cá nhân thành công!');
+		}
+		if ($this->input->post('chang_pass') == 'submit') {
+			$old_pass = md5($this->input->post('old_pass'));
+			$new_pass = md5($this->input->post('new_pass'));
+			$result = $model->check_pass($manv, $old_pass);
+			if ($result == 1) {
+				$model->set_change_pass($manv, $new_pass);
+				$this->session->set_flashdata('error', '- Thay đổi mật khẩu thành công!');
+			}
+			else{
+				$this->session->set_flashdata('error', '- Mật khẩu cũ không đúng. Vui lòng nhập lại!');
+			}
+			redirect(base_url('admin/thongtincanhan'));
 		}
 		$data = $model->mot_nhanvien($manv);
 		foreach ($data as $key => $value){

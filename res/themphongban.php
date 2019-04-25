@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Sửa thông tin tạm vắng</title>
+    <title>NHK Bắc Ninh - Thêm thông tin phòng ban</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Sửa thông tin phòng ban</b></u></h4>
+                            <h4 class="page-title pull-left">Thêm thông tin phòng ban</b></u></h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -64,12 +64,10 @@
                             <div class="card-body">
                                 <!-- <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Để thay đổi chủ hộ, vui lòng nhập đúng thông tin số CMND và tên chủ hộ.</div> -->
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                                 <form action="" method="post">
                                     <div class="row">

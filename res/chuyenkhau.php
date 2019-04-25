@@ -69,12 +69,10 @@
                 		<div class="card">
                 			<div class="card-body">
                                 <div class="noti">
-                                    <p style="color: red;">
                                         <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
+                                            echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
                                         }
                                         ?>
-                                    </p>
                                 </div>
                 				<div class="data-tables">
                 					<table id="dataTable" class="text-center table-hover">
@@ -100,11 +98,6 @@
                                                 <td><?php echo $value['ngayth']; ?></td>
                 								<td>
                                                     <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Bấm vào Số CMND và Mã HK để xem." style="padding: .375rem .75rem;"><i class="fa fa-eye"></i></button>
-                                                    <button type="button" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="top" data-content="Chức năng đang phát triển." style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></button>
-                                                    <a href="<?php echo base_url('admin/xoachuyenkhau/').$value['id']; ?>" class="btn btn-danger" style="padding: .375rem .75rem;" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a>
-
-                                                    <!-- <a href="<?php echo base_url('admin/suachuyenkhau/').$value['id']; ?>" class="btn btn-success" style="padding: .375rem .75rem;"><i class="fa fa-edit"></i></a>
-                									 -->
                 								</td>
                 							</tr>
                                             <?php } ?>

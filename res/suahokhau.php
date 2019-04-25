@@ -64,12 +64,10 @@
                 			<div class="card-body">
                                 <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Để thay đổi chủ hộ, vui lòng nhập đúng thông tin số CMND và tên chủ hộ.</div>
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                                 <?php if ($data != NULL) {
                                     foreach ($data as $key => $value) {

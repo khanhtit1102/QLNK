@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Chuyển khẩu</title>
+    <title>NHK Bắc Ninh - Nhật ký chuyển khấu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -69,12 +69,10 @@
                 		<div class="card">
                 			<div class="card-body">
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                 				<div class="data-tables">
                 					<table id="dataTable" class="text-center table-hover">

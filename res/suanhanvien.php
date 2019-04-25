@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Sửa thông tin tạm vắng</title>
+    <title>NHK Bắc Ninh - Sửa thông tin nhân viên</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -64,12 +64,10 @@
                             <div class="card-body">
                                 <!-- <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Để thay đổi chủ hộ, vui lòng nhập đúng thông tin số CMND và tên chủ hộ.</div> -->
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                                 <?php 
                                     foreach ($data as $key => $value) {
@@ -147,7 +145,32 @@
                                         </div>
                                         <?php } ?>
                                     </div>
-                                    <button class="btn btn-rounded btn-info" name="edit" value="submit" type="submit">Xác nhận sửa</button>
+                                    <button class="btn btn-rounded btn-info" name="edit" value="submit" type="submit">Xác nhận sửa</button> 
+                                    <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Đổi mật khẩu</button>
+
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Đổi mật khẩu</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body" align="center">
+                                                <form action="" method="post">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            <input type="password" name="old_pass" class="form-control" required="" placeholder="Mật khẩu cũ" minlength="6">
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                            <input type="password" name="new_pass" class="form-control" required="" placeholder="Mật khẩu mới" minlength="6">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <button type="submit" class="btn btn-primary" style="width: 40%" name="chang_pass" value="submit">Thay đổi mật khẩu</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                                 <?php } ?>
                             </div>

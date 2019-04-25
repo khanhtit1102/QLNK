@@ -64,12 +64,10 @@
                 			<div class="card-body">
                                 <div class="alert alert-warning" role="alert"><strong>LƯU Ý! </strong>Nếu chuyển khẩu chủ hộ, sau đó vui lòng chọn chủ hộ mới cho hộ khẩu cũ!</div>
                                 <div class="noti">
-                                    <p style="color: red;">
-                                        <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
-                                        }
-                                        ?>
-                                    </p>
+                                    <?php if (isset($_SESSION['error'])) {
+                                        echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
+                                    }
+                                    ?>
                                 </div>
                                 <form action="" method="post">
                                     <div class="row">

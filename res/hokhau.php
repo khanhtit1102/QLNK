@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Danh sách Hộ khẩu</title>
+    <title>NHK Bắc Ninh - Quản lý Hộ khẩu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -69,12 +69,10 @@
                 		<div class="card">
                 			<div class="card-body">
                                 <div class="noti">
-                                    <p style="color: red;">
                                         <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
+                                            echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
                                         }
                                         ?>
-                                    </p>
                                 </div>
                 				<div class="data-tables">
                 					<table id="dataTable" class="text-center table-hover">
@@ -123,7 +121,7 @@
                 														<div class="input-group-prepend">
                 															<span class="input-group-text" id="lydo-<?php echo $value['mahk']; ?>">Lý do</span>
                 														</div>
-                														<input type="text" class="form-control" aria-describedby="lydo-<?php echo $value['mahk']; ?>" name="lydo">
+                														<input type="text" class="form-control" aria-describedby="lydo-<?php echo $value['mahk']; ?>" name="lydo" required="">
                 													</div>
                 												</div>
                 												<div class="modal-footer">

@@ -78,7 +78,7 @@ class Auth extends CI_Controller {
 				$model->set_code($email, $code);
 				$link = base_url('auth/reset_password/').'?email='.$email.'&code='.$code;
 				$message = 'Xin chào !<br>Bạn đã yêu cầu cấp lại mật khẩu tài khoản của bạn trên hệ thống NHK Bắc Ninh.<br>Nếu bạn thực hiện việc này, hãy bấm vào <a href="'.$link.'">đây</a> để đặt lại mật khẩu!<br>Hoặc đường liên kết sau: '.$link.'<br>- Nếu bạn không thực hiện việc này, hãy bỏ qua thư của chúng tôi.<br>Cảm ơn bạn!';
-				$result_email = $this->sendMail($email, $subject, $message);
+				$result_email = $this->sendMail($email, $subject = 'Đặt lại mật khẩu', $message);
 				if ($result_email == 1) {
 					$this->session->set_flashdata('error', 'Thư đã được gửi đến Email.<br>Lưu ý: Có thể thư của chúng tôi ở thư mục <strong>SPAM</strong>!!');
 				}

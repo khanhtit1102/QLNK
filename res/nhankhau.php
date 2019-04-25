@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NHK Bắc Ninh - Danh sách nhân khẩu</title>
+    <title>NHK Bắc Ninh - Quản lý nhân khẩu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('res/') ?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url('res/') ?>assets/css/bootstrap.min.css">
@@ -69,12 +69,10 @@
                 		<div class="card">
                 			<div class="card-body">
                                 <div class="noti">
-                                    <p style="color: red;">
                                         <?php if (isset($_SESSION['error'])) {
-                                            echo $_SESSION['error'];
+                                            echo '<div class="alert alert-warning" role="alert">'.$_SESSION['error'].'</div>';
                                         }
                                         ?>
-                                    </p>
                                 </div>
                 				<div class="data-tables">
                 					<table id="dataTable" class="text-center table-hover">
@@ -131,7 +129,7 @@
                                                                 <form action="" method="post">
                                                                 <div class="modal-body">
                                                                     <div class="alert alert-danger" role="alert">
-                                                                        <b>Lưu ý! </b>Việc xóa này sẽ không được hoàn tác.<br>Có thể chọn <a href="">tạm trú/tạm vắng?</a>
+                                                                        <b>Lưu ý! </b>Việc xóa này sẽ không được hoàn tác.<br>Có thể chọn <a href="">tạm trú/tạm vắng?</a><br><?php if($value['qhvchuho'] == 'Chủ hộ'){echo '<b>Bạn đang muốn xóa CHỦ HỘ. Vui lòng sửa tên chủ hộ trước đó!</b><br>Nếu là khẩu cá nhân, hộ khẩu đó cũng sẽ bị xóa!';} ?>
                                                                     </div>
                                                                     <div class="input-group">
                                                                         <div class="input-group-prepend">
@@ -144,7 +142,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="lydo-<?php echo $value['socmnd']; ?>">Lý do</span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" aria-describedby="lydo-<?php echo $value['socmnd']; ?>" name="lydo">
+                                                                        <input type="text" class="form-control" aria-describedby="lydo-<?php echo $value['socmnd']; ?>" name="lydo" required="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
