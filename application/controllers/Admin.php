@@ -861,7 +861,7 @@ class Admin extends CI_Controller {
 
 
 								$ten_ch_moi = $nhankhau_data['hvt'];
-								$model->doiten_chuho($hokhau_cu['tench'], $add_data['khaucu']);
+								$model->doiten_chuho($ten_ch_moi, $add_data['khaucu']);
 
 								// Thêm vào bảng tách khẩu
 								unset($add_data['tench'], $add_data['dc']);
@@ -1053,6 +1053,18 @@ class Admin extends CI_Controller {
 			$model->update_nhanvien($update_data, $manv);
 			$this->session->set_flashdata('error', '- Sửa thông tin nhân viên thành công!');
 			redirect(base_url('admin/nhanvien'));
+		}
+		if ($this->input->post('chang_pass') == 'submit') {
+			$old_pass = md5($this->input->post('old_pass'));
+			$new_pass = md5($this->input->post('new_pass'));
+			$result = $model->check_pass($manv, $old_pass);
+			if ($result == 1) {
+				$model->set_change_pass($manv, $new_pass);
+				$this->session->set_flashdata('error', '- Thay đổi mật khẩu thành công!');
+			}
+			else{
+				$this->session->set_flashdata('error', '- Mật khẩu cũ không đúng. Vui lòng nhập lại!');
+			}
 		}
 		$data = $model->mot_nhanvien($manv);
 		$view->suanhanvien($data);

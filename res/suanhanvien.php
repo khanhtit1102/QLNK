@@ -146,6 +146,7 @@
                                         <?php } ?>
                                     </div>
                                     <button class="btn btn-rounded btn-info" name="edit" value="submit" type="submit">Xác nhận sửa</button> 
+                                </form>
                                     <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Đổi mật khẩu</button>
 
                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -171,7 +172,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                                 <?php } ?>
                             </div>
                         </div>

@@ -129,8 +129,8 @@ class Auth extends CI_Controller {
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_port' => 465,
-  			'smtp_user' => 'khanhtitwebdev@gmail.com',
-  			'smtp_pass' => 'jigbqrllpxwgdgdo',
+  			'smtp_user' => '97countonme@gmail.com',
+  			'smtp_pass' => 'sgjfdfcyajgumqcq',
   			'mailtype' => 'html',
   			'charset' => 'UTF-8',
   			'wordwrap' => TRUE
@@ -138,7 +138,7 @@ class Auth extends CI_Controller {
 		
 		$this->load->library('email', $config);
 		$this->email->set_newline("\r\n");
-     	$this->email->from('khanhtitwebdev@gmail.com');
+     	$this->email->from('97countonme@gmail.com');
     	$this->email->to($email);
     	$this->email->subject($subject);
     	$this->email->message($message);
