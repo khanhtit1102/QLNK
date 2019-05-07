@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 25, 2019 lúc 06:25 PM
+-- Thời gian đã tạo: Th5 07, 2019 lúc 05:15 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -47,7 +47,11 @@ INSERT INTO `cktk` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ngayth
 (12, '091111111', 'hk001', 'hk003', 'Mua nhà mới', 'Tách khẩu', '2019-04-25'),
 (13, '093333333', 'hk002', 'hk001', 'Trở về khẩu cũ', 'Chuyển khẩu', '2019-04-25'),
 (14, '091111111', 'hk003', 'hk001', 'Trở về nhà cũ', 'Chuyển khẩu', '2019-04-25'),
-(15, '093333333', 'hk001', 'hk002', 'ld', 'Tách khẩu', '2019-04-25');
+(15, '093333333', 'hk001', 'hk002', 'ld', 'Tách khẩu', '2019-04-25'),
+(16, '092222222', 'hk001', 'hk003', 'Chủ hộ tách khẩu', 'Tách khẩu', '2019-05-05'),
+(17, '091111111', 'hk001', 'hk002', 'Chuyển về chung nhà', 'Chuyển khẩu', '2019-05-05'),
+(18, '093333333', 'hk002', 'hk001', 'Chủ hộ tách khẩu', 'Tách khẩu', '2019-05-05'),
+(19, '091111111', 'hk002', 'hk004', 'a', 'Tách khẩu', '2019-05-05');
 
 -- --------------------------------------------------------
 
@@ -210,8 +214,10 @@ CREATE TABLE `hokhau` (
 --
 
 INSERT INTO `hokhau` (`mahk`, `tench`, `dc`, `ngay_tao_hk`) VALUES
-('hk001', 'Nguyễn Phương Trinh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-04-25'),
-('hk002', 'Vũ Bảo Anh', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-04-25');
+('hk001', 'Vũ Bảo Anh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-05-05'),
+('hk002', 'Lâm Mạnh Thắng', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-04-25'),
+('hk003', 'Nguyễn Phương Trinh', 'Phường Đồng Nguyên-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-05-05'),
+('hk004', 'Vũ Anh Duy', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-05-05');
 
 -- --------------------------------------------------------
 
@@ -252,7 +258,11 @@ INSERT INTO `log_cktk` (`id`, `socmnd`, `khaucu`, `khaumoi`, `lydo`, `loai`, `ng
 (NULL, '091111111', 'hk001', 'hk003', 'Mua nhà mới', 'Tách khẩu', '2019-04-25', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:52:27'),
 (NULL, '093333333', 'hk002', 'hk001', 'Trở về khẩu cũ', 'Chuyển khẩu', '2019-04-25', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:53:34'),
 (NULL, '091111111', 'hk003', 'hk001', 'Trở về nhà cũ', 'Chuyển khẩu', '2019-04-25', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:54:30'),
-(NULL, '093333333', 'hk001', 'hk002', 'ld', 'Tách khẩu', '2019-04-25', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28');
+(NULL, '093333333', 'hk001', 'hk002', 'ld', 'Tách khẩu', '2019-04-25', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28'),
+(NULL, '092222222', 'hk001', 'hk003', 'Chủ hộ tách khẩu', 'Tách khẩu', '2019-05-05', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:11:41'),
+(NULL, '091111111', 'hk001', 'hk002', 'Chuyển về chung nhà', 'Chuyển khẩu', '2019-05-05', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:18:02'),
+(NULL, '093333333', 'hk002', 'hk001', 'Chủ hộ tách khẩu', 'Tách khẩu', '2019-05-05', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:21:14'),
+(NULL, '091111111', 'hk002', 'hk004', 'a', 'Tách khẩu', '2019-05-05', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:22:52');
 
 -- --------------------------------------------------------
 
@@ -328,7 +338,14 @@ INSERT INTO `log_hokhau` (`mahk`, `tench`, `dc`, `ngay_tao_hk`, `lydo`, `type`, 
 ('hk002', 'Vũ Bảo Anh', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-04-25', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:53:34'),
 ('hk003', 'Vũ Anh Duy', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-04-25', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:54:30'),
 ('hk002', 'Vũ Bảo Anh', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-04-25', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:27'),
-('hk001', 'Nguyễn Phương Trinh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28');
+('hk001', 'Nguyễn Phương Trinh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28'),
+('hk003', 'Nguyễn Phương Trinh', 'Phường Đồng Nguyên-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-05-05', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:11:41'),
+('hk001', 'Nguyễn Phương Trinh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:11:41'),
+('hk001', 'Nguyễn Phương Trinh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-04-25', 'Chuyển khẩu', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:18:01'),
+('hk001', 'Vũ Bảo Anh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '2019-05-05', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:21:14'),
+('hk002', 'Vũ Bảo Anh', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:21:14'),
+('hk004', 'Vũ Anh Duy', 'Phường Ninh Xá-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', '2019-05-05', 'Tách khẩu', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:22:52'),
+('hk002', 'Vũ Anh Duy', 'Xã An Thịnh-Huyện Lương Tài-Tỉnh Bắc Ninh', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:22:52');
 
 -- --------------------------------------------------------
 
@@ -426,7 +443,16 @@ INSERT INTO `log_nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, 
 ('093333333', 'Vũ Bảo Anh', '', 0, '1997-02-08', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Sinh viên', 'hk002', 'Chủ hộ', '2019-04-25', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:53:33'),
 ('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk003', 'Chủ hộ', '2019-04-25', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 22:54:30'),
 ('093333333', 'Vũ Bảo Anh', '', 0, '1997-02-08', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Sinh viên', 'hk001', 'Con', '2019-04-25', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28'),
-('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chồng', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28');
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chồng', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-25 23:08:28'),
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-04-25', 'Sửa QHVCH', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:10:32'),
+('092222222', 'Nguyễn Phương Trinh', '', 0, '1980-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Tiếng Anh A2', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Cán bộ', 'hk001', 'Chủ hộ', '2019-04-25', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:11:41'),
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chồng', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:11:41'),
+('094444444', 'Lâm Mạnh Thắng', '', 1, '1997-02-10', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Con', '2019-05-05', 'Thêm mới', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:17:14'),
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-04-25', 'Chuyển khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:18:01'),
+('093333333', 'Vũ Bảo Anh', '', 0, '1997-02-08', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Sinh viên', 'hk002', 'Chủ hộ', '2019-04-25', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:21:14'),
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk002', 'Cậu', '2019-04-25', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:21:14'),
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-04-25', 'Tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:22:52'),
+('094444444', 'Lâm Mạnh Thắng', '', 1, '1997-02-10', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Con', '2019-05-05', 'Chủ hộ tách khẩu', 'Sửa', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:22:52');
 
 -- --------------------------------------------------------
 
@@ -462,7 +488,8 @@ INSERT INTO `log_tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `dc`, `lydo`, `loai
 (3, '092222222', 'hk001', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đi tù (Debugging)', 'Tạm vắng', '2019-03-01', '2019-03-01', '2019-03-20', 'Xóa', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-20 01:19:29'),
 (NULL, '093333333', 'hk003', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Đây là lý do', 'Tạm vắng', '2019-03-01', '2019-03-30', '2019-03-26', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-03-26 15:21:09'),
 (NULL, '091123456', 'hk004', NULL, 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'đi làm', 'Tạm trú', '2011-01-01', '2105-06-06', '2019-04-24', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-24 23:29:27'),
-(NULL, '091123456', 'hk004', NULL, 'Phường Kinh Bắc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'đi trại cải tạo', 'Tạm vắng', '2006-04-04', '2007-05-05', '2019-04-24', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-24 23:30:08');
+(NULL, '091123456', 'hk004', NULL, 'Phường Kinh Bắc-Thành phố Bắc Ninh-Tỉnh Bắc Ninh', 'đi trại cải tạo', 'Tạm vắng', '2006-04-04', '2007-05-05', '2019-04-24', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-04-24 23:30:08'),
+(NULL, '093333333', 'hk001', NULL, 'Phường Đồng Kỵ-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Tạm vắng', 'Tạm vắng', '1997-10-01', '2000-10-01', '2019-05-05', 'Thêm', 'nv001 - Nguyễn Hoàng Lâm', '2019-05-05 13:29:50');
 
 -- --------------------------------------------------------
 
@@ -495,9 +522,10 @@ CREATE TABLE `nhankhau` (
 --
 
 INSERT INTO `nhankhau` (`socmnd`, `hvt`, `tenkhac`, `gt`, `ns`, `dt`, `tg`, `dc`, `trinhdonn`, `noilamviec`, `choohiennay`, `quequan`, `tdhocvan`, `nghenghiep`, `mahk`, `qhvchuho`, `ngay_tao_nk`) VALUES
-('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk001', 'Chủ hộ', '2019-04-25'),
-('092222222', 'Nguyễn Phương Trinh', '', 0, '1980-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Tiếng Anh A2', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Cán bộ', 'hk001', 'Chủ hộ', '2019-04-25'),
-('093333333', 'Vũ Bảo Anh', '', 0, '1997-02-08', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Sinh viên', 'hk002', 'Chủ hộ', '2019-04-25');
+('091111111', 'Vũ Anh Duy', '', 1, '1973-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '10/12', 'Tự do', 'hk004', 'Chủ hộ', '2019-04-25'),
+('092222222', 'Nguyễn Phương Trinh', '', 0, '1980-06-11', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Tiếng Anh A2', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Cán bộ', 'hk003', 'Chủ hộ', '2019-04-25'),
+('093333333', 'Vũ Bảo Anh', '', 0, '1997-02-08', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Sinh viên', 'hk001', 'Chủ hộ', '2019-04-25'),
+('094444444', 'Lâm Mạnh Thắng', '', 1, '1997-02-10', 'Kinh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Không', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Phường Châu Khê-Thị xã Từ Sơn-Tỉnh Bắc Ninh', '12/12', 'Tự do', 'hk002', 'Chủ hộ', '2019-05-05');
 
 -- --------------------------------------------------------
 
@@ -549,6 +577,13 @@ CREATE TABLE `tttv` (
   `ngaykt` date NOT NULL,
   `ngay_tao_tttv` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `tttv`
+--
+
+INSERT INTO `tttv` (`id`, `socmnd`, `khaucu`, `khaumoi`, `dc`, `lydo`, `loai`, `ngaybd`, `ngaykt`, `ngay_tao_tttv`) VALUES
+(1, '093333333', 'hk001', NULL, 'Phường Đồng Kỵ-Thị xã Từ Sơn-Tỉnh Bắc Ninh', 'Tạm vắng', 'Tạm vắng', '1997-10-01', '2000-10-01', '2019-05-05');
 
 -- --------------------------------------------------------
 
@@ -626,13 +661,13 @@ ALTER TABLE `vipham`
 -- AUTO_INCREMENT cho bảng `cktk`
 --
 ALTER TABLE `cktk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `tttv`
 --
 ALTER TABLE `tttv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
