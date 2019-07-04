@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 07, 2019 lúc 05:15 AM
+-- Thời gian đã tạo: Th6 01, 2019 lúc 08:29 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.1.23
 
@@ -557,7 +557,7 @@ INSERT INTO `nhanvien` (`manv`, `hvt`, `gt`, `ns`, `sdt`, `email`, `password`, `
 ('nv001', 'Nguyễn Hoàng Lâm', 1, '1997-01-01', '0333444888', 'hoanglam97bn@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'S40XpYlofX', 'Thiếu Úy', 'Bộ trưởng', 'Bộ Công An', 2, '2019-03-03'),
 ('nv002', 'Nguyễn Chí Công', 1, '1997-01-27', '0353270197', 'nhanvien01@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu Tá', 'Nhân viên', 'Công An Xã', 1, '2019-03-03'),
 ('nv003', 'Hoàng Công Dung', 0, '2010-02-01', '0880030000', 'congdunghhh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thượng Sĩ', 'Nhân viên', 'Công An Xã', 0, '2019-03-03'),
-('nv004', 'Nông Văn Khánh', 1, '1997-01-27', '0353270197', 'khanhtit113@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '', 'Thiếu tá', 'Nhân viên', 'Công An Xã', 1, '2019-04-23');
+('nv004', 'Nông Văn Khánh', 1, '1997-01-27', '0353270197', 'khanhtit113@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'EtkwneahqA', 'Thiếu tá', 'Nhân viên', 'Công An Xã', 1, '2019-04-23');
 
 -- --------------------------------------------------------
 
